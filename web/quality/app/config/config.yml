@@ -1,0 +1,48 @@
+imports:
+    - { resource: parameters.yml }
+
+framework:
+    secret: %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+
+    templating:
+        engines: ['twig', 'php']
+    default_locale:  "pt_BR"
+
+# Twig Configuration
+twig:
+    debug:                "%kernel.debug%"
+    strict_variables:     "%kernel.debug%"
+    cache:                "%kernel.cache_dir%/twig"
+    # exception_controller: "QualityPressFrameworkBundle:Error:showError" -> Caso queira definir a página de erro
+
+#
+#sensio_framework_extra:
+#    router:      { annotations: true }
+#    request:     { converters: true, auto_convert: true }
+#    view:        { annotations: true }
+#    cache:       { annotations: true }
+#    security:    { annotations: true }
+#    psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     10.8.10.3
+                port:     3306
+                dbname:   xxx
+                user:     root
+                password: vertrigo
+                charset:  UTF8
+
+    orm:
+        default_entity_manager: ~
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true

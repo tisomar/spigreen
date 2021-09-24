@@ -1,0 +1,13 @@
+<?php if (Config::get('positive_habilitado') == 1): ?>
+    <span>
+        <img src="<?php echo get_url_site() ?>/img/ssl/positivessl-icon.png" alt="Positive SSL" title="Positive SSL" height="50"/>
+    </span>
+<?php endif; ?>
+
+<?php if (Config::get('comodo_habilitado') == 1 && Config::get('comodo_body') != ''): ?>
+    <span title="Comodo"><?php echo Config::get('comodo_body') ?></span>
+<?php endif; ?>
+
+<?php if (Config::get('ebit_selo_rodape') != ''): ?>
+    <span class="icon-ebit" title="Ebit"></span>
+<?php endif; ?>

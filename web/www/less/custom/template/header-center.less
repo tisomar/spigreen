@@ -1,0 +1,136 @@
+// Header
+#main-header {
+    background: #fff;
+    box-sizing: content-box;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    transition: top 0.15s linear;
+    border-top: 3px solid @brand-theme;
+    border-bottom: 1px solid @border-color;
+
+    .logo {
+        margin: 5px auto;
+        text-align: center;
+        font-size: 0;
+
+        a {
+            display: inline-block;
+        }
+    }
+
+    .nav-item {
+        color: #353535;
+        font-weight: 400;
+        padding: 8px 0;
+        text-align: center;
+    }
+
+    .search-mobile {
+        border-top: 1px solid @border-color;
+    }
+}
+
+@media only screen and (min-width: @screen-md) {
+
+    #main-header {
+        border: 0;
+
+        .header-top {
+            @height: 26px;
+            padding: 8px 0;
+
+            a {
+                padding: 0 10px;
+
+                &:hover {
+
+                    @{icon-set} {
+                        color: @brand-theme;
+                    }
+                }
+            }
+
+            p,  @{icon-set} {
+                color: #333333;
+                transition: @transition-default;
+            }
+
+            p {
+                margin: 0;
+                line-height: @height;
+                font-size: 14px;
+            }
+
+            .form-search {
+                margin: 0;
+
+                .form-control {
+                    background: #fff;
+                    font-size: 12px;
+                    height: @height;
+                }
+
+                button {
+                    top: 5px;
+                }
+            }
+
+            ul {
+                font-size: 0;
+                margin: 0;
+            }
+
+            li {
+                display: inline-block;
+                font-size: 18px;
+                line-height: @height;
+            }
+        }
+
+        .logo {
+            margin: 30px auto 20px;
+        }
+    }
+
+    #menu-desktop {
+        text-align: center;
+
+        .first-level,
+        .open-all-categories {
+            float: none !important;
+        }
+
+        .open-all-categories:not(.collapsed),
+        .open-all-categories:hover {
+            color: @brand-theme;
+        }
+
+        .first-level {
+            display: inline-block;
+
+            &> li {
+                display: inline-block;
+                float: none;
+                
+                &> a:hover {
+                    color: @brand-theme;
+                    background: #fff;
+                }
+            }
+        }
+    }
+
+    #categories {
+        right: 50%;
+        margin-right: -470px;
+    }
+}
+
+@media only screen and (min-width: @screen-lg) {
+
+    #categories {
+        margin-right: -570px;
+    }
+}

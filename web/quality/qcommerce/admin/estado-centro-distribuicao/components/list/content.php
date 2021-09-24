@@ -1,0 +1,51 @@
+<?php
+
+use PFBC\Element;
+?>
+<div class="table-responsive">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Estado</th>
+            <th>Centro de Distribuição</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($pager->getResult() as $object) : /* @var $object EstadoCentroDistribuicao */
+            ?>
+            <tr>
+                <td data-title="Página">
+                    <?= $object->getEstado()->getNome(); ?>
+                </td>
+                <td data-title="Local do Sistema">
+                    <?= $object->getCentroDistribuicao() ? $object->getCentroDistribuicao()->getDescricao() : ''; ?>
+                </td>
+                <td class="text-right" data-title="Ações">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Ações <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu text-left" role="menu">
+                            <li><a title="Editar"  href="<?= $config['routes']['registration'] . '?id=' . $object->getId() ?>"><span class="icon-edit"></span> Editar</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        <?php endforeach;
+
+        if ($pager->count() == 0) :
+            ?>
+            <tr>
+                <td colspan="10">Nenhum registro encontrado</td>
+            </tr>
+            <?php
+        endif;
+        ?>
+        </tbody>
+    </table>
+</div>
+<div class="col-xs-12">
+    <?php echo $pager->showPaginacao(); ?>
+</div>

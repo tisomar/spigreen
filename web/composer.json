@@ -1,0 +1,86 @@
+{
+  "name": "qualitypress/commerce",
+  "license": "MIT",
+  "type": "project",
+  "description": "Q.Commerce Express",
+  "autoload": {
+    "psr-0": {
+      "": "src/"
+    },
+    "classmap": [
+      "qcommerce/classes"
+    ],
+    "psr-4": {
+      "QPress\\": "src/QPress",
+      "Integrations\\": "src/Integrations"
+    },
+    "files": [
+      "app/constants.php",
+      "app/AppKernel.php",
+      "src/Itau/Itaucripto.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "swiftmailer/swiftmailer": "v5.4.1",
+    "symfony/console": "v2.7.1",
+    "symfony/routing": "v2.7.1",
+    "symfony/validator": "v2.7.1",
+    "symfony/debug": "v2.7.1",
+    "symfony/yaml": "v2.7.1",
+    "symfony/finder": "v2.7.1",
+    "symfony/class-loader": "v2.7.1",
+    "symfony/framework-bundle": "v2.7.1",
+    "symfony/twig-bundle": "v2.7.1",
+    "symfony/process": "v2.7.1",
+    "symfony/http-foundation": "v2.8.*",
+    "sensio/generator-bundle": "v2.5.3",
+    "monolog/monolog": "^2.0",
+    "pimple/pimple": "v3.0.0",
+    "propel/propel1": "1.6.7",
+    "kriansa/openboleto": "*",
+    "sensio/framework-extra-bundle": "^2.3",
+    "doctrine/doctrine-bundle": "^1.5",
+    "doctrine/orm": "~2.2,>=2.2.3,<2.5",
+    "doctrine/dbal": "<2.5",
+    "doctrine/common": "2.5.*",
+    "doctrine/cache": "1.5.*",
+    "symfony/doctrine-bridge": "^2.8",
+    "qualitysolutionweb/qcommerce-association": "0.1.x-dev",
+    "aws/aws-sdk-php": "^3.70",
+    "developercielo/api-3.0-php": "^1.2",
+    "isaquesb/clear-sale-php-sdk": "^1.2",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "ext-simplexml": "*",
+    "symfony/dotenv": "^4.3",
+    "dompdf/dompdf": "^0.8.3"
+  },
+  "require-dev": {
+    "cebe/markdown": "1.1.0",
+    "symfony/web-profiler-bundle": "v2.7.1",
+    "symfony/debug-bundle": "2.7.1",
+    "squizlabs/php_codesniffer": "^3.4",
+    "phpunit/phpunit": "^8.3",
+    "phpmd/phpmd": "^2.7",
+    "symfony/phpunit-bridge": "^4.3"
+  },
+  "repositories": [
+    {
+        "type": "git",
+        "url": "https://github.com/spigreen/ecommerce-cpanel.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/spigreen/spigreen-qcommerce-association.git"
+    }
+  ],
+  "scripts": {
+    "phpcs": "phpcs --standard=PSR2",
+    "propel": "propel-gen ./qcommerce/propel om"
+  }
+}

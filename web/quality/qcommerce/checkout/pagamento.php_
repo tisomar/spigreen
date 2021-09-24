@@ -1,0 +1,152 @@
+<?php 
+use QPress\Template\Widget;
+$strIncludesKey = 'checkout-pagamento';
+require_once __DIR__ . '/../includes/security.php';
+require_once __DIR__ . '/actions/pagamento.actions.php';
+include_once __DIR__ . '/../includes/head.php';
+?>
+<body itemscope itemtype="http://schema.org/WebPage" data-page="checkout-pagamento">
+<?php include_once QCOMMERCE_DIR . '/includes/javascript_body_inicio.php'; ?>
+<?php include QCOMMERCE_DIR . '/includes/header-checkout.php'; ?>
+
+<main role="main">
+    <?php include_once QCOMMERCE_DIR . '/includes/facebook_tracking/fb.payment.tracking.php'; ?>
+    <?php
+    Widget::render('general/steps-checkout', array('active' => 3, 'progress' => '100'));
+    Widget::render('general/page-header', array('title' => 'Pagamento'));
+    Widget::render('components/flash-messages');
+    ?>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-7">
+                <h3>1. Resumo da compra</h3>
+                <?php
+                // Tabela de produtos
+                Widget::render('general/table-products', array(
+                    'itens' => $carrinho->getPedidoItemsJoinProdutoVariacao()
+                ));
+
+                // Subtotal da compra dos itens
+                Widget::render('general/subtotal', array('value' => $carrinho->getValorItens()));
+
+                // Cupom de desconto
+                include __DIR__ . '/components/cupom.php';
+                
+                // Desconto pagamento por pontos
+                include __DIR__ . '/components/desconto_pontos.php';
+
+                // Valor dos itens
+                Widget::render('general/discount', array('value' => $carrinho->getValorDesconto()));
+
+                if (!$carrinho->isPagamentoMensalidade()) {
+                    // Frete selecionado e valor
+                    $freteSelecionado = $container->getFreteManager()->getModalidade($carrinho->getFrete());
+                    $titulo = $freteSelecionado->getTitulo();
+                    if ($carrinho->getFrete() == 'retirada_loja') {
+                        $titulo .= '<br><i>' . nl2br($carrinho->getPedidoRetiradaLoja()->getEndereco()) . '</i>';
+                    }
+                    $prazo = "<br><i>Prazo: " . $carrinho->getFretePrazo() . ' após a confirmação do pagamento.</i>';
+                    Widget::render('general/shipping', array(
+                        'value'         => $carrinho->getValorEntrega(),
+                        'shippingName'  => $titulo,
+                        'isEditable'    => true,
+                        'prazo'         => $prazo,
+                    ));
+                }
+
+                // Total geral do pedido
+                Widget::render('general/total', array('value' => $carrinho->getValorTotal(false)));
+
+                // Endereço selecionado, caso não seja retirar em loja
+                if ($carrinho->getFrete() != 'retirada_loja' && !$carrinho->isPagamentoMensalidade()) {
+                    Widget::render('general/delivery-address', array(
+                        'editable'          => true,
+                        'address'           => $carrinho->getEndereco(),
+                        'isCart'            => true
+                    ));
+                }
+                ?>
+            </div>
+            
+            <?php /* se o pedido exige um patrocinador e não temos um patrocinador de hotsite, exibe o formulário de escolha de patrocinador */  ?>
+            <?php if ($carrinho->precisaPatrocinador() && (!$container->getSession()->get('PATROCINADOR_HOTSITE_ID') || !ClienteQuery::create()->findPk($container->getSession()->get('PATROCINADOR_HOTSITE_ID')))):  ?>
+                <div class="col-xs-12 col-md-5">
+                    <h3>2. Informe o código ou e-mail do patrocinador</h3>
+
+                    <div class="panel">
+                        <div class="panel-body bg-default accordion-payment-type">
+                            <?php include __DIR__ . '/components/patrocinador.php';  ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif ?>
+
+            <div class="col-xs-12 col-md-5">
+
+                <h3><?php echo ($carrinho->precisaPatrocinador()) ? '3' : '2' ?>. Escolha a forma de pagamento</h3>
+
+                <div class="panel">
+                    <div class="panel-body bg-default accordion-payment-type">
+
+                        <?php
+                        /**
+                         * @TODO
+                         * - Trabalhar com a mesma classe para o pagseguro (será resolvido com o onmypay)
+                         * - Conflitos de js entre formulário de cartão do pagseguro e do superpay
+                         */
+
+                        /**
+                         * true = opened
+                         * false = closed
+                         */
+                        $isOpenedPanel = false;
+
+                        # Boleto PHP
+                        include_once __DIR__ . '/components/pagamento/boleto-php.php';
+
+                        # Pagseguro (Checkout Transparente)
+                        if (Config::get('pagseguro.opcao_pagamento') == "transparente") {
+                            $gatewayPagSeguro = $container->getGatewayManager()->get('PagSeguroTransparente');
+                            $gatewayPagSeguro->initialize();
+                            try {
+                                include_once __DIR__ . '/components/pagamento/pagseguro-transparente-js.php';
+                                include_once __DIR__ . '/components/pagamento/pagseguro-transparente-boleto.php';
+                                include_once __DIR__ . '/components/pagamento/pagseguro-transparente-cartao.php';
+                                include_once __DIR__ . '/components/pagamento/pagseguro-transparente-debito.php';
+                            } catch (Exception $e) {
+                                echo $e->getMessage();
+                            }
+                        }
+
+                        # Itau Shopline
+                        include_once __DIR__ . '/components/pagamento/itau-shopline.php';
+
+                        # SuperPay - Cartão de Crédito
+                        include_once __DIR__ . '/components/pagamento/superpay-cartao-credito.php';
+
+                        # PagSeguro - Redirecionamento
+                        include_once __DIR__ . '/components/pagamento/pagseguro-redirecionamento.php';
+
+                        # PayPal - Redirecionamento
+                        include_once __DIR__ . '/components/pagamento/paypal-redirecionamento.php';
+
+                        # Faturamento Direto
+                        include_once __DIR__ . '/components/pagamento/faturamento-direto.php';
+                        
+                        # Pontos
+                        include_once __DIR__ . '/components/pagamento/pontos.php';
+
+                        ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<?php include QCOMMERCE_DIR . '/includes/footer-checkout.php'; ?>
+</body>
+</html>

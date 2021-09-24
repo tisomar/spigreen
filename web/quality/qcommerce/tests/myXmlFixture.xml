@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    
+    <table name="qp1_cliente">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_categoria">
+        <column>ID</column>
+        <column>NOME</column>
+        <column>KEY</column>
+        <column>ORDEM</column>
+        <column>MOSTRAR_BARRA_MENU</column>
+        <column>MOSTRAR_PAGINA_INICIAL</column>
+        <column>DISPONIVEL</column>
+        <column>TOTAL_PRODUTOS</column>
+        <column>BANNER</column>
+        <column>NR_LFT</column>
+        <column>NR_RGT</column>
+        <column>NR_LVL</column>
+        
+        <row>
+            <value>1</value>
+            <value>Categoria</value>
+            <value>categoria</value>
+            <value>0</value>
+            <value>0</value>
+            <value>0</value>
+            <value>1</value>
+            <value></value>
+            <value></value>
+            <value>1</value>
+            <value>6</value>
+            <value>0</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Produtos</value>
+            <value>produtos</value>
+            <value>2</value>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>4</value>
+            <value></value>
+            <value>4</value>
+            <value>5</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>3</value>
+            <value>Kits</value>
+            <value>kits</value>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+            <value>4</value>
+            <value></value>
+            <value>2</value>
+            <value>3</value>
+            <value>1</value>
+        </row>
+        
+    </table>
+    
+    <table name="qp1_pedido_status">
+        <column>ID</column>
+        <column>MENSAGEM</column>
+        <column>LABEL_PRE_CONFIRMACAO</column>
+        <column>LABEL_CONFIRMACAO</column>
+        <column>LABEL_POS_CONFIRMACAO</column>
+        <column>STATUS</column>
+        <column>METODO</column>
+        <column>ORDEM</column>
+        
+        <row>
+            <value>1</value>
+            <value>Estamos no aguardo da confirmação de pagamento do seu pedido. Assim que confirmado, daremos sequencia no processo de expedição do seu pedido.</value>
+            <value>Aguardando Pagamento</value>
+            <value>Confirmar</value>
+            <value>Pagamento Confirmado</value>
+            <value>ANDAMENTO</value>
+            <value>OBRIGATORIO</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Recebemos a informação de que o pagamento do seu pedido foi confirmado. Neste momento, daremos inicio a expedição dos itens do seu pedido para garantir que você receba seus produtos adequadamente.</value>
+            <value>Aguardando Expedição</value>
+            <value>Confirmar</value>
+            <value>Pedido Expedido</value>
+            <value>ANDAMENTO</value>
+            <value>OBRIGATORIO</value>
+            <value>2</value>
+        </row>
+        <row>
+            <value>3</value>
+            <value>Seus produtos foram devidamente separados e encaminhados ao meio de entrega escolhido por você. Em breve você receberá-los no endereço informado na finalização da compra.</value>
+            <value>Aguardando Entrega</value>
+            <value>Confirmar</value>
+            <value>Pedido Entregue</value>
+            <value>ANDAMENTO</value>
+            <value>ENTREGA</value>
+            <value>3</value>
+        </row>
+        <row>
+            <value>4</value>
+            <value>Seus produtos estão disponíveis para serem retirados em nossa loja.</value>
+            <value>Aguardando Retirada</value>
+            <value>Confirmar</value>
+            <value>Pedido Retirado</value>
+            <value>ANDAMENTO</value>
+            <value>RETIRADA</value>
+            <value>4</value>
+        </row>
+        <row>
+            <value>5</value>
+            <value>Finalizamos as etapas de entrega do seu pedido.</value>
+            <value>Aguardando Finalização</value>
+            <value>Confirmar</value>
+            <value>Pedido Finalizado</value>
+            <value>FINALIZADO</value>
+            <value>OBRIGATORIO</value>
+            <value>5</value>
+        </row>
+    </table>
+    
+    <table name="qp1_plano">
+        <column>ID</column>
+        <column>NOME</column>
+        <column>DESCRICAO</column>
+        <column>GERACAO_PONTOS</column>
+        <column>DESCONTO_REVENDA</column>
+        <column>INDICACAO_DIRETA</column>
+        <column>INDICACAO_INDIRETA</column>
+        <column>RESIDUAL</column>
+        <column>REDE_BINARIA</column>
+        <column>PARTICIPACAO_LUCROS</column>
+        <column>PLANO_CARREIRA</column>
+        <column>PRODUTO_ID</column>
+        
+    </table>
+    
+    <table name="qp1_extrato">
+        <column>ID</column>
+        <column>CLIENTE_ID</column>
+        <column>TIPO</column>
+        <column>PEDIDO_ID</column>
+        <column>PONTOS</column>
+        <column>DATA</column>
+        <column>DATA_EXPIRACAO</column>
+        <column>OPERACAO</column>
+        <column>OBSERVACAO</column>
+        <column>BLOQUEADO</column>
+    </table>
+    
+    <table name="qp1_resgate">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_produto">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_produto_variacao">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_pedido">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_pedido_item">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_distribuicao">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_distribuicao_cliente">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_participacao_resultado">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_participacao_resultado_cliente">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_pedido_forma_pagamento">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_pedido_status_historico">
+        <column>ID</column>
+    </table>
+    
+    <table name="qp1_plano_carreira">
+        <column>ID</column>
+        <column>GRADUACAO</column>
+        <column>NIVEL</column>
+        <column>PONTOS</column>
+        <column>VALOR_PREMIO</column>
+        
+        <row>
+            <value>1</value>
+            <value>Oxigênio</value>
+            <value>1</value>
+            <value>1000</value>
+            <value>80</value>
+        </row>
+        <row>
+            <value>2</value>
+            <value>Ozônio</value>
+            <value>2</value>
+            <value>5000</value>
+            <value>400</value>
+        </row>
+        <row>
+            <value>3</value>
+            <value>Jade</value>
+            <value>3</value>
+            <value>10000</value>
+            <value>800</value>
+        </row>
+        <row>
+            <value>4</value>
+            <value>Topázio</value>
+            <value>4</value>
+            <value>35000</value>
+            <value>2800</value>
+        </row>
+        <row>
+            <value>5</value>
+            <value>Esmeralda</value>
+            <value>5</value>
+            <value>80000</value>
+            <value>6400</value>
+        </row>
+        <row>
+            <value>6</value>
+            <value>Safira</value>
+            <value>6</value>
+            <value>200000</value>
+            <value>16000</value>
+        </row>
+        <row>
+            <value>7</value>
+            <value>Rubi</value>
+            <value>7</value>
+            <value>400000</value>
+            <value>32000</value>
+        </row>
+        <row>
+            <value>8</value>
+            <value>Diamante</value>
+            <value>8</value>
+            <value>800000</value>
+            <value>64000</value>
+        </row>
+        <row>
+            <value>9</value>
+            <value>Duplo Diamante</value>
+            <value>9</value>
+            <value>1400000</value>
+            <value>112000</value>
+        </row>
+        <row>
+            <value>10</value>
+            <value>Triplo Diamante</value>
+            <value>10</value>
+            <value>3000000</value>
+            <value>240000</value>
+        </row>
+    </table>
+        
+    <table name="qp1_plano_carreira_cliente">
+        <column>ID</column>
+    </table>
+    
+</dataset>

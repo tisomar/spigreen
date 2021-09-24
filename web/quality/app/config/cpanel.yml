@@ -1,0 +1,16 @@
+cpanel:
+    connection:
+        host      : "10.8.10.249"
+        user      : "usuario-cpanel"
+        pass      : "senha-cpanel"
+        port      : "2083"
+        protocol  : "https"
+
+    cron:
+        - { command: 'wget -O - -q -t 1 http://{domain-name}.com.br/ambiente_testes/web/cron/enviar_aviso_boleto_vencido >/dev/null', minute: '0', hour: '1', day: '*', month: '*', weekday: '*' }
+        - { command: 'wget -O - -q -t 1 http://{domain-name}.com.br/ambiente_testes/web/cron/enviar_aviso_previo_vencimento_boleto >/dev/null', minute: '30', hour: '1', day: '*', month: '*', weekday: '*' }
+        - { command: 'wget -O - -q -t 1 http://{domain-name}.com.br/ambiente_testes/web/cron/contabilizar_quantidade_produtos_vendidos >/dev/null', minute: '0', hour: '2', day: '*', month: '*', weekday: '*' }
+        - { command: 'wget -O - -q -t 1 http://{domain-name}.com.br/ambiente_testes/web/cron/limpar_carrinhos_abandonados >/dev/null', minute: '0', hour: '3', day: '*', month: '*', weekday: '*' }
+        - { command: 'wget -O - -q -t 1 http://{domain-name}.com.br/ambiente_testes/web/cron/calcula_avaliacao_produtos >/dev/null', minute: '30', hour: '3', day: '*', month: '*', weekday: '*' }
+        - { command: 'wget -O - -q -t 1 http://{domain-name}.com.br/ambiente_testes/web/cron/enviar_aviso_produto_disponivel >/dev/null', minute: '0', hour: '4', day: '*', month: '*', weekday: '*' }
+        - { command: 'wget -O - -q -t 1 http://{domain-name}.com.br/ambiente_testes/web/cron/send_emails >/dev/null', minute: '*/3', hour: '*', day: '*', month: '*', weekday: '*' }

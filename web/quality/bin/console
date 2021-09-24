@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+
+<?php
+
+$loader = require_once __DIR__ . '/../vendor/autoload.php';
+
+### Retirar limite de tempo de execução do script
+set_time_limit(0);
+
+### Namespaces
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Debug\Debug;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+
+AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
+
+### Executando dados do console
+$extraCommands = require __DIR__ . '/commands.php';
+
+### Inicialização de variáveis para produção dos comandos
+$input = new ArgvInput();
+$env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
+$debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
+
+if ($debug) {
+    Debug::enable();
+}
+
+### Adicionar dados do KERNEL
+$kernel = new AppKernel($env, $debug);
+$application = new Application($kernel);
+
+### Comandos extras
+$application->addCommands($extraCommands);
+
+$application->run($input);

@@ -1,0 +1,1520 @@
+breadcrumb:
+    home: 'Home'
+    depoimento: 'Testimony'
+    produtos:   'Products'
+    central_cliente:    'Customer Center'
+    dados_cadastrais:   'Registration data'
+    alterar_senha:      'Change password'
+    central_distribuidor:   'Distributor Center'
+    lancamentos_transactions: 'Future Transactions'
+    produtos_visitados:     'Products visited'
+    meus_comentarios:       'My comments'
+    meus_enderecos:         'My adresses'
+    alterar_endereco:       'Change adresse'
+    faq_duvidas_frequentes: 'FAQ - Frequent Asked Questions'
+    termos_uso_urf:         "URF's Terms and Conditions of use"
+    central_pontos:         'Points Center'
+    extrato:                'Extract'
+    historico:              'Historic'
+    convidar:               'Invite'
+    resgatar:               'Redeem'
+    contato:                'Contact'
+    novidades:              'News'
+    login:                  'Login'
+    recuperar_senha:        'Recover password'
+    informar_nova_senha:    'Inform new password'
+    erro_404:               '404 Error'
+    promocoes:              'Special Offers'
+    newsletter:             'Newsletter'
+
+button:
+    buscar: 'Search'
+    enviar: 'Send'
+    fechar: 'Close'
+    comprar:    'Buy'
+    consultar:  'Consult'
+    limpar:     'Clean'
+    cadastrar:  'Register'
+    salvar:     'Save'
+    alterar_senha:  'Change password'
+    limpar_lista:   'Clear list'
+    excluir:        'Delete'
+    salvar_informacoes:     'Save information'
+    aceito:                 'I accept'
+    fechar:                 'Close'
+    gerar_extrato:          'Generate extract'
+    imprimir_relatorio:     'Print report'
+    gerar_historico:        'Generate Historic'
+    cadastrar_senha:        'Register Password'
+    acessar:                'Access'
+    filtrar:                'Filter'
+    entrar:                 'Enter'
+    continuar:              'Continue'
+    recuperar_senha:        'Recover Password'
+    cadastrar_nova_senha:   'Register new Password'
+    continuar_comprando:    'Keep buying'
+    atualizar:              'Update'
+    calcular_frete:         'Calculate delivery'
+    validar_cupom:          'Validate Coupon'
+    finalizar_compra:       'Finalize purchase'
+    clique_faca_pagamento:  'Click here and make the payment'
+    idioma_outro:           'Select another language'
+    limite_atingido:        'Limit reached'
+
+carrinho:
+    comprar_pda:                'Buy from a<br/><b>Support Point</b>'
+    comprar_rede_facil:         'By from <br/><b>Spigreen</b>'
+    mensagem_vazio:             'To add products into your cart, browse through the products or use search bar. Once you find your desired products, hit "Buy" button.'
+    nao_possui_pontos:          "You don't have enough points to finalize this purchase using points."
+    possui_x_pontos:            '[-Inf,-1]You have <strong>%x%</strong> points|{0}You have no points|{1}You have <strong>1</strong> point|[2,Inf]You have <strong>%x%</strong> points'
+    pagar_com_pontos:           'Pay with points.'
+    nao_pagar_com_pontos:       "Don't pay with points."
+    x_pontos:                   '%x% points'
+    info_desconto_progressivo:  'Add more %qtd% item(s) to your cart and get discount off %desconto%% in this product.'
+    usando_pontos_para_compra:  "You're using your points to this purchase."
+    x_pacotes_separados:        'Your order will be delivered in <u>%x% separated packages</u>.'
+    recebeu_x_desconto_frete:   'You won a discount off U$ <span class="valor-faltante">%x%</span> in your delivery fees.'
+    adicione_x_ganhe_desconto_frete:    'Adicione mais R$ <span class="valor-faltante">%x%</span> no seu pedido e ganhe desconto no frete.'
+    label:
+        imagem:             'Image'
+        descricao:          'Description'
+        excluir:            'Delete'
+        qtde:               'Qtt.'
+        valor_uni:          'Unit Value.'
+        valor_total:        'Total Value'
+        ref:                'ID.'
+        comprado_de:        'Buying from'
+        itens_adicionais:   'Additional Items'
+        papel:              'Paper'
+        acabamento:         'Finishing'
+        remover_carrinho:   'Remove from cart'
+        quantidade:         'Amount'
+        desconto_de:        'Discount of'
+        pontos_sua_rede:    'Points for network use'
+        pontos:             'points'
+        subtotal:           'Subtotal'
+        frete:              'Freight'
+        descontos:          'Discount'
+        descontos_gerais:     'General discount'
+        desconto_boleto:    'Discount ticket'
+        desconto_retirada:  'Discount payment directed to the PDA'
+        desconto_pontos:    'Payment points'
+        total:              'Total'
+    title:
+        remover_produto_carrinho:   'Remove product from cart'
+    frete:
+        nenhuma_opcao_para_cep: 'No shipping option for selected Zip.'
+        x_dias_despacho:        '{0}0 Business days from the date of dispatch.|{1}1 Business day from date of dispatch.|[2,Inf]%x% Business days from the date of dispatch.'
+        opcao:
+            pac:            'Correios - Pac'
+            sedex:          'Correios - Sedex'
+            esedex:         'Correios - e-Sedex'
+            transportadora: 'Transportadora'
+            internacional:  'Correios - International'
+        label:
+            nacional:       'National'
+            internacional:  'International'
+        placeholder:
+            cep:            'Enter your zip code'
+        title:
+            cep:            'Report the CEP'
+    pda:
+        label:
+            estado:             'State'
+            cidade:             'City'
+            numero:             'Nº'
+            complemento:        'Complement'
+            telefone:           'Phone'
+            selecione_ponto:    'Select the desired Point of Support'
+        placeholder:
+            estado:     'Select a state'
+        texto: >
+            <p><b>* Ponto de apoio:</b> Select this option if you wish to withdraw your order at a known foothold. Note: Point of support are independent resellers with stock of prompt delivery, in this option there is no Spigreen</p>
+            <p><br/><b>* Spigreen:</b> Select this option if you want to buy directly from the site that we will send the goods to the address indicated in the order via post office or carrier.</p>
+    aviso_venda_sujeita_analise: >
+        <b> Important </ b> <br>
+        Sales subject to analysis and confirmation of data. <br />
+        This procedure usually takes up to 24 business hours, but has a maximum deadline of up to 48 business hours (payment on the card). <br />
+        If the payment was made via a bank slip, the bank has up to two (2) business days to pass on this payment. <br />
+        After confirmation of payment, the order is despatched within 2 (two) business days and the delivery period will be counted after the 1st business day of the order posting at the Post Office or Carrier. <br />
+        <br>
+        Check item 7 of the Delivery Policy.
+        <a href="%link%" data-rel="prettyPhoto" title="Exchange Policy and Returns"><b>Click Here</b></a>
+    finalizacao:
+        selecione_endereco:         'Select an address above to continue the purchase.'
+        x_vezes_sem_juros:          '%x%x interest-free'
+        x_porcento_desconto_avista: '%x%% Cash discount'
+        x_valor_desconto_avista:    'R$ %x% off'
+        ate_x_vezes_sem_juros:      'In up to %x%x interest-free'
+        pagar_com_pontos:           'Pay with your points'
+        passos:
+            identificacao:  'Identification'
+            pagamento:      'Payment'
+            confirmacao:    'Confirmation'
+        opcao_pagamento:
+            cartao:             'Credit card'
+            cartao_debito:      'Debit card'
+            boleto_bancario:    'Bank slip'
+            boleto_itau:        'Itaú ticket'
+            dinheiro_retirada:  'Cash withdrawal payment'
+            pagseguro:          'Pag Seguro'
+            paypal:             'Paypal'
+            pontos:             'Points'
+        observacoes_pagamento:
+            boleto:             'Ticket with %x%% discount.<br/>The due date is 3 calendar days after the order is finalized.<br/>After this expiration date, the ticket loses its validity.'
+            pagseguro:          'PagSeguro in %x%x interest-free.<br/>After confirming the order you will be redirected to the Pagseguro website.'
+            paypal:             'Paypal em %x%x interest-free.<br/>After confirming the order you will be redirected to the Paypal website. For more information, please contact Paypal at 0800 892 1555.'
+        pagamento:
+            label:
+                numero_cartao:          'Card number'
+                nome_titular:           'Cardholder Name'
+                cpf_titular:           'Cardholder Document'
+                mes_validade:           'Month Validity'
+                ano_validade:           'Year Validity'
+                codigo_seguranca:       'Security code'
+                alterar_parcelamento:   'To change the installment, click the field below'
+                termos:                 'I agree the terms and use conditions'
+                aceite_termos:          'You must read and agree the terms and use conditions'
+            placeholder:
+                selecione:          'Select...'
+                selecione_opcao:    'Select the desired option'
+        texto_pagamento: >
+            Check the products that are in the cart and make sure the delivery address data is correct.<br />
+            Choose the form of payment at the bottom of this page.
+        texto_sucesso: >
+            <p>Dear(a) %client%</p>
+            <br />
+            <p>Your request N&ordm; <b>%order%</b> Was successful.</p>
+            <br/>
+            <p>
+                %oNote_pda%
+                If you have any questions, please contact our contact center.
+                <br />
+                <br />
+               Thank you for shopping at <strong>Spigreen.</strong>
+            </p>
+        texto_sucesso_observacao_pda:   'The order will be forwarded for delivery as soon as we confirm your payment.<br /><br />'    
+        observacao_sucesso: >
+            <p>The items chosen in the order <b>%order%</b> Done on the day %data% They are Available at the link below:</p>
+            <br />
+            <p><a href="%link%" class="click">Click to access the order in its entire central part of the customer</a></p>
+        confirmacao_pagamento:
+            boleto_bancario:
+                sucesso:        '<p><strong>Click on the button below to make your payment</strong><br/>The identification of the ticket payment is up to 48hrs.</p>'
+                link_imprimir:  'View Boleto Bancaria and Print'
+            retirada:
+                sucesso:        '<p><strong>The payment must be directed to the PDA.</strong>'
+                link_imprimir:  'Print Payment Guide'
+            boleto_itau:
+                sucesso:        '<p><strong>Click on the button below to make your payment.</strong><br/>The identification of the ticket payment is up to 48hrs.</p>'
+                link_imprimir:  'View Boleto Bancaria and Print'
+                erro:           'There was an error generating the ticket!<br /><br />Erro: %code% - %message%'
+            cartao:
+                sucesso:        '<p><strong>Payment made successfully</strong></p><br/><br/>Your payment was successful..<br/>We will send your request shortly..'
+                negado:         '<p style="color:#FF0000;">Operation denied by the operator.</p><br/><br>Your payment request has been denied by the card carrier..<br/>Contact your service provider for details..'
+                erro:           'There was an error creating the transaction with your credit card carrier!<br /><br />Erro: %code% - %message%'
+            pagseguro:
+                sucesso:        '<p><strong>Click on the button below to make the payment.</strong></p>'
+                link_pagamento: 'Make the payment'
+                erro:           'There was an error creating the transaction next to PagSeguro!<br /><br />Error: %message%'
+            paypal:
+                sucesso:        '<p><strong>Click on the button below to make the payment.</strong></p>'
+                link_pagamento: 'Make the payment'
+                erro:           'There was an error creating the transaction with Paypal!<br /><br />Error: %message%'
+            pontos:
+                sucesso:        'Your order has been successfully registered in our store.!'
+        erro:
+            prezado_cliente:    'Dear(a) %client%.'
+            mensagem: >
+                Unfortunately we could not generate your request, something wrong. 
+                Happened and we apologize for the inconvenience, please, 
+                Return to the cart and try to make your purchase again.
+            tentar_novamente: '<p>If you want to try again,<a href="%link%" class="clik"><b>stage 2</b></a>.</p>'    
+                
+central_pontos:
+    pa:     'PA'
+    pv:     'PV'
+    atualizado_em:                      'Updated %date%'
+    clique_nome_navegar_rede:           "Click on the client's name to navigate the nomination network."
+    nenhuma_indicacao_enviada:          'No indication sent'
+    clique_mes_visualizar_distribuicao: 'Click on the month below to view the distribution of points.'
+    pagamento_em_analise:               'Payment in Analysis'
+    detalhes_pedido:                    'Order Details'
+    confirmar_pagamento:                'Confirm Payment'
+    pontos_liberados:                   'Points released'
+    aguardando_confirmacao_cartao:      'Waiting for card verification'
+    confirmar_entrega:                  'Confirm Delivery'
+    finalizado:                         'Finished'
+    cancelado:                          'Canceled'
+    cancelar_pedido:                    'Cancel Order'
+    nenhum_pedido_realizado:            'No order placed.'
+    breadcrumb:
+        sua_rede:                       'Your Network'
+        geracao_x:                      'Generation %x%'
+    choices:
+            nao:                'No'
+            sim:                'Yes'    
+            todos:              'All'
+            todas:              'All'
+            indiferente:        'indifferent'
+            qualquer_produto:   'Any product'
+    label:
+        total_pontos_mes:               'Total points of your monthly purchase'
+        pontos_rede_calculo_mensal:     'Total points in your network for monthly calculation'
+        saldo_pontos:                   'Balance of points released for redemption'
+        saldo_pontos_bloqueados:        'Balance of blocked points'
+        total_participantes_rede:       'Total participants in your network'
+        total_convites_enviados:        'Total sent invitations'
+        total_convites_pendentes:       'Total invitations with pending registration'
+        ultima_distribuicao_feita_em:   'Last distribution of points made in'
+        pontos_sua_rede:                'Total points in your network'
+        nro_patrocinador:               'No. Sponsor'
+        nome:                           'Name'
+        email:                          'E-mail'
+        geracao:                        'Generation'
+        pa_mes:                         'P.A Month'
+        vip:                            'Vip'
+        pedidos:                        'Requests'
+        data:                           'Date'
+        tipo_extrato:                   'Extract typo'
+        data_inicial:                   'Initial date'
+        data_final:                     'Final date'
+        valor_pa:                       'Value (P.A.)'
+        saldo_pa:                       'balance (P.A.)'
+        lancamento:                     'Launch'
+        data_limite_resgate:            'Deadline<br />p/ Rescue'
+        entradas_pa:                    'Appetizer (P.A.)'
+        saidas_pa:                      'Exits(P.A.)'
+        total_pontos:                   'Total of points'
+        valor_pv:                       'Value (PV)'
+        saldo_pv:                       'balance (PV)'
+        data_expiracao:                 'Date Expiration'
+        seu_numero_patrocinador:        'Your sponsor number is'
+        seu_email_patrocinador:         'Your sponsor email is'
+        mensagem_max_caracteres:        'Message (Max. %x% caracters)'
+        situacao:                       'Situation'
+        senha:                          'Password'
+        confirmar_senha:                'Confirm password'
+        data_inicial_cadastro:          'Home'
+        data_final_cadastro:            'Final Date Registration'
+        apenas_vips:                    'Just vips'
+        estado:                         'State'
+        cidade:                         'City'
+        nao_cadastrado:                 'Not registered'
+        cadastrado:                     'Registered'
+        comprou:                        'Bought'
+        apenas_quem_comprou:            'Only who bought'
+        data_cadastro:                  'Date register'
+        cliente:                        'Client'
+        total_compras:                  'Total Purchases'
+        periodo:                        'Period'
+        pa_pontos_acumulados:           'PA Accumulated Points'
+        pv_pontos_valor:                'PV Points Value'
+        diplomata_ouro:                 'Gold at Diplomat'
+        desconto_diplomata_ouro:        'Gold/Diplomat Discount'
+        desconto_direitos:              'Direct Discounting'
+        total_ganhos:                   'Total Earnings'
+        pontos_rede:                    'Network Points'
+        nivel:                          'Level'
+        subtotal_pontos:                'Sub-total Points'
+        pontos_extras:                  'Extras'
+        pontos_descontados:             'Discounted Points'
+        pontos_ganhos:                  'Points Earned'
+        total_pontos_ganhos:            'Total Points Earned'
+        pedido:                         'Order'
+        cliente_nome:                   'Customer Name'
+        codigo:                         'Code'
+        informacao:                     'Information'
+        pagamento:                      'Payment'
+        produto:                        'Product'
+        estoque:                        'stock'
+        parcela_total_parcelas:         'Installment'
+        valor:                          'Value'
+        operacao:                       'Operation'
+        descricao:                      'Description'
+        data_vip:                       'VIP Activation Date'
+        data_vip:                       'Data Ativação VIP'
+        total_clientes:                 'Total Customers'
+        total_vip:                      'Total VIP'
+        total_geral_venda:              'Total General Sales'
+        total_venda_clientes:           'Total Customers Sales'
+        total_venda_vip:                'Total VIP Sales'
+        calculando:                     'Calculating...'
+    texto:
+        para_liberar_pontos:        'To release your blocked points become a VIP customer'
+        veja_pontos_acumulados:     'See the points accumulated in your network since the last points distribution.'
+        indique_site_amigos:        'Refer the site to your friends, increase your network and earn a lot more credits!'
+        digite_senha_resgate: >
+            <h3>Enter your password to access the rescue system.</h3><br/>
+            <p>This password is different from the password for the client's central access.<br/>If you do not remember your password, please request a new one from the link below.</p>
+        senha_avancada: >
+            <h3>Before making your redemption request, you must create an advanced password.</h3><br/>
+            <p>This password will only be used for redemption or transfer requests, your access password to the customer's central office will remain the same.</p>
+            <br/>
+            <p>Fill in your password in the fields below.<br/>Password must be at least 8 alphanumeric characters.</p>
+    leads_central: '<b>Attention!!!</b> You have news leads in the Distribuitor schedule. To access click the following <b><a href="%link1%">link</a></b>.'
+
+emails:
+    cabecalho:
+        data:   'Date'
+
+    rodape:
+        nr:     'n&deg;'
+        cep:    'Zip code'
+        
+    pedido_cliente:
+        assunto:    'purchase :: %company%'
+        saudacao:   'Hello'
+        confirmacao: >
+            <p>We confirm the registration of your order in our system and we ask that you wait for the confirmation of payment of the same by Spigreen.</p>
+            <p>Sales subject to review and confirmation of data.</p>
+            <p>This procedure usually takes up to 24 business hours, but has a maximum deadline of up to 48 business hours (payment on the card).</p>
+            <p>If the payment was made via a bank slip, the bank has up to 2 (two) business days to pass on this payment.</p>
+            <p>After confirmation of payment, the order is despatched within 2 (two) business days and the delivery period will be counted after the 1st business day of the order posting at the Post Office or Carrier.</p>
+            <p><span class='Red'>Thank you for being our Distributor.</span></p>
+            <p><span class='Red'>We would like to inform you that the resale price of Marita Burn + Control Coffee can NOT be less than R $ 60.00 for Marita coffee pots and R $ 70.00 for Marita coffee pots.</span></p>
+            <p><span class='Red'>We count on your cooperation and we want great sales.</span></p>
+            <p>Thank you for shopping in our store.</p>
+        header:
+            detalhes:           'Order Details'
+            dados_cliente:      "Client's data"
+            endereco_entrega:   'Delivery address'
+            itens:              'Order Items'
+            pontos:             'Points'
+            outras_informacoes: 'Other information'
+        nr_pedido:          'At the. Order'
+        data:               'Date'
+        valor:              'Value'
+        pagamento:          'payment'
+        frete:              'Shipping'
+        nome_razao_social:  'Name|Company Name'
+        cpf_rg:             'CPF | RG'
+        email:              'E-mail'
+        data_nascimento:    'Birth date'
+        endereco:           'Address'
+        codigo:             'Code'
+        produto:            'Product'
+        qtd:                'Qtd'
+        total:              'Total'
+        comprado_de:        'Bought from %nome%'
+        observacoes:        'Comments'
+        itens_adicionais:   'Additional Items'
+        papel:              'Paper'
+        acabamento:         'Finishing'
+        artes:              'Art'
+        visualizar:         'Visualize'
+        subtotal:           'Subtotal'
+        freta:              'Shipping'
+        desconto:           'Discount'
+        desconto_geral:     'General discount'
+        desconto_boleto:    'Discount ticket'
+        desconto_retirada:  'Discount payment directed to the PDA'
+        desconto_pontos:    'Payment points'
+        recebera_x_pontos:  "After confirming your payment, you will receive points <span style='color: blue; font-weight: bold'>%x%</span> for the purchase."
+        em_caso_duvidas:    'If you have any questions, please contact us through our <a href="%link%"> contact form </a>.'
+        
+    faq_cliente:
+        assunto:        'Question FAQ :: %empresa%'
+        titulo:         'Question FAQ'
+        saudacao:       'Hello'
+        confirmacao: >
+            <P> <b> The %company% has been registered with your question.</B></p>
+            <p>Thanks for the contact, your question will be answered soon.</p>
+            <p> You will receive the response in your email and you can also view it in the FAQ section of our site. </p>
+            
+    aviso_vip:
+        assunto:    'Congratulations, VIP customer :: %nome%'
+        titulo:     'Congratulations, you have become a VIP customer.'
+        confirmacao: >
+            <p><b>Olá, <span class='rosa'>%nome%</span>,</b></p>
+            <p>Congratulations you just became a VIP customer. Enjoy the benefits, invite your friends to buy one of our kits and earn commission for the sales indication.
+            Know more: <a href='%link%'>%link%</a></p>
+            
+    solicitacao_resgate:
+        assunto:    'Request for Redemption :: %company%'
+        titulo:     'Request for Points Redemption'
+        saudacao:   'Hello'
+        confirmacao: >
+            <p><b>We received your request for redemption.</b></p>
+            <p>We are processing your request.</p>
+            <p>You will receive the response in your email once the deposit is made.</p>
+            
+    alteracao_solicitacao_resgate:
+        assunto:    'Request for Redemption :: %empresa%'
+        titulo:     'Request for Points Redemption'
+        saudacao:   'Hello'
+        efetuado: >
+            <p><b>Your redemption request has been made and the amount will be in your account within 24 hours.</b></p>
+            <p>Any problem or doubt please contact us.</p>
+            <br>
+        cancelado: >
+            <p><b>Your redemption request was <u>canceled</u>, See the reason below..</b></p>
+            <hr>
+            <p>%Note%</p>
+            <hr>
+            <p>To make the redemption make a new request taking into account the observation above.</p>
+            <p>In case of doubts contact our team.</p>
+            <br>
+            
+    resposta_faq:
+        assunto:            'Answer FAQ :: %company%'
+        titulo:             'Answer FAQ'
+        saudacao:           'Hello'
+        ja_temos_resposta:  'We already have the answer to the question you have sent us.'
+        esperamos_tenha_sido_esclarecida: >
+            <p><b>We hope your question has been clarified..</b></p>
+            <p>If you need, we inform you that we are at your disposal for the complement of more information. You can count on us!
+            The answer to your question can also be viewed in the FAQ section of our website..</p>
+            <br>
+            
+    recebimento_contato:
+        assunto:    'Talk to us :: %company%'
+        titulo:     '<b>Talk to us</b> - Reply to received form'
+        saudacao:   'Hello'
+        confirmacao: >
+            <p>We received your message sent through our website. We are verifying the information and soon we will give you the return.</p>
+            <p><b>Thanks for contacting us.</b></p>
+            <br>
+            
+    agradecimento_avaliacao:
+        assunto:    'Product Evaluation :: %company%'
+        titulo:     'Rate it too / Comments'
+        agradecimento: >
+            <br>
+            <p><b>Hello, <span class='rosa'>%nome%</span>,</b></p>
+            <p>The %Company% Thanks for the evaluation you made of the product: <a href='%link%'>%product%</a>.
+                Your opinion is very important so that we can bring to you quality products and your trust.</p>
+            <p><b>Thanks for contributing with us, your opinion makes all the difference.</b></p>
+            <br>
+            
+    numero_colaborador:
+        assunto:    'Site Registration. :: %company%'
+        titulo:     'Sponsor Code:'
+        conteudo: >
+            <br>
+            <p><b>Hello, <span class='rosa'>%name%</span>!</b></p>
+            <p>A %company% Thank you for registering on our website.</p>
+            <p>Your Contributor number is:<b> %number%.</b></p>
+            <p><b>Thank you very much for being part of our Network!</b></p>
+            <br>
+            
+    indicacao_produto:
+        assunto:    'Product Description:: %empresa%'
+        titulo:     'Product Indication'
+        clique_aqui:  "<a href='%link%'>Click Here</a>"
+        indicacao: >
+            <br>
+            <p><b>Hello <span class='rosa'>%name_friend%</span></b><br /></p>
+            <p>You know %company%?<br>
+            Your Friend(a) <span class='azul'>%seu_nome%</span>, Visited our online store and is giving you a product of the %company%.</p>
+            <p><b>See below the message he wrote:</b></p>
+        acesse_produto: "To know the product access the link, enjoy and know our virtual store: <a href='%link%'>Click here</a>"
+        
+    indicacao_site:
+        assunto:    'Site Indication :: %company%'
+        titulo:     'Site Indication Spigreen'
+        indicacao: >
+            <br>
+            <p><b>Hello<span class='rosa'>%name%</span></b><br /></p>
+            Your Friend(a) <span class='azul'>%name_client%</span>,Is inviting you to join our affiliate network.</p>
+            <p><b>You do not know the Rde Fácil Brasil ?</b></p>
+            <p>Spigreen is an internet sales site that is focused on the personal fulfillment of your customers! Where to buy is also a good deal! When the consumer makes a purchase, credits are generated that can be used in the next acquisitions. To increase your bonus just invite your friends and a portion of the credits generated by them will be credited to your account</p>
+            <p>See below the message of the. %name_client% for you.</p>
+        para_fazer_parte: >
+            <p>To become part of our network access the site through the link below and register.</p>
+            <p>Acess:<br/><a href='%link%'>%link%</a></p>
+            <p>At the time of your registration do not forget to inform the code or your friend's affiliation email to join your network of partners.<br>Type the code: <span class='azul'>%codigo%</span> or mail: <span class='azul'>%email%</span></p>
+            <br>
+            
+    indicacao_vip:
+        assunto:    'Become a VIP Customer :: %company%'
+        titulo:     'Become a VIP Customer right now!'
+        indicacao: >
+            <p>Your friend <span class='azul'>%nome_cliente%</span>, Is inviting you to become a vip customer of Spigreen.</p>
+            <p><b>You still do not know what the VIP client is?</b></p>
+            <p>%vip_descricao%</p>
+            <p>See below the message of %nome_cliente% for you.</p>
+        para_saber_mais: >
+            <p>To learn more about our VIP network, read the article we have prepared for you.</p>
+            <p>Access:<br/><a href='%vip_link%'>%vip_link%</a></p>
+            <br>
+            
+    cupom_desconto:
+        assunto:    'Discount coupon :: %empresa%'
+        titulo:     'Discount coupon'
+        introducao: >
+            <p><b>Hello <span class='rosa'>%cliente%</span>,</b></p>
+            <p>You just received a discount coupon to be used for purchases on our site, check below:</p>
+        login:          'Login'    
+        tipo_cupom:     'Coupon type'
+        numero_cupom:   'Coupon Number'
+        valor_desconto: 'Discount amount'
+        data_validade:  'Expiration date'
+        periodo:        '%inicio% up until %fim%'
+        nao_expira:     'Does not expire'
+        
+    nova_situacao_pedido:
+        assunto:    'Order status No. %pedido% :: %empresa%'
+        titulo:     'Order status: %pedido%'
+        saudacao:   'Hello'
+        nova_situacao: >
+            <p>Your Order No. %pedido% It has been updated
+            and is now like <b>%situacao%</b></p>
+            <p>%mensagem%</p>
+        rastreie_encomendas:    'Track your orders'    
+        para_saber_mais:        "<p>To learn more, go to <a href='%link%'>Central do Cliente</a>."
+        central_cliente:        "Customer Center"
+
+        
+    pedido_representante:
+        assunto:                'Purchase Hotsite :: %nome%'
+        saudacao:               'Hello'
+        novo_pedido_gerado:     'A new request was placed on your Hotsite.'
+        detalhes_pedido:        'Order Details'
+        nome_cliente:           'Customer Name'
+        telefone:               'Phone'
+        email:                  'E-mail'
+        cep:                    'Zip code'
+        endereco:               'Address'
+        numero:                 'Number'
+        complemento:            'Complement'
+        bairro:                 'Neighborhood'
+        cidade:                 'City'
+        estado:                 'State'
+        produto:                'Product'
+        quantidade:             'Amount'
+        
+    solicitacao_visita:
+        assunto:                'Hotsite Visit Request :: %nome%'
+        saudacao:               'Hello'
+        nova_solicitacao:       'A new request for a visit was registered in your Hotsite.'
+        detalhes_solicitacao:   'Request Details'
+        nome_cliente:           'Customer Name'
+        telefone:               'Phone'
+        email:                  'E-mail'
+        endereco:               'Address'
+        
+    contato_representante:
+        assunto:                'New Contact Hotsite:: %nome%'
+        saudacao:               'Hello'
+        nova_mensagem_enviada:  'A new message has been sent to you through your Hotsite.'
+        detalhes_mensagem:      'Message Details'
+        nome:                   'Name'
+        email:                  'E-mail'
+        mensagem:               'Message'
+        
+    recuperar_senha_resgate:
+        assunto:                'Password Recovery Redemption:: %empresa%'
+        titulo:                 'Password Recovery Redemption'
+        saudacao:               'Hello'
+        mensagem_recuperacao: >
+            <p>You have requested to change your redemption password and transfer points.</p><br />
+            <p>To validate your change, click the link below.</p><br /><br />
+            <a href='%link%'>%link%</a> <br /><br />
+            <p> If clicking the link above does not work, copy and paste the URL into a new browser window. <br /><br />
+                If you did not initiate the request, you do not have to take any action and <br />
+                You can safely disregard this email. <br />
+                <br />
+                Regards,<br />
+                The team %empresa%
+            </p>
+                
+detalhes:
+    produtos:
+        ref:                    'Ref.'
+        seja_primeiro_avaliar:  'Be the first to review!'
+        mais_detalhes:          'More details'
+        acompanhamento_pedido:  'Where is my order'
+        exclusivo_vip:          'Exclusive product for VIP customers'
+        compre_torne_se_vip:    'Buy and become a <u>Cliente VIP</u>.'
+        avista:                 'at sight'
+        no_cartao:              'On card'
+        compre_ganhe:           'Buy & Win'
+        x_pontos:               '%x% points'
+        indisponivel:           'Product Unavailable.'
+        nao_encontrado:         'The product you are trying to access was not found.'
+        informacoes:            'Information'
+        bonificacao:            'Bonus'
+        comentarios:            'Comments'
+        indique:                'Tell A Friend'
+        modo_de_consumo:        'Consumption mode'
+        valor:
+            de:     'of'
+            por:    'per'
+        venda_casada:
+            compre_dois_por_apenas:    'Buy the <br/> <span>2</span> Items'
+            por_apenas:                'For only:'
+        listagem_comentarios:
+            por:                        'per:' 
+            data:                       'Date:'
+            sua_avaliacao:              'Your Product Review:'
+            nenhum_comentario:          'There are yet no reviews for this product, be the first to rate!'
+    pedidos:
+        numero:             'Order No.'
+        forma_entrega:      'Delivery Method'
+        onde_esta:          'Where is my order?'
+        endereco_entrega:   'Delivery address'
+        endereco_entrega_pda:   'PDA address'
+        produto:            'Product'
+        valor_total:        'Total value'
+        quantidade:         'Amount:'
+        valor_unitario:     'Unitary value:'
+        comprado_de:        'Buying from %nome%'
+        desconto:           'Discount'
+        desconto_geral:     'General discount'
+        desconto_boleto:    'Discount ticket'
+        desconto_retirada:  'Discount payment directed to the PDA'
+        desconto_pontos:    'Payment points'
+        subtotal:           'Subtotal'
+        frete:              'Shipping'
+        total:              'Total'
+        forma_pagamento:    'Payment Method'
+        imprimir_segunda_via:       'Print second copy'
+        seus_pontos:                'Your Points'
+        pontos_para_voce:           'Points for network:'
+        alterar_forma_pagamento:    'Change method of payment'
+        status:
+            cancelado:      'Order canceled'
+            andamento:      'Order in progress'
+            finalizado:     'Order Completed'
+            
+    novidades:
+        publicado_em:       'Posted in %data%'
+    
+forms:
+    busca:
+        placeholder: 'Type here what you are looking for...'
+        
+    cadastro:
+        choices:
+            sexo:
+                masculino:  'Male'
+                feminino:   'Female'
+        label:
+            pais:       'Country:'
+            nome:       'Name:'
+            sobrenome:  'Last Name:'
+            sexo:       'Gender:'
+            cpf:        'CPF:'
+            rg:         'ID'
+            cnpj:       'CNPJ:'
+            ie_im:      'IE / IM'
+            data_nascimento:    'Date of birth:'
+            data_nasc:          'Birth date:'
+            documento_cadastro: 'Document Registration'
+            documento_registro: 'Registration Document'
+            razao_social:       'Company Name:'
+            nome_fantasia:      'Fantasy name:'
+            patrocinador:       'Sponsor Number or Email:'
+            email:              'E-mail:'
+            senha:              'password:'
+            confirmar_senha:    'Confirm password:'
+        erro:
+            patrocinador_nao_preenchido:    'You left the "Sponsor Number" field blank.'
+        link:
+            alterar_senha:      'Change Password - <a class="alterar-senha" href="%link%">Click here to change your password</a>'
+        title:
+            pais:       'Country'
+            dados_cadastrais:   'Registration data'
+            dados_responsavel:  'Data of the Responsible'
+            endereco:           'Address'
+            patrocinador:       'Sponsor'
+            criando_login:      'Creating Your Login'
+            patrocinador_nao_preenchido:    'Sponsor number not completed'
+        tooltip:
+            senha:              'Enter a password of at least 6 characters.'
+        texto:
+            check_termos: >
+                I have read and agree to the Terms <a href="%link1%" data-lity>Regulamento Spigreen</a> e <a href="%link2%" data-lity>Código de Ética</a>.
+            patrocinador: >
+                <p>The sponsor number is the number of your friend who invited you to join your network.<br/>You can also use the email from who invited you to Spigreen.</p><br/>
+                <p><span class="text-danger">* Attention! After completing the registration you will not be able to change your sponsor anymore.</span></p>
+                
+    alterar_senha:
+        label:
+            senha_atual:        'Current password:'
+            nova_senha:         'New password:'
+            confirmar_senha:    'Confirm new password:'
+    
+    depoimento:
+        label:
+            produto:    'Product:'
+            avaliacao:  'Evaluation:'
+            depoimento: 'Testimony:'
+        placeholder:
+            produto: "Product's name"
+            
+    endereco:
+        label:
+            identificacao:  'Address ID:'
+            cep:            'CEP:'
+            zip_code:       'Zipcode:'
+            endereco:       'Address:'
+            numero:         'Nº:'
+            bairro:         'Neighborhood:'
+            complemento:    'Complement:'
+            estado:         'State (UF):'
+            cidade:         'City:'
+            provincia:      'State / Province:'
+            telefone_x:     'Phone %x%:'
+        placeholder:
+            identificacao:  'Ex: Home, Work, Beach house, etc.'
+            
+    filtro_produtos:
+        ordenacao:
+            label:          "Order"
+            maior_preco:    "Biggest price"
+            menor_preco:    "Lowest price"
+            
+    frete:
+        nao_sabe_cep:       'Do not know your zip code? click here'
+        tipos:
+            nacional:       'Brasil'
+            internacional:  'International'
+            
+    indicacao_produto:
+        placeholder:
+            nome:           'Name:'
+            nome_amigo:     "Friend's name:"
+            mensagem:       'Ex.: Hello, I would like to tell you this product ...'
+            email_amigo:    'Email of your friend'
+        title:
+            nome:           'Your name'
+            nome_amigo:     "Your friend's name"
+            email_amigo:    'Email of your friend'
+            
+    alterar_endereco:
+        label:
+            nome:   'Name:'
+            email:  'E-mail:'
+            telefone:       'Phone:'
+            novo_endereco:  'New address:'
+        title:
+            nome:   'Name'
+            email:  'E-mail'
+            novo_endereco:  'Your new address'
+        texto: >
+            <p>As a Support Point, you can not change your address directly from the site.</p>
+            <p>Fill out the form below to make the change of address.</p>
+            
+    faq:
+        label:
+            nome:   'Name:'
+            email:  'E-mail:'
+            pergunta:   'Describe Your Doubt:'
+        title:
+            nome:   'Name'
+            email:  'E-mail'
+            
+    hotsite:
+        choices:
+            nao:    'No'
+            sim:    'Yes'
+        label:
+            liberado:   'Enable Hotsite:'
+            endereco:   'Address:'
+            nome:       'Name:'
+            email:      'E-mail:'
+            texto_inicial:          'Initial Text:'
+            telefone:               'Phone:'
+            login_pagseguro:        'Login Pagseguro:'
+            imagem:                 'Image:'
+            produtos_publicados:    'Products published on the hotsite:'
+        tooltip:
+            imagem:             'Suggested Size: 360px x 360px (.gif, .png ou .jpg)'
+        texto:
+            configurar_pagseguro: >
+                <b>How to configure Pagseguro.</b><br/><br/>
+                You can enter your login in the pagseguro to receive the payment of the purchases made.<br/>
+                The login is the email used in your registration in the pagseguro.<br/>
+                Your paging account must be of the type <b>Vendedor</b> or <b>Empresarial</b>, Otherwise you will not be able to make any charges.<br/><br/>
+                For more information access <a style="text-decoration: underline;" href="https://pagseguro.uol.com.br/v2/guia-de-integracao/como-comecar.html#!configure-sua-conta" target="_blank">the pagseguro site</a>.
+                
+    contato:
+        label:
+            nome:       'Name'
+            email:      'E-mail'
+            telefone:   'Phone'
+            mensagem:   'Message'
+            receber_newsletter: 'I wish to receive news from %empresa% in my email'
+        placeholder:
+            mensagem:   'Write your message here'
+        title:
+            nome:       'Your name'
+            email:      'Your email'
+            telefone:   'Your phone'
+            mensagem:   'Your message'
+            
+    login:
+        label:
+            esqueceu_senha: 'Forgot your password?'
+        links:
+            recuperar_senha:    'Use your email to retrieve it'
+        placeholder:
+            email:  'Your email: *'
+            senha:  'Your password: *'
+        title:
+            email:  'Your email'
+            senha:  'Your password'
+            recuperar_senha:    'Use your email to retrieve your password'
+            
+    pre_cadastro:
+        label:
+            nao_sabe_cep:   'Do not know your zip code?'
+        links:
+            consulte_cep:   'Consult your address and zip code'
+        placeholder:
+            email:  'Your email: *'
+            cep:    'Your zip code: *'
+        title:
+            email:          'Your email'
+            cep:            'Zip code'
+            nao_sabe_cep:   'Do not know your zip code?'
+            
+    recuperacao_senha:
+        info:       'Forgot your password? We will help you get it back! Please enter your email in the field below to send instructions to you. '
+        placeholder:
+            email:  'Your email: *'
+        title:
+            email:  'Your email'
+            
+    nova_senha:
+        info:                   'Use the form below to enter your new password and access the system.'
+        placeholder:
+            nova_senha:         'New password: *'
+            repetir_nova_senha: 'Repeat the new password: *'
+        title:
+            nova_senha:         'New password'
+            repetir_nova_senha: 'Repeat the new password'
+            
+    newsletter:
+        preencha_campos:    'Fill in the fields below and start receiving our newsletter.'
+        label:
+            nome:           'Your name'
+            email:          'Your email'
+            
+erro_404:
+    title:                  'Error 404'
+    pagina_nao_encontrada:  'Page not found'
+    texto:                  "We're sorry, but the page you are trying to access does not exist or is no longer available."
+    voltar_pagina_inicial:  'Click here to return to the home page.'
+            
+label:
+    selecione:              '-- Select --'
+    numero_patrocinador:    'Sponsor Number:'
+    patrocinador:           'Sponsor:'
+    telefone:               'Phone:'
+
+listagem:
+    depoimentos:
+        title: 'depoimentos'
+        title_detalhes: 'testimony Details'
+    produtos:
+        quantidade:                 '{0}No products|{1}1 Product|[2,Inf]%qtd% Products'
+        pagamento_boleto_cartao:    'Payment with bank transfer or card.'
+        x_pontos_rede:              '%x% A.P. for your network.'
+        promocao:                   'Promotion'
+        valor:
+            de:  'Of'   
+            por: 'per'
+    pedidos:
+        numero:         'Order No.:'
+        data:           'Date:'
+        valor:          'Value:'
+        data_pedido:    'Order Date'
+        data_pagamento: 'Date Payment'
+        pontos:         'Points'
+        pontos_rede:    'Network Points'
+        mais_detalhes:      'More details'
+        acompanhamento_pedido:  'Where is my order'
+        nenhum_pedido:      'No order found '
+        nenhum_pedido_mes:  'No order found in the current month.'
+    produtos_visitados:
+        referencia:     'Reference:'
+        valor:          'Value:'
+        nenhum_produto: 'No products recently visited.'
+    comentarios:
+        data:       'Date:'
+        avaliacao:  'Evaluation:'
+        x_estrelas: '{0}No star|{1}1 Star|[2,Inf]%qtd% Stars'
+        status:     'Status:'
+        comentario: 'Comment:'
+        nenhum_comentario:  'No comments made yet.'
+    enderecos:
+        sem_identificacao:  'Without identification'
+        pda_identificacao:  'PDA Address'
+
+links:
+    home:           'Home page'
+    veja_video:     'See the video!'
+    ver_mais:       'View more...'
+    veja_detalhes:  'See Details'
+    minha_conta:    'My account'
+    entrar:         'Log in'
+    sair:           'Log off'
+    atendimento:    'Attendance'
+    subir_topo:     'Back to top'
+    empresa:        'Company'
+    noticias:       'News'
+    depoimentos:    'Testimonials'
+    telefones:      'Phones'
+    organize_seus_pedidos:  'Organize your orders'
+    central_distribuidor:   'Distributor Center'
+    usar_nova_central:      'You want to use the new Distributor Center ?'
+    usar_nova_central_click_aqui:   'Click here to use the new Distributor Center '
+    entrar_ou_cadastrar:    'Login or Register'
+    clique_para_sair:       'Click here to leave'
+    visualize_carrinho:     'View your cart!'
+    sistema_pontuacao:      'Scoring System'
+    videoconferencia:       'Video conference'
+    contrato_codigo_etica:  'Contract and Code of Ethics'
+    termos_condicoes_uso:   'Terms and conditions of use'
+    politica_pagamento:     'Payment Policy'
+    politica_entrega:       'Delivery Policy'
+    dados_cadastrais:       'Registration data'
+    meus_pedidos:           'My requests'
+    meus_enderecos_entrega: 'My Delivery Addresses'
+    meus_enderecos:         'My Addresses'
+    produtos_visitados:     'Products Visited'
+    carrinho_compras:       'Shopping cart'
+    formulario_contato:     'Contact Form'
+    fale_conosco:           'Contact us'
+    atendimento_online:     'Online service'
+    perguntas_frequentes:   'Common questions'
+    politica_privacidade_seguranca:     'Privacy and security policy'
+    politica_trocas_devolucoes:         'Exchange and Returns Policy'
+    perguntas_mais_frequentes:          'Frequently Asked Questions'
+    sair_central:                       'Exit Central'
+    ver_pedidos_finalizados:            'View Finished Orders'
+    ver_pedidos_andamento:              'View Orders in Progress'
+    meus_comentarios:                   'My comments'
+    faq_duvidas_frequentes:             'FAQ - Frequently Asked Questions'
+    faq_duvidas:                        'FAQ Questions'
+    configurar_site:                    'Configure Site'
+    agenda_distribuidor:                'Distributor Schedule'
+    universidade:                       'University'
+    central_pontos:                     'Points Center'
+    adicionar_endereco_entrega:         'Add a new delivery address'
+    novo_endereco:                      'New address'
+    alterar_endereco:                   'Change address'
+    escolher_este_endereco_entrega:     'Choose this shipping address'
+    escolher_este_endereco:             'Choose this address'
+    visualizar_redes:                   'View networks'
+    visualizar_extratos:                'View Extract'
+    historico_conta:                    'Account history '
+    convidar_amigos:                    'Invite friends'
+    solicitar_resgate:                  'Request redemption'
+    relatorio_clientes:                 'Customer Report'
+    pontos_distribuicoes:               'Monthly distribution PA. global'
+    central_pda:                        'Access center from the footer'
+    saiba_mais_cliente_vip:             'Learn more about being a VIP customer'
+    esqueci_minha_senha:                'I forgot my password'
+    previa:                             'Preview'
+    clique_aqui_acessar:                'Click here to access'
+    clique_acesse_faq:                  'Click and access our FAQ'
+    continuar_lendo:                    'Continue Reading'
+    acesse_blog:                        'Access the <br/> Blog'
+    visualizar_lancamentos_futuros:     'View future transactions'
+    mensagens:                          'Messages'
+    area_download:                      'Downloads Area'
+    ativar_vip:                         'Activate VIP'
+    recados_oficiais:                   'Official Messages'
+    abrir:                              'Open'
+    treinamento_online:                 'Online Training'
+    videoconferencias:                  'Videoconferences'
+    promocoes_e_lancamentos:            'Promotions and Releases'
+    imprimir:                           'Print'
+    sistema_bonificacao:                'Bonus System'
+
+meses:
+    janeiro:    'January'
+    fevereiro:  'February'
+    março:      'March'
+    abril:      'April'
+    maio:       'May'
+    junho:      'June'
+    julho:      'July'
+    agosto:     'August'
+    setembro:   'September'
+    outubro:    'October'
+    novembro:   'November'
+    dezembro:   'December'
+    
+paginacao:
+    pagina_anterior:    "Previous page"
+    proxima_pagina:     "Next page"
+    pagina_x:           "Page %x%"    
+    
+pedidos:
+    situacoes:
+        andamento:  'In progress'
+        finalizados: 'Finalized'
+        
+comentarios:
+    notas:
+        5: 'Excellent'
+        4: 'Great'
+        3: 'Good'
+        2: 'Regular'
+        1: 'Bad'
+    status:
+        aprovado:   'Approved'
+        pendente:   'Pending'
+        reprovado:  'Disapproved'
+        
+cupom_desconto:
+    tipos:
+        cupom_de_desconto:          'Discount coupon'
+        bônus_de_aniversariante:    'Birthday bonus'
+        bônus_de_segunda_compra:    'Second purchase bonus'
+    
+rodape:
+    direitos_reservados:    '%ano% Spigreen ® All rights reserved.'
+
+leads:
+    nome_distribuidor:  'Name'
+    email_distribuidor:  'E-mail'
+    opcional:             'Optional'
+    cidade_distribuidor:  'City'
+    estado_distribuidor:  'State'
+    lead_ja_cadatrado: 'E-mail is already registered as a Lead, wait for your distributor to contact'
+    cep_obrigatorio: 'The CEP field is obligatory'
+    telefon_obrigatorio: 'The telephone field is obligatory'
+
+title:
+    leads:              'Want to participate ofo our business'
+    leads_subtitle:     'Be part of Spigreen'
+    leads_form:         'Send us your data'
+    deixe_depoimento:   'Leave your testimony'
+    categorias:         'Categories'
+    videoconferencia:   'Video conference'
+    online:             'Online'
+    contato:            'Contact'
+    perguntas_frequentes:   'Common questions'
+    tire_duvidas_aqui:      'Ask your questions here'
+    ate_x_vezes:            'Up to %x%x'
+    sem_juros:              'Interest-free'
+    desconto_boleto:        'Discount on ticket'
+    ate_x_avista:           'Until %x%% at sight'
+    institucional:          'Institutional'
+    produtos:               'Products'
+    politicas:              'Policies'
+    central_cliente:        'Customer Center'
+    calcular_frete:         'Calculate Shipping'
+    produtos_relacionados:  'Products you might like'
+    venda_casada:           'Enjoy and buy together'
+    alterar_senha:          'Change Password'
+    central_distribuidor:   'Distributor Center'
+    meus_pedidos_situacao:  'My orders (%situacao%)'
+    produtos_visitados:     'Products Visited'
+    meus_comentarios:       'My comments'
+    meus_enderecos:         'My Addresses'
+    selecione_endereco_entrega: 'Select delivery address'
+    endereco_selecionado:       'Selected Address'
+    alterar_endereco:           'Change Address'
+    meu_cadastro:               'My Account'
+    faq_duvidas:                'FAQ - Questions'
+    cadastre_sua_duvida:        'Register your Doubt'
+    configurar_site:            'Configure Site'
+    urf:                        'URF - University Spigreen'
+    seja_cliente_vip:           'Be a VIP customer'
+    central_pontos:             'Points Center'
+    central_pontos_redes:       'Points Center - Networks'
+    central_pontos_extrato:     'Points Center - Extract'
+    central_pontos_lancamentos: 'Points Center - Future Transactions'
+    central_pontos_historico:   'Points Center - History'
+    central_pontos_convidar_amigos:     'Central Points - Invite Friends'
+    solicitar_resgate_transferencia:    'Request redemption or transfer'
+    relatorio_clientes:                 'Customer Report'
+    consultar_distribuicoes:            'See Distributions'
+    central_pda:                        'Support Point Center'
+    pedidos:                            'Orders'
+    atendimento_online:                 'Online service'
+    acesse_atendimento_online:          'Access our Online Service!'
+    central_atendimento:                'Customer Service'
+    tire_duvidas_faq:                   'Ask your questions in the FAQ'
+    endereco:                           'Address'
+    fale_conosco:                       'Contact us'
+    novidades:                          'News'
+    login:                              'Login'
+    identificacao:                      'Identification'
+    faca_seu_cadastro:                  'Make your registration'
+    recuperacao_senha:                  'Password recovery'
+    informe_nova_senha:                 'Enter the new password'
+    recuperar_senha:                    'Recover Password'
+    informar_nova_senha:                'Enter new password'
+    promocoes:                          'Special Offers'
+    newsletter:                         'Newsletter'
+    meu_carrinho_compras:               'My Shopping Cart'
+    carrinho_vazio:                     'Oops! Your cart is empty.'
+    calculo_frete:                      'Shipping Calculation'
+    pague_com_pontos:                   'Pay with your points'
+    cupom_desconto:                     'Discount coupon'
+    pagamento:                          'Payment'
+    finalize_seu_pedido:                'Finish your order'
+    leads_produto:
+        title_page:                     'I want to buy products'
+        title_form:                     'Register your data'
+        title_desc:                     'Get your products now'
+
+    central_mensagens:                  'Messages'
+
+topo:
+    saudacao:           'Hello, %cliente%!'
+    saudacao_visitante: 'Hey there!'
+    selecione_idioma: "Select the language"
+    
+universidade:
+    termos_uso: 'I have read and agree with the <a href="%link%" target="_blank">Terms and conditions of use - URF</a>.'
+    
+agenda:
+    menu: 'Menu'
+    inicio: 'Start'
+    cliente: 'Customer'
+    listas: 'Lists'
+    clientes: 'Customers'
+    novo_cliente: 'New Customer'
+    novo_agendamento: 'New Scheduling '
+    distribuidores: 'Distributors'
+    agendamentos: ' Scheduling '
+    graficos: 'Graphics'
+    suporteVIP: 'VIP Support'
+    agendamentos_dia: 'Daily Schedules'
+    agendamentos_periodo: ' schedules of the period de %dataIni% until %dataFin%'
+    negociacoes_abertas: 'Open Negotiations '
+    negociacoes_fechadas: ' Closed Negotiations '
+    valor_jogo: 'Value in Play '
+    valor_fechado: 'Closed Value '
+    agendamentos_aberto: 'open scheduling'
+    enviar_SMS: 'Send SMS'
+    total_geral: ' Grand total'
+    enviar_email: 'Send e-mail'
+    resumo_mensal: ' monthly summary'
+    pa_mensal: ' monthly PA '
+    pa_rede_mensal: ' monthly network PA'
+    pv_liberados: ' released PV'
+    pv_bloqueados: ' bloated PV'
+    participantes: ' participants in your network '
+    evolucao_vendas: ' sales evolution'
+    meta: 'goal '
+    venda: 'Sale'
+    tipo: 'Type'
+    tipos_disponiveis: ' types available '
+    agendamentos_abertos: ' open scheduling '
+    agendamentos_concluidos: ' completed schedules'
+    criar_agendamento: ' schedules '
+    sem_agendamentos: ' no scheduling found'
+    valor_total: ' total value of the period'
+    valores_perdidos: 'values lost'
+    valores_ganhos: ' values won '
+    grafico: ' values won x values lost'
+    clientes_sem_agendamentos: ' clients without scheduling '
+    configuracoes: 'settings'
+    informacoes: ' information about the level '
+    nenhuma_meta: 'no sales goal found'
+    cadastro_meta: ' Monthly goal record '
+    salvar: 'Save'
+    padrao: ' pattern'
+    cancelar: 'Cancel'
+    filtrar: ' filter'
+    periodo: ' period '
+    periodo_exibicao: ' Display Period '
+    de: 'From'
+    ate: 'Until'
+    data: 'Date'
+    interesse: ' interest '
+    telefone: 'Telephone'
+    meu_plano: 'My Plan'
+    contatos: ' contacts '
+    contrate_SMS: 'Hire more SMS'
+    contrate_contato: 'Hire more CONTACTS'
+    copyright: 'All rights reserved'
+    todas: 'All'
+    status: 'Status'
+    finalizadas: 'finalized'
+    atrasadas: 'Late'
+    hoje: 'Today'
+    esta_semana: 'This Week'
+    proxima_semana: 'Next Week'
+    idioma: 'Language'
+    idiomas: 'Languages'
+    parabens_certificado: 'CONGRATULATIONS!!!<BR> You are certified and able to receive Clients / Leads '
+    faca_certificacao: ' Make your certification and receive customers! Click and learn how'
+    acompanhe_nivel: ' follow your level'
+    seu_perfil: ' your profile '
+    cadastros: ' registration '
+    motivos_perdas: ' reasons for loss '
+    modelo_sms: 'SMS Templates'
+    modelo_agendamento: ' scheduling template'
+    modelo_email: 'E-mail Template'
+    atualize_plano: ' update your plan'
+    creditos_sms: 'SMS Credits'
+    creditos_contatos: ' contact credits'
+    sair: 'Get Out'
+    modelo: 'Model'
+    escolha_modelo_mensagem: ' choose the message template'
+    mes: 'Month'
+    descricao: ' Description'
+    descricao_nao_encontrada: ' description not found'
+    escolha_filtro: ' choose the filter'
+    selecione_tipo_agendamento: ' choose the type of activity'
+    com_venda: ' with sales '
+    nenhum_agendamento: ' no scheduling found'
+    nenhum_cliente: ' no customer found'
+    informe_filtrar_clientes: ' Please enter your data below to filter customers '
+    exportar_m4w: 'Export Mail for Web'
+    email: 'E-mail'
+    nome: 'Name'
+    ultima_compra: ' Last purchase'
+    data_cadastro: ' register '
+    data_inicial_cadastro: 'Initial Date Registration'
+    data_final_cadastro: 'Final Date Registration'
+    excluir: 'Delete'
+    visualizar_cliente: 'View Customer'
+    editar_cliente: 'Edit Customer'
+    pesquisar: 'search'
+    cadastro_cliente: 'customer registration'
+    seja_vip: 'Limit of free clients reached'
+    agenda_bloqueada: 'Locked agenda'
+    informe_cliente: 'inform the customer'
+    concluido: 'completed'
+    escolha_tipo: 'choose a type'
+    informe_nova_data: 'Enter the new date'
+    limite_caracteres: 'Character limit'
+    mensagens_automaticas: 'Automatic messages (SMS and / or E-mail)'
+    mensagens_automaticas_descricao: 'The messages below will be automatically sent on the day of the event to the customer'
+    agendamento_concluido: 'Scheduling completed'
+    agendamento_concluido_descricao: 'This schedule will be completed, please inform if there was gain or loss.'
+    agendamento_ganho: 'Scheduling won'
+    qual_valor_fechado: 'What value did you earn?'
+    quais_produtos: 'which products?'
+    abrir_agendamento_acompanhamento: 'Open Tracking Schedule? '
+    agendamento_perdido: 'Lost Schedule'
+    prorrogar_agendamento: 'Extending the Scheduling'
+    ligar: 'Call'
+    reuniao: 'Meeting'
+    sms: 'SMS'
+    entrega: 'Delivery'
+    periodo_inicial_compra: 'Initial purchase period'
+    periodo_final_compra: 'Purchase end period'
+    confirmacao_envio_email: 'Confirmation of sending e-mail'
+    confirmacao_envio_sms: 'Confirmation of sending SMS'
+    nome_razao_social: 'Name / Company Name'
+    indiferente: 'Indifferent'
+    compras: 'shopping'
+    sim_comprou: 'Bought'
+    nao_comprou: 'Did not buy'
+    com_agendamento: 'With Scheduling'
+    sem_agendamento: 'No Scheduling'
+    sem_agendamentos: 'No scheduling'
+    confirmacao_exclusao: 'Confirmation of exclusion'
+    confirmacao_exclusao_item: 'Do you really want to delete this item?'
+    confirmacao_exclusao_cliente: 'Do you really want to delete this client?'
+    confirmacao_exclusao_cliente_atencao: '<strong style="color: #cc2424;">WARNING:</strong> All sales schedules and sales histories are also deleted and can not be recovered! '
+    tipo_pessoa: 'Kind of person'
+    celular: 'Cellphone'
+    whatsapp: 'WhatsApp'
+    cep: 'Zip Code'
+    endereco: 'Adress'
+    numero: 'Number'
+    bairro: 'Neighborhood'
+    complemento: ' Complement '
+    estado: 'State'
+    cidade: 'City'
+    dados_complementares: 'Additional data'
+    telefone_fixo: 'landline'
+    cpf: 'Social Security'
+    cnpj: 'ENI'
+    rg: 'ID'
+    ie: 'IE'
+    fisica: 'Person'
+    juridica: 'Employer'
+    nome_completo: 'Full name'
+    data_nascimento: 'Date of birth'
+    sexo: 'genre'
+    masculino: 'Male'
+    feminino: 'Female'
+    total_venda: 'Total sale'
+    data_ultima_compra: 'Last Purchase Date'
+    tomar_nota: 'Take a Note'
+    enviar: 'Send'
+    historico_observacoes: 'History of observation'
+    historico_agendamentos: 'Scheduling History'
+    observacao: 'Observation'
+    produtos: 'Products'
+    valor_ganho: 'Value won '
+    valor_perdido: 'Lost Value'
+    editar: 'Edit'
+    detalhes: 'Details'
+    sem_assunto: 'No Subject'
+    em_andamento: 'In progress'
+    informe_filtros_distribuidor: 'Enter the data below to filter your distributors.'
+    geracao: 'Generation'
+    nivel: 'Level'
+    total_compra: 'purchase total'
+    vip: 'VIP'
+    sim: 'Yes'
+    nao: 'No'
+    nenhum_distribuidor: 'No distributor found.'
+    indiferente_vips: 'Indifferent to VIP'
+    nao_vips: 'No VIP'
+    somente_vips: 'Only VIP'
+    apenas_vips: 'Just VIP'
+    indiferente_compras: 'Indifferent to Shopping'
+    sem_compras: 'Without purchases'
+    com_compras: 'With purchases'
+    comprou: 'Bought'
+    indiferente_geracao: 'Indifferent to Generation'
+    indiferente_nivel: 'Indifferent to level'
+    qualquer_produto: 'Any Product'
+    apenas_quem_comprou: 'Just who bought'
+    ganho: 'Win'
+    perdido: 'Lost'
+    prorrogar: 'Extended'
+    meu_email: 'My E-mail'
+    meu_nivel: 'My Level'
+    certificacao: 'Certification'
+    dt_fundacao: 'Foundation date'
+    dt_nascimento: 'Birth date'
+    quantidade_dias_alerta: 'Amount days alert for late follow ups'
+    telefone_notificacao: 'Phone for SMS notifications'
+    chave_m4w: 'API key of Mailforweb'
+    meta_vendas: 'Sales target'
+    metas_mensais: 'Monthly goal'
+    sem_nivel: 'Without Level'
+    nome_agendamento: 'Scheduling Name'
+    categoria: 'Category'
+    ativo: 'Active'
+    motivo: 'Reason'
+    nenhum_motivo_perda: 'No cause of loss found.'
+    nenhum_modelo_email: 'No email template found.'
+    nenhum_modelo_sms: 'No SMS template found.'
+    nenhum_modelo_agendamento: 'No scheduling template found.'
+    descricao_mensagem: 'Description Message'
+    abertura: 'Opening'
+    fechamento: 'Closure'
+    cadastro_modelo_sms: 'SMS template registration'
+    cadastro_modelo_email: 'E-mail template registration'
+    cadastro_modelo_agendamento: 'Scheduling Template Master'
+    cadastro_motivo_perda: 'Register reason for the loss'
+    motivo_perda: 'Reason for the loss'
+    prazo_contato: 'Deadline for contact'
+    nome_cliente: 'Client name'
+    contatos_indicados: 'Networked contacts'
+    contatos_indicados_info: 'The contacts indicated directly by Spigreen must be executed within the period indicated in red in the list below. If you do not have any activity linked to this contact, you will be referred to another distributor and you<strong>will be 60 days without receiving new contacts</strong>.'
+    produtos_vendidos: 'Products Sold'
+    definir_meta_mensal: 'Define Monthly Goal'
+    definir_meta_anual: 'Define Annual Goal'
+    ver_contatos: 'View contacts'
+    fechar: 'Close'
+    listas_de_envio: 'Mailing list'
+    nome_remitente: 'Remitting name'
+    email_do_remitente: 'Remitting e-mail'
+    email_de_resposta: 'E-mail reply'
+    segmentos: 'Segments'
+    agendar_envio: 'Schedule sending'
+    salvar_como_rasgunho: 'Save as draft'
+    hora: 'Time'
+    recorrencia: 'Recurrence'
+    enviar_sms: 'Send sms'
+    caracteres_restantes: 'Characters remaining'
+    textarea_placeholder: 'A link will be added at the end of the sms, so it will only have 110 characters to write.'
+    selecionar_lista: 'You must select at least one contact list'
+    email_remetente: 'Remitting name'
+    nome_remetente: 'Remitting e-mail'
+    ver_contatos: 'View contacts'
+    contatos: 'Contacts'
+    criar_lista: 'Create list'
+    ajuda: 'Help center'
+
+
+flashmsg:
+    adicionar_pda_categoria_diferente:        'You can only add products of the same category to the cart.'
+    adicionar_pda_cliente_nao_pda:            'Only support points can purchase this item.'
+    resumo_pda_retirar_carrinho:              'Items Excluded from the cart because they are of different or exclusive categories PDA.'
+    limite_de_compras_atintigo:               'You have already reached the purchase limit for the product <b>%produto%</b>, it has been deleted from your cart.'
+    limite_de_compras_quantidade:             'You can not purchase the requested quantity of the product <b>%produto%</b>, your cart was adjusted with the quantity you can buy from this product.'
+    pais_nao_liberado_venda:                  'Addresses outside authorized countries can not make purchases, contact us by chat / email.'
+
+video_vip:
+    hora:             'hour'
+    horas:            'hours'
+    minuto:           'minute'
+    minutos:          'minutes'
+    video:            'video'
+    videos:           'videos'
+    tela_completa:    'Fullscreen'
+    ver_logo:         'See then'
+    tempo_restante:   'Time'
+    reproduzir:       'Play'
+
+lancamentos_promocao:
+    credito:          'Credit'
+    debit:            'Debit'
+    total_credito:    'Tolal Credit: '
+    total_debito:     'Tolal Debit: '
+    nao_lancamentos:  'There are no entries for this period'
+
+rescate:
+    btn_imposto_ir:   'Tax IR'
+    btn_nota_fiscal:  'Include Nota Fiscal'
+
+metodologia_12_mais:
+    titulo:   'Methodology 12+more'
+    apn_plano_de_negocios: 'apn - business plan'
+    fundamentação_da_metodologia_12_mais: 'methodology foundation 12+more'
+    a_metodologia_12_mais: 'the methodology 12+more'
+    e_book_manual_do_distribuidor_12_mais: 'e-book dealer manual 12+more'
+    arquivo_de_plano_de_acao: 'action plan file'
+    planilha_de_controle_do_plano_de_acao: 'action plan worksheet  '
+    baixar_ppsx: 'Download PPSX'
+    baixar_pps: 'Download PPS'
+    baixar_pdf: 'Download PDF'
+    baixar_doc: 'Download DOC'
+    baixar_docx: 'Download DOCX'
+    baixar_xls: 'Download XLS'
+    baixar_xlsx: 'Download XLSX'
+
+download:
+    titulo:           'Download Area'
+    categoria:
+        tipo_produto:   'Product'
+        tipo_negocio:   'Business'
+        tipo_treinamento: 'Training system'
+
+    label:
+        nome:         'Name'
+        categoria:    'Category'
+        data:         'Date'
+        descricao:    'Description'
+        arquivo:      'File'
+        nao_arquivos: 'There are no files in the download area'
+        sem_resultados: 'No results match your search'
+        procurar_por: 'Search for...'
+        nao_tem_nada:             'Empty folder'
+        voltar:             'Go Back'
+niveis:
+    atual:            'Current'
+    maior:            'Higher'
+    nivel_atual:      'Current level'
+    maior_nivel:      'Higher level reached'
+    proximos_niveis:  'Next levels'
+
+alertas:
+    termos_uso:               'Terms and conditions of use'
+    politica_privacidade:     'Privacy and Security Policy'
+    politica_pagamentos:      'Payment Policy'
+    politica_entrega:         'Delivery Policy'
+    politica_troca:           'Change and Refund Policy'
+    comunicados_oficiais:     'Messages and Official Notices'
+    aniversariantes:          'Birthday'
+    aceitar:                  'I have read and I accept the terms and conditions'
+    adjuntos:                 'Attachments'
+    naotem:                   'You have no message'
+    visualizar:               'View'
+
+    label:
+          titulo:             'Title'
+          tipo_mensagem:      'Type'
+          data_lido:          'Reading Date'
+          data_aceptado:      'Acceptance Date'

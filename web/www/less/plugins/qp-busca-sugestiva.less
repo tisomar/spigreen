@@ -1,0 +1,55 @@
+// Busca sugestiva
+#ui-id-1 {
+    list-style: none;
+    width: 100% !important;
+    left: 0 !important;
+    margin: 0;
+    background: #fff;
+
+    .img {
+        float: left;
+        width: 20%;
+        padding: 10px;
+    }
+
+    .info {
+        float: right;
+        width: 80%;
+        padding: 10px;
+    }
+
+    .name {
+        font-size: 13px;
+        font-weight: 400;
+        font-family: @headings-font-family;
+        color: @text-color;
+    }
+
+    .price {
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    .ui-menu-item {
+        border: 1px solid @border-color;
+        font-size: 0;
+
+        &:first-child {
+            border-top: 2px solid @brand-theme;
+        }
+
+        a {
+            transition: @transition-default;
+            display: inline-block;
+            width: 100%;
+
+            &:hover {
+                background: @striped-bg-color;
+            }
+        }
+
+        &+ .ui-menu-item {
+            border-top-width: 0;
+        }
+    }
+}

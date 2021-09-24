@@ -1,0 +1,3 @@
+home_testes:
+    path:     /foo
+    defaults: { _controller: "QualityPress\\Demo\\DemoController::indexAction" }

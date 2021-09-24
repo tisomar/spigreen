@@ -1,0 +1,2912 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="qcommerce" defaultIdMethod="native" baseClass="qpress.class.QPressBase" tablePrefix="qp1_"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://svn.propelorm.org/branches/1.6/generator/resources/xsd/database.xsd">
+    <table name="ajuda_pagina_video" phpName="AjudaPaginaVideo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="SISTEMA" phpName="Sistema" type="VARCHAR" size="255" required="true"/>
+        <column name="PAGINA" phpName="Pagina" type="VARCHAR" size="255" required="true"/>
+        <column name="VIDEO" phpName="Video" type="VARCHAR" size="255" required="false"/>
+        <column name="URL_SLUG" phpName="UrlSlug" type="VARCHAR" size="255" required="false"/>
+    </table>
+    <table name="arquivo" phpName="Arquivo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="LEGENDA" phpName="Legenda" type="VARCHAR" size="200" required="true"/>
+    </table>
+    <table name="associacao_produto" phpName="AssociacaoProduto">
+        <column name="ID" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_ORIGEM_ID" type="INTEGER" required="true"/>
+        <column name="TYPE" type="VARCHAR" size="100" required="true"/>
+        <column name="NOME" type="VARCHAR" size="255" required="true" primaryString="true"/>
+        <column name="ORDEM" type="INTEGER" size="11" required="true" default="1"/>
+        <column name="DISPONIVEL" type="BOOLEAN" required="true" default="false"/>
+        <validator column="NOME">
+            <rule name="required" message="Você deve informar um nome para esta associação."/>
+        </validator>
+        <foreign-key foreignTable="produto" onDelete="CASCADE">
+            <reference local="PRODUTO_ORIGEM_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="alteracao_rede" phpName="AlteracaoRede" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_MOVIDO" phpName="ClienteMovido" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="CLIENTE_DESTINO" phpName="ClienteDestino" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="USUARIO_ID" phpName="UsuarioId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="UPDATER" phpName="Updater" type="VARCHAR" size="255" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="true"/>
+        <foreign-key foreignTable="cliente" name="cliente_movido_FK_1" onDelete="CASCADE">
+            <reference local="CLIENTE_MOVIDO" foreign="ID"/>
+        </foreign-key>
+        <index name="cliente_movido_FK_1_FI_1">
+            <index-column name="CLIENTE_MOVIDO"/>
+        </index>
+        <foreign-key foreignTable="cliente" name="cliente_destino_FK_1" onDelete="CASCADE">
+            <reference local="CLIENTE_DESTINO" foreign="ID"/>
+        </foreign-key>
+        <index name="cliente_destino_FI_1">
+            <index-column name="CLIENTE_DESTINO"/>
+        </index>
+        <foreign-key foreignTable="usuario" name="usuario_FK_1" onDelete="CASCADE">
+            <reference local="USUARIO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="usuario_FI_1">
+            <index-column name="USUARIO_ID"/>
+        </index>
+    </table>
+    <table name="associacao_produto_produto" phpName="AssociacaoProdutoProduto" baseClass="propel.om.BaseObject"
+           namespace="QualityPress\QCommerce\Component\Association\Propel">
+        <column name="ASSOCIACAO_ID" type="INTEGER" required="true" primaryKey="true"/>
+        <column name="PRODUTO_ID" type="INTEGER" required="true" primaryKey="true"/>
+        <foreign-key foreignTable="associacao_produto" onDelete="CASCADE">
+            <reference local="ASSOCIACAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto" onDelete="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="banner" phpName="Banner" idMethod="native" description="Banners do sistema">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="TITULO" phpName="Titulo" type="VARCHAR" size="255" required="true"
+                description="Titulo do Banner"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" size="3" required="false" default="1"
+                description="Ordem do banner"/>
+        <column name="MOSTRAR" phpName="Mostrar" type="BOOLEAN" required="false" default="false"
+                description="Mostrar?"/>
+        <column name="LINK" phpName="Link" type="VARCHAR" size="255" required="false" description="Link do banner"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="50" required="true" description="Imagem do banner"/>
+        <column name="TIPO" phpName="Tipo" type="VARCHAR" size="50" required="true" default="DESTAQUE"
+                description="Tipo do banner"/>
+        <column name="TARGET" phpName="Target" sqlType="ENUM('_blank','_self','iframe')" required="true" default="_self"
+                description="Target do link ao clicar no banner"/>
+        <column name="COUNT_CLICK" sqlType="BIGINT(20) UNSIGNED" default="0"/>
+        <column name="IMAGEM_XS" type="VARCHAR" size="50" required="true" description="Imagem do banner"/>
+        <column name="IMAGEM_SM" type="VARCHAR" size="50" required="true" description="Imagem do banner"/>
+        <column name="IMAGEM_MD" type="VARCHAR" size="50" required="true" description="Imagem do banner"/>
+        <column name="IMAGEM_LG" type="VARCHAR" size="50" required="true" description="Imagem do banner"/>
+        <validator column="TITULO">
+            <rule name="required" message="O titulo é obrigatório"/>
+        </validator>
+        <validator column="ORDEM">
+            <rule name="type" value="integer" message="O campo ordem deve ser um número inteiro"/>
+        </validator>
+        <validator column="LINK">
+            <rule name="match"
+                  value="/^(http[s]?):\/\/(([A-Za-z]{3,9}):\/\/)?([-;:&amp;=+$,\w]+@{1})?(([-A-Za-z0-9]+\.)+[A-Za-z]{2,6})(:\d+)?((\/[-\+~%\/\.\w]+)?\/?([&amp;?][-\+=&amp;;%!@\.\w\/]+)?(#[-\+=&amp;;%!@\.\?\w\/]+)?)?$/"
+                  message="O link informado deve um link válido. Ex.: http://www.qualitypress.com.br"/>
+        </validator>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="banco_cadastro_cliente" phpName="BancoCadastroCliente" idMethod="native" description="Bancos cadastrados pelo cliente">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="BANCO" phpName="Banco" type="VARCHAR" size="255" required="true"
+                description="Nome do banco"/>
+        <column name="AGENCIA" phpName="Agencia" type="VARCHAR" size="255" required="true"
+                description="Agência do banco"/>
+        <column name="CONTA" phpName="Conta" type="VARCHAR" size="255" required="true"
+                description="Conta do banco"/>
+        <column name="TIPO_CONTA" phpName="TipoConta" type="VARCHAR" size="20" required="true"
+                description="Tipo da conta"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="INTEGER" required="true"/>
+        <column name="PIS_PASEP" phpName="PisPasep" type="VARCHAR" size="255" required="false" description="Pis do cliente"/>
+        <column name="NOME_CORRENTISTA" phpName="NomeCorrentista" type="VARCHAR" size="255" required="true" description="Nome do correntista"/>
+        <column name="CPF_CORRENTISTA" phpName="Cpf" type="VARCHAR" size="255" required="true" description="Cpf do correntista"/>
+        <column name="CNPJ_CORRENTISTA" phpName="Cnpj" type="VARCHAR" size="255" required="true" description="Cnpj do correntista"/>
+        <foreign-key foreignTable="cliente" name="banco_cadastro_cliente_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="banco_cadastro_cliente_FK_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <validator column="BANCO">
+            <rule name="required" message="O nome é obrigatório"/>
+        </validator>
+        <validator column="AGENCIA">
+            <rule name="type" message="O campo agencia deve ser informado"/>
+        </validator>
+        <validator column="CONTA">
+            <rule name="type" message="O campo conta deve ser informado"/>
+        </validator>
+        <validator column="TIPO_CONTA">
+            <rule name="type" message="O campo tipo_conta deve ser informado"/>
+        </validator>
+        <validator column="NOME_CORRENTISTA">
+            <rule name="type" message="O campo nome correntista deve ser informado"/>
+        </validator>
+        <validator column="CPF_CORRENTISTA">
+            <rule name="type" message="O campo cpf correntista deve ser informado"/>
+        </validator>
+    </table>
+    <table name="boleto_cielo_dados" phpName="BoletoCieloDados" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="INTEGER"/>
+        <column name="NUMBER" phpName="NossoNumero" type="VARCHAR" required="true"/>
+        <column name="DIGITABLE_LINE" phpName="DigitableLine" type="VARCHAR" size="255" required="true"/>
+        <column name="EXPIRATION_DATE" phpName="ExpirationDate" type="TIMESTAMP" required="true"/>
+        <column name="DIAS_VENCIMENTO" phpName="QuantidadeDiasVencimento" type="VARCHAR" required="true"/>
+        <column name="URL" phpName="Url" type="VARCHAR" size="255" required="true"/>
+        <column name="BAR_CODE_NUMBER" phpName="BarCodeNumber" type="VARCHAR" size="255" required="true"/>
+        <column name="IDENTIFICATION" phpName="Identification" type="VARCHAR" size="255" required="true"/>
+        <column name="ASSIGNOR" phpName="Assignor" type="VARCHAR" size="255" required="true"/>
+        <column name="ADDRESS" phpName="Address" type="VARCHAR" size="255" required="true"/>
+        <column name="PROVIDER" phpName="Provider" type="VARCHAR" required="true"/>
+        <column name="STATUS" phpName="Status" type="VARCHAR" size="255" required="false"/>
+        <column name="INSTRUCTIONS" phpName="Instructions" type="VARCHAR" size="255" required="true"/>
+        <column name="CIELO_PAYMENT_ID" phpName="CieloPaymentId" type="VARCHAR" size="255" required="false"/>
+        <column name="TIPO" phpName="Tipo" type="VARCHAR" size="255" required="true"/>
+        <foreign-key foreignTable="pedido" name="TCartaoBoletoDados_TPEDI_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TCartaoBoletoDados_TPEDI_FI_01">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+    </table>
+    <table name="bonus_desempenho_cliente" phpName="BonusDesempenhoCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="DATA_REFERENTE" phpName="DataReferente" type="TIMESTAMP" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="FAIXA_INICIAL" phpName="FaixaInicial" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="FAIXA_FINAL" phpName="FaixaFinal" type="DOUBLE" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="cliente" name="bonus_desempenho_cliente_FK_1" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="bonus_desempenho_cliente_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="buscape_shopping_item" phpName="BuscapeShoppingItem" idMethod="native">
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" primaryKey="true" required="true"/>
+        <foreign-key foreignTable="produto" name="buscape_shopping_item_FK_1" onDelete="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="cartao_cielo_dados" phpName="CartaoCieloDados" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="INTEGER"/>
+        <column name="NUMERO" phpName="Numero" type="VARCHAR" size="255" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="VALIDADE_MES" phpName="ValidadeMes" type="VARCHAR" size="255" required="true"/>
+        <column name="VALIDADE_ANO" phpName="ValidadeAno" type="VARCHAR" size="255" required="true"/>
+        <column name="CODIGO" phpName="Codigo" type="VARCHAR" size="255" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="VARCHAR" size="255" required="true"/>
+        <column name="CPF" phpName="Cpf" type="VARCHAR" size="255" required="true"/>
+        <column name="BANDEIRA" phpName="Bandeira" type="VARCHAR" size="255" required="true"/>
+        <column name="JSON_ANALISIS_RISCO" phpName="JsonAnalisisRisco" type="LONGVARCHAR" required="false"/>
+        <column name="STATUS" phpName="Status" type="VARCHAR" size="255" required="false"/>
+        <column name="CIELO_PAYMENT_ID" phpName="CieloPaymentId" type="VARCHAR" size="255" required="false"/>
+        <foreign-key foreignTable="pedido" name="TCartaoCieloDados_TPEDI_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TCartaoCieloDados_TPEDI_FI_01">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+        <validator column="NUMERO">
+            <rule name="required" message="O Numero do Cartão e obrigatorio"/>
+        </validator>
+        <validator column="NOME">
+            <rule name="required" message="O Nome e obrigatorio"/>
+        </validator>
+        <validator column="VALIDADE_MES">
+            <rule name="required" message="O Mes de validade do Cartão e obrigatorio"/>
+        </validator>
+        <validator column="VALIDADE_ANO">
+            <rule name="required" message="O Ano de validade do Cartão e obrigatorio"/>
+        </validator>
+        <validator column="CODIGO">
+            <rule name="required" message="O Código do Cartão e obrigatorio"/>
+        </validator>
+        <validator column="TIPO">
+            <rule name="required" message="O Tipo do Cartão e obrigatorio"/>
+        </validator>
+        <validator column="CPF">
+            <rule name="required" message="O CPF e obrigatorio"/>
+        </validator>
+    </table>
+    <table name="categoria" phpName="Categoria">
+        <column name="ID" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" type="VARCHAR" size="250" required="true" primaryString="true"/>
+        <column name="KEY" type="VARCHAR" size="250" required="true"/>
+        <column name="URL_CATEGORIA" type="VARCHAR" size="250" required="true"/>
+        <column name="ORDEM" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="MOSTRAR_BARRA_MENU" type="BOOLEAN" required="false" default="false"/>
+        <column name="MOSTRAR_PAGINA_INICIAL" type="BOOLEAN" required="false" default="false"/>
+        <column name="DISPONIVEL" type="BOOLEAN" required="false" default="true"/>
+        <column name="COMBO" type="BOOLEAN" required="false" default="false"/>
+        <column name="IS_CATEGORY_BY_KIT" type="BOOLEAN" required="false" default="false"/>
+        <column name="TOTAL_PRODUTOS" type="INTEGER"/>
+        <column name="BANNER" type="VARCHAR" size="255" required="false"/>
+        <validator column="NOME">
+            <rule name="required" message="O Nome é obrigatório"/>
+        </validator>
+        <validator column="ORDEM">
+            <rule name="type" value="integer" message="O campo Ordem deve ser um número inteiro"/>
+        </validator>
+        <behavior name="nested_set">
+            <parameter name="left_column" value="NR_LFT"/>
+            <parameter name="right_column" value="NR_RGT"/>
+            <parameter name="level_column" value="NR_LVL"/>
+        </behavior>
+        <behavior name="sluggable">
+            <parameter name="slug_column" value="KEY"/>
+            <parameter name="slug_pattern" value="{NOME}"/>
+            <parameter name="replace_pattern" value="/[^\w]+/u"/>
+            <parameter name="replacement" value="-"/>
+            <parameter name="permanent" value="false"/>
+        </behavior>
+        <behavior name="aggregate_column">
+            <parameter name="name" value="TOTAL_PRODUTOS"/>
+            <parameter name="foreign_table" value="produto_categoria"/>
+            <parameter name="expression" value="COUNT(PRODUTO_ID)"/>
+        </behavior>
+    </table>
+    <table name="centro_distribuicao" phpName="CentroDistribuicao" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="11" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CEP" phpName="Cep" type="VARCHAR" size="10" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="VARCHAR" size="255" required="true"/>
+        <column name="STATUS" type="TINYINT" size="1" required="true" default="1"/>
+        <validator column="CEP">
+            <rule name="unique" message="Já existe um centro cadastro com este CEP."/>
+        </validator>
+        <unique name="centro_distribuicao_cep_uindex">
+            <unique-column name="CEP"/>
+        </unique>
+    </table>
+    <table name="cidade" phpName="Cidade" idMethod="native">
+        <column name="ID" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" type="VARCHAR" required="true"/>
+        <column name="ESTADO_ID" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="estado" name="cidade_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="ESTADO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="cidade_FI_1">
+            <index-column name="ESTADO_ID"/>
+        </index>
+    </table>
+    <table name="classificacao_unilevel" phpName="ClassificacaoUnilevel" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="11" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="true"/>
+        <column name="VALOR_COMPRA" phpName="ValorCompra" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="PERCENTUAL_BONUS" phpName="PercentualBonus" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="QTD_CLIENTES_ATIVOS" phpName="QuantidadeClientesAtivos" type="INTEGER" required="true"
+                default="0"/>
+        <column name="NIVEIS_PAGANTES" phpName="NiveisPagantes" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="LEVEL_BONUS" phpName="LevelBonus" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+        </behavior>
+    </table>
+    <table name="cliente" phpName="Cliente">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" type="VARCHAR" size="255" required="true"/>
+        <column name="CPF" type="VARCHAR" size="14" required="true"/>
+        <column name="TELEFONE" type="VARCHAR" size="20" required="true"/>
+        <column name="DATA_NASCIMENTO" type="DATE" required="true"/>
+        <column name="RAZAO_SOCIAL" type="VARCHAR" size="255"/>
+        <column name="NOME_FANTASIA" type="VARCHAR" size="255"/>
+        <column name="INSCRICAO_ESTADUAL" type="VARCHAR" size="25"/>
+        <column name="CNPJ" type="VARCHAR" size="18"/>
+        <column name="EMAIL" type="VARCHAR" size="255" required="true"/>
+        <column name="SENHA" type="VARCHAR" size="50" required="true"/>
+        <column name="RECUPERACAO_SENHA_TOKEN" type="VARCHAR" size="50"/>
+        <column name="RECUPERACAO_SENHA_DATA" type="DATE"/>
+        <column name="STATUS" type="TINYINT" required="true" default="0"/>
+        <column name="TABELA_PRECO_ID" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+        <column name="MOTIVO_REPROVACAO" type="LONGVARCHAR"/>
+        <column name="PLANO_ID" type="INTEGER" required="false"/>
+        <column name="CHAVE_INDICACAO" phpName="ChaveIndicacao" type="VARCHAR" size="11" required="true"
+                description="Chave gerada no cadastro do cliente que é usada para indicar novos clientes."/>
+        <column name="INDICADOR_ID" phpName="ClienteIndicadorId" type="INTEGER" sqlType="BIGINT(20) UNSIGNED"
+                required="false"/>
+        <column name="INDICADOR_DIRETO_ID" phpName="ClienteIndicadorDiretoId" type="INTEGER"
+                sqlType="BIGINT(20) UNSIGNED" required="false"/>
+        <column name="LADO_INSERCAO_CADASTRADOS" sqlType="ENUM('AUTOMATICO','ESQUERDO','DIREITO')" default="AUTOMATICO"
+                required="true"/>
+        <column name="VENCIMENTO_MENSALIDADE" type="TIMESTAMP" required="false"/>
+        <column name="LIVRE_MENSALIDADE" type="BOOLEAN" default="0" required="true"/>
+        <column name="TAXA_CADASTRO" type="BOOLEAN" default="0" required="true"/>
+        <column name="VAGO" type="BOOLEAN" default="0" required="true"/>
+        <column name="PONTOS_DISTRIBUIDOS_PLANOS" type="INTEGER" default="0" required="true"/>
+        <column name="NAO_COMPRA" phpName="NaoCompra" type="BOOLEAN" default="0" required="true"/>
+        <column name="COMPRA_ULTIMO_MES" phpName="CompraUltimoMes" type="DOUBLE" required="false"/>
+        <column name="TIPO_CONSUMIDOR" type="TINYINT" phpName="TipoConsumidor" default="0" required="true"/>
+        <column name="NUMERO_MESES_ATIVO" type="INTEGER" required="true" default="0"/>
+        <column name="DATA_ULTIMO_LEAD" phpName="DataUltimoLead" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="CREATED_BY_HOTSITE" phpName="CreatedByHotsite" type="BOOLEAN" default="false" />
+        <column name="DATA_ATIVACAO" phpName="DataAtivacao" type="TIMESTAMP"/>
+        <foreign-key foreignTable="tabela_preco" onDelete="SET NULL">
+            <reference local="TABELA_PRECO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano" onDelete="RESTRICT">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" onDelete="SETNULL">
+            <reference local="INDICADOR_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" onDelete="SETNULL">
+            <reference local="INDICADOR_DIRETO_ID" foreign="ID"/>
+        </foreign-key>
+        <behavior name="timestampable"/>
+        <behavior name="nested_set"/>
+        <unique>
+            <unique-column name="CHAVE_INDICACAO"/>
+        </unique>
+        <validator column="NOME">
+            <rule name="required" message="Por favor, preencha o campo nome"/>
+            <rule name="minLength" value="3" message="O campo nome deve conter pelo menos ${value} caracteres"/>
+        </validator>
+        <validator column="CPF">
+            <rule name="required" message="Por favor, preencha o campo CPF"/>
+            <rule name="unique"
+                  message="O CPF informado já está cadastrado em nossa base de dados, por favor, informe outro"/>
+        </validator>
+        <validator column="TELEFONE">
+            <rule name="required" message="Por favor, preencha o campo telefone"/>
+        </validator>
+        <validator column="DATA_NASCIMENTO">
+            <rule name="required" message="Por favor, preencha o campo data de nascimento"/>
+        </validator>
+        <validator column="EMAIL">
+            <rule name="required" message="Por favor, preencha o campo e-mail"/>
+            <rule name="class" class="qpress.validator.EmailValidator"
+                  message="Por favor, preencha o campo e-mail com um e-mail válido"/>
+            <rule name="unique"
+                  message="O e-mail informado já está cadastrado em nossa base de dados, por favor, informe outro"/>
+        </validator>
+        <validator column="SENHA">
+            <rule name="required" message="Por favor, preencha o campo senha"/>
+            <rule name="minLength" value="6" message="A senha deve conter pelo menos ${value} caracteres"/>
+        </validator>
+        <validator column="RAZAO_SOCIAL">
+            <rule name="minLength" value="3" message="O campo razão social deve conter pelo menos ${value} caracteres"/>
+        </validator>
+        <validator column="NOME_FANTASIA">
+            <rule name="minLength" value="3"
+                  message="O campo nome fantasia deve conter pelo menos ${value} caracteres"/>
+        </validator>
+    </table>
+    <table name="cliente_ajuda_pagina_view" phpName="ClienteAjudaPaginaView" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="VIDEO_ID" phpName="VideoId" type="INTEGER" required="true"/>
+        <column name="DATAVISTO" phpName="DataVisto" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="ajuda_pagina_video" name="FK_ajuda_video_pagina_video_view" onDelete="NONE"
+                     onUpdate="NONE">
+            <reference local="VIDEO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="FK_cliente_ajuda_pagina_video" onDelete="NONE" onUpdate="NONE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FI_cliente_ajuda_pagina_video">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="FI_ajuda_video_pagina_video_view">
+            <index-column name="VIDEO_ID"/>
+        </index>
+    </table>
+    <table name="cliente_distribuidor" phpName="ClienteDistribuidor" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="INTEGER" required="true"/>
+        <column name="CLIENTE_REDEFACIL_ID" phpName="ClienteRedefacilId" type="INTEGER" required="false"/>
+        <column name="TIPO" phpName="Tipo" type="CHAR" required="true"/>
+        <column name="TIPO_LEAD" phpName="TipoLead" type="CHAR" required="false"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="200" required="false"/>
+        <column name="TELEFONE" phpName="Telefone" type="VARCHAR" size="20" required="false"/>
+        <column name="TELEFONE_CELULAR" phpName="TelefoneCelular" type="VARCHAR" size="20" required="false"/>
+        <column name="WHATSAPP" phpName="Whatsapp" type="VARCHAR" size="20" required="false"/>
+        <column name="NOME_RAZAO_SOCIAL" phpName="NomeRazaoSocial" type="VARCHAR" size="200" required="false"/>
+        <column name="SOBRENOME_NOME_FANTASIA" phpName="SobrenomeNomeFantasia" type="VARCHAR" size="200"
+                required="false"/>
+        <column name="CPF_CNPJ" phpName="CpfCnpj" type="VARCHAR" size="18" required="false"/>
+        <column name="RG_IE" phpName="RgIe" type="VARCHAR" size="40" required="false"/>
+        <column name="SEXO" phpName="Sexo" type="CHAR" required="false"/>
+        <column name="DATA_NASCIMENTO_DATA_FUNDACAO" phpName="DataNascimentoDataFundacao" type="DATE" required="false"/>
+        <column name="RESPONSAVEL_NOME" phpName="ResponsavelNome" type="VARCHAR" size="100" required="false"/>
+        <column name="RESPONSAVEL_SOBRENOME" phpName="ResponsavelSobrenome" type="VARCHAR" size="100" required="false"/>
+        <column name="RESPONSAVEL_SEXO" phpName="ResponsavelSexo" type="CHAR" required="false"/>
+        <column name="RESPONSAVEL_CPF" phpName="ResponsavelCpf" type="VARCHAR" size="14" required="false"/>
+        <column name="RESPONSAVEL_RG" phpName="ResponsavelRg" type="VARCHAR" size="45" required="false"/>
+        <column name="RESPONSAVEL_DATA_NASCIMENTO" phpName="ResponsavelDataNascimento" type="DATE" required="false"/>
+        <column name="DATA_CADASTRO" phpName="DataCadastro" type="TIMESTAMP" required="true"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="STATUS" phpName="Status" type="CHAR" sqlType="enum('APROVADO','PENDENTE')" required="false"/>
+        <column name="CEP" phpName="Cep" type="VARCHAR" size="9" required="false"/>
+        <column name="LEAD" phpName="Lead" type="TINYINT" required="false"/>
+        <column name="NOTIFICACAO_ALERTA" phpName="NotificacaoAlerta" type="INTEGER" required="false"/>
+        <column name="ALERTA_AVISO_MUDANCA_PATROCINADOR" phpName="AlertaAvisoMudancaPatrocinador" type="INTEGER"
+                required="false"/>
+        <column name="ESTADO" phpName="Estado" type="VARCHAR" size="100" required="false"/>
+        <column name="CIDADE" phpName="Cidade" type="VARCHAR" size="100" required="false"/>
+        <column name="BAIRRO" phpName="Bairro" type="VARCHAR" size="100" required="false"/>
+        <column name="COMPLEMENTO" phpName="Complemento" type="VARCHAR" size="255" required="false"/>
+        <column name="ENDERECO" phpName="Endereco" type="VARCHAR" size="255" required="false"/>
+        <column name="NUMERO" phpName="Numero" type="INTEGER" required="false"/>
+        <foreign-key foreignTable="cliente" name="FK_CLIENTE_DISTRIBUIDOR_CLIENTE" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <validator column="EMAIL">
+            <rule name="required" message="O campo E-mail é obrigatório."/>
+        </validator>
+        <validator column="TELEFONE_CELULAR">
+            <rule name="required" message="O campo Celular é obrigatório."/>
+        </validator>
+        <validator column="TIPO">
+            <rule name="required" message="O campo Tipo é obrigatório."/>
+        </validator>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CADASTRO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+        </behavior>
+    </table>
+    <table name="cliente_inativado" phpName="ClienteInativado" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="CPF" phpName="Cpf" type="VARCHAR" size="14" required="true"/>
+        <column name="TELEFONE" phpName="Telefone" type="VARCHAR" size="20" required="true"/>
+        <column name="DATA_NASCIMENTO" phpName="DataNascimento" type="DATE" required="true"/>
+        <column name="RAZAO_SOCIAL" phpName="RazaoSocial" type="VARCHAR" size="255" required="false"/>
+        <column name="NOME_FANTASIA" phpName="NomeFantasia" type="VARCHAR" size="255" required="false"/>
+        <column name="INSCRICAO_ESTADUAL" phpName="InscricaoEstadual" type="VARCHAR" size="25" required="false"/>
+        <column name="CNPJ" phpName="Cnpj" type="VARCHAR" size="18" required="false"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="255" required="true"/>
+        <column name="SENHA" phpName="Senha" type="VARCHAR" size="50" required="true"/>
+        <column name="RECUPERACAO_SENHA_TOKEN" phpName="RecuperacaoSenhaToken" type="VARCHAR" size="50"
+                required="false"/>
+        <column name="RECUPERACAO_SENHA_DATA" phpName="RecuperacaoSenhaData" type="DATE" required="false"/>
+        <column name="STATUS" phpName="Status" type="TINYINT" required="true" defaultValue="0"/>
+        <column name="TABELA_PRECO_ID" phpName="TabelaPrecoId" type="BIGINT" sqlType="bigint(20) unsigned"
+                required="false"/>
+        <column name="MOTIVO_REPROVACAO" phpName="MotivoReprovacao" type="LONGVARCHAR" required="false"/>
+        <column name="PLANO_ID" phpName="PlanoId" type="INTEGER" required="false"/>
+        <column name="CHAVE_INDICACAO" phpName="ChaveIndicacao" type="VARCHAR" size="11" required="true"/>
+        <column name="INDICADOR_ID" phpName="IndicadorId" type="BIGINT" sqlType="bigint(20) unsigned" required="false"/>
+        <column name="INDICADOR_DIRETO_ID" phpName="IndicadorDiretoId" type="BIGINT" sqlType="bigint(20) unsigned"
+                required="false"/>
+        <column name="LADO_INSERCAO_CADASTRADOS" phpName="LadoInsercaoCadastrados" type="CHAR"
+                sqlType="enum('AUTOMATICO','ESQUERDO','DIREITO')" required="true" defaultValue="AUTOMATICO"/>
+        <column name="VENCIMENTO_MENSALIDADE" phpName="VencimentoMensalidade" type="TIMESTAMP" required="false"/>
+        <column name="LIVRE_MENSALIDADE" phpName="LivreMensalidade" type="BOOLEAN" size="1" required="true"
+                defaultValue="false"/>
+        <column name="VAGO" phpName="Vago" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="PONTOS_DISTRIBUIDOS_PLANOS" phpName="PontosDistribuidosPlanos" type="INTEGER" required="true"
+                defaultValue="0"/>
+        <column name="created_at" phpName="CreatedAt" type="TIMESTAMP" required="false"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <column name="tree_left" phpName="TreeLeft" type="INTEGER" required="false"/>
+        <column name="tree_right" phpName="TreeRight" type="INTEGER" required="false"/>
+        <column name="tree_level" phpName="TreeLevel" type="INTEGER" required="false"/>
+        <column name="DATA_ATIVACAO" phpName="DataAtivacao" type="TIMESTAMP"/>
+        <foreign-key foreignTable="tabela_preco" name="cliente_inativado_FK_1" onDelete="SET NULL">
+            <reference local="TABELA_PRECO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano" name="cliente_inativado_FK_2" onDelete="RESTRICT">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="cliente_inativado_FK_3" onDelete="SET NULL">
+            <reference local="INDICADOR_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="cliente_inativado_FK_4" onDelete="SET NULL">
+            <reference local="INDICADOR_DIRETO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="cliente_inativado_FK_5" onDelete="RESTRICT">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="cliente_inativado_FI_1">
+            <index-column name="TABELA_PRECO_ID"/>
+        </index>
+        <index name="cliente_inativado_FI_2">
+            <index-column name="PLANO_ID"/>
+        </index>
+        <index name="cliente_inativado_FI_3">
+            <index-column name="INDICADOR_ID"/>
+        </index>
+        <index name="cliente_inativado_FI_4">
+            <index-column name="INDICADOR_DIRETO_ID"/>
+        </index>
+        <behavior name="timestampable"/>
+        <behavior name="nested_set"/>
+        <validator column="NOME">
+            <rule name="required" message="Por favor, preencha o campo nome"/>
+            <rule name="minLength" value="3" message="O campo nome deve conter pelo menos ${value} caracteres"/>
+        </validator>
+        <validator column="CPF">
+            <rule name="required" message="Por favor, preencha o campo CPF"/>
+        </validator>
+        <validator column="TELEFONE">
+            <rule name="required" message="Por favor, preencha o campo telefone"/>
+        </validator>
+        <validator column="DATA_NASCIMENTO">
+            <rule name="required" message="Por favor, preencha o campo data de nascimento"/>
+        </validator>
+        <validator column="EMAIL">
+            <rule name="required" message="Por favor, preencha o campo e-mail"/>
+            <rule name="class" class="qpress.validator.EmailValidator"
+                  message="Por favor, preencha o campo e-mail com um e-mail válido"/>
+            <rule name="unique"
+                  message="O e-mail informado já está cadastrado em nossa base de dados, por favor, informe outro"/>
+        </validator>
+        <validator column="SENHA">
+            <rule name="required" message="Por favor, preencha o campo senha"/>
+            <rule name="minLength" value="6" message="A senha deve conter pelo menos ${value} caracteres"/>
+        </validator>
+        <validator column="RAZAO_SOCIAL">
+            <rule name="minLength" value="3" message="O campo razão social deve conter pelo menos ${value} caracteres"/>
+        </validator>
+        <validator column="NOME_FANTASIA">
+            <rule name="minLength" value="3"
+                  message="O campo nome fantasia deve conter pelo menos ${value} caracteres"/>
+        </validator>
+    </table>
+    <table name="configuracao_pontuacao_mensal" phpName="ConfiguracaoPontuacaoMensal" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DIA_AVISO_1" phpName="DiaAviso1" type="INTEGER" required="true"/>
+        <column name="TIPO_AVISO_2" phpName="TipoAviso2" type="INTEGER" size="8" required="true"/>
+        <column name="DIA_AVISO_2" phpName="DiaAviso2" type="VARCHAR" size="255" required="true"/>
+        <column name="ASSUNTO_AVISO_1" phpName="AssuntoAviso1" type="VARCHAR" size="50" required="true"/>
+        <column name="ASSUNTO_AVISO_2" phpName="AssuntoAviso2" type="VARCHAR" size="50" required="true"/>
+        <column name="DESCRICAO_EXTRATO" phpName="DescricaoExtrato" type="VARCHAR" size="150" required="true"/>
+        <column name="DESCRICAO_AVISO_1" phpName="DescricaoAviso1" type="LONGVARCHAR" required="true"/>
+        <column name="DESCRICAO_AVISO_2" phpName="DescricaoAviso2" type="LONGVARCHAR" required="true"/>
+        <column name="VALOR_COMPRA" phpName="ValorCompra" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="VALOR_PONTOS" phpName="ValorPontos" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="MENSAGEM_RESGATE_PONTOS_DIRETO" phpName="MensagemResgatePontosDireto" type="VARCHAR" size="255"/>
+        <column name="MENSAGEM_RESGATE_PONTOS_INDIRETO" phpName="MensagemResgatePontosIndireto" type="VARCHAR" size="255"/>
+        <column name="MENSAGEM_RESGATE_PONTOS_RECOMPRA" phpName="MensagemResgatePontosRecompra" type="VARCHAR" size="255"/>
+    </table>
+    <table name="conteudo" phpName="Conteudo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CHAVE" phpName="Chave" type="VARCHAR" size="200" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="true"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="50" required="false"/>
+        <column name="GALERIA_ID" phpName="GaleriaId" type="INTEGER" required="false"/>
+        <column name="POSSUI_IMAGEM" phpName="PossuiImagem" type="BOOLEAN" size="1" required="false"
+                defaultValue="false"/>
+        <column name="POSSUI_GALERIA" phpName="PossuiGaleria" type="BOOLEAN" size="1" required="false"
+                defaultValue="false"/>
+        <column name="TIPO_CONTEUDO" phpName="TipoConteudo" type="CHAR" sqlType="enum('PAGINA','BLOCO')"
+                required="false"/>
+        <foreign-key foreignTable="galeria" name="TCONT_TGALE_FK_01" onDelete="SET NULL" onUpdate="SET NULL">
+            <reference local="GALERIA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TCONT_TGALE_FK_IDX_01">
+            <index-column name="GALERIA_ID"/>
+        </index>
+        <validator column="NOME">
+            <rule name="required" message="O Nome é obrigatório"/>
+        </validator>
+        <validator column="DESCRICAO">
+            <rule name="required" message="A Descrição é obrigatória"/>
+        </validator>
+    </table>
+    <table name="cronlog_aviso_compra_mensal" phpName="CronlogAvisoCompraMensal" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="VARCHAR" size="255" required="true"/>
+        <column name="AVISO" phpName="Aviso" type="VARCHAR" size="255" required="true"/>
+        <column name="MENSAGEM" phpName="Mensagem" type="LONGVARCHAR" required="true"/>
+        <column name="TITULO" phpName="Titulo" type="LONGVARCHAR" required="true"/>
+        <column name="VISUALIZADO" phpName="Visualizado" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="VALOR_COMPRA" phpName="ValorCompra" type="DOUBLE" required="true"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA"/>
+        </behavior>
+    </table>
+    <table name="cronlog_bloqueia_compra_mensal" phpName="CronlogBloqueiaCompraMensal" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="VARCHAR" size="255" required="true"/>
+        <column name="VALOR_COMPRA" phpName="ValorCompra" type="DOUBLE" required="true"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA"/>
+        </behavior>
+    </table>
+    <table name="cupom" phpName="Cupom" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CUPOM" phpName="Cupom" type="VARCHAR" size="25" required="true"/>
+        <column name="TIPO_DESCONTO" phpName="TipoDesconto" type="CHAR" sqlType="enum('REAIS','PORCENTAGEM')"
+                required="true" defaultValue="PORCENTAGEM"/>
+        <column name="VALOR_DESCONTO" phpName="ValorDesconto" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="DATA_INICIAL" phpName="DataInicial" type="DATE" required="true"/>
+        <column name="DATA_FINAL" phpName="DataFinal" type="DATE" required="false"/>
+        <column name="VALOR_MINIMO_CARRINHO" phpName="ValorMinimoCarrinho" type="FLOAT" size="12" scale="2"
+                required="false"/>
+        <column name="MODELO_CLIENTE_USO" phpName="ModeloClienteUso" type="VARCHAR" size="30" required="true" default="todos" description="Modelo dos cientes que irão usar dentre as opções estã todos, consumidor final, distribuidor, nominal (um ou mais clientes que deverão ser escolhidos, rede que funciona similar ao nominal porém o nominal não pode usar e o nominal + rede."/>
+        <column name="CLIENTES" type="LONGVARCHAR"  required="false" />
+        <validator column="CUPOM">
+            <rule name="unique" message="O cupom informado já está cadastrado."/>
+        </validator>
+        <validator column="VALOR_DESCONTO">
+            <rule name="required" message="O campo valor de desconto é obrigatório."/>
+            <rule name="type" value="float" message="O valor informado é inválido."/>
+        </validator>
+        <validator column="TIPO_DESCONTO">
+            <rule name="required" message="O campo tipo de desconto é obrigatório."/>
+        </validator>
+        <validator column="DATA_INICIAL">
+            <rule name="required" message="O campo data inicial é obrigatório"/>
+        </validator>
+        <validator column="VALOR_MINIMO_CARRINHO">
+            <rule name="type" value="float" message="O Valor Mínimo do Carrinho não é válido"/>
+        </validator>
+        <unique name="TCUPO_UK_01">
+            <unique-column name="CUPOM"/>
+        </unique>
+    </table>
+    <table name="cupom_cliente" phpName="CupomCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CUPOM_ID" phpName="CupomId" type="INTEGER" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="UTILIZADO" phpName="Utilizado" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <validator column="CUPOM_ID">
+            <rule name="required" message="Cupom não informado"/>
+        </validator>
+        <validator column="CLIENTE_ID">
+            <rule name="required" message="Cliente não informado"/>
+        </validator>
+        <foreign-key foreignTable="cliente" name="TCUCL_TCLIE_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cupom" name="TCUCL_TCUPO_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CUPOM_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TCUCL_TCUPO_FK_IDX_01">
+            <index-column name="CUPOM_ID"/>
+        </index>
+        <index name="TCUCL_TCLIE_FK_IDX_01">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="desconto_fidelidade" phpName="DescontoFidelidade" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="MES_INICIAL" phpName="MesInicial" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="MES_FINAL" phpName="MesFinal" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="PERCENTUAL_DESCONTO" phpName="PercentualDesconto" type="DOUBLE" required="true" defaultValue="0"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+        </behavior>
+    </table>
+    <table name="desconto_fidelidade_cliente" phpName="DescontoFidelidadeCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="MES_ATUAL" phpName="MesAtual" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="MES_INICIAL" phpName="MesInicial" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="MES_FINAL" phpName="MesFinal" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="PERCENTUAL_DESCONTO" phpName="PercentualDesconto" type="DOUBLE" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="cliente" name="desconto_fidelidade_cliente_FK_1" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="desconto_fidelidade_cliente_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="desconto_pagamento_pontos" phpName="DescontoPagamentoPontos" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="VALOR_DESCONTO" phpName="ValorDesconto" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="PAGAMENTO_BONUS" phpName="PagamentoBonus" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="PAGAMENTO_BONUS_CP" phpName="PagamentoBonusCP" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="PAGAMENTO_BONUS_FRETE" phpName="PagamentoBonusFrete" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <foreign-key foreignTable="pedido" name="desconto_pagamento_pontos_FK_1" onDelete="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="desconto_pagamento_pontos_FI_1">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+    </table>
+    <table name="distribuicao" phpName="Distribuicao" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="DATA_INICIO" phpName="DataInicio" type="TIMESTAMP" required="true"/>
+        <column name="DATA_FINAL" phpName="DataFinal" type="TIMESTAMP" required="true"/>
+        <column name="TOTAL_PONTOS" phpName="TotalPontos" type="FLOAT" required="true"/>
+        <column name="STATUS" phpName="Status" type="CHAR"
+                sqlType="enum('AGUARDANDO_PREVIEW','PROCESSANDO_PREVIEW','PREVIEW','AGUARDANDO','PROCESSANDO','DISTRIBUIDO','CANCELADO')"
+                required="true" defaultValue="AGUARDANDO_PREVIEW"/>
+    </table>
+     <table name="distribuicao_bonus_produtos" phpName="DistribuicaoBonusProdutos" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="DATA_INICIO" phpName="DataInicio" type="TIMESTAMP" required="true"/>
+        <column name="DATA_FINAL" phpName="DataFinal" type="TIMESTAMP" required="true"/>
+        <column name="TOTAL_CLIENTES" phpName="TotalClientes" type="INTEGER"/>
+        <column name="STATUS" phpName="Status" type="CHAR"
+                sqlType="enum('AGUARDANDO_PREVIEW','PROCESSANDO_PREVIEW','PREVIEW','AGUARDANDO','PROCESSANDO','DISTRIBUIDO','CANCELADO')"
+                required="true" defaultValue="AGUARDANDO_PREVIEW"/>
+    </table>
+    <table name="distribuicao_cliente" phpName="DistribuicaoCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DISTRIBUICAO_ID" phpName="DistribuicaoId" type="INTEGER" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="TOTAL_PONTOS_PROCESSADOS" phpName="TotalPontosProcessados" type="FLOAT" required="true"/>
+        <column name="TOTAL_PONTOS_USADOS" phpName="TotalPontosUsados" type="FLOAT" required="true"/>
+        <column name="TOTAL_PONTOS" phpName="TotalPontos" type="FLOAT" required="true"/>
+        <column name="TOTAL_PONTOS_ADESAO" phpName="TotalPontosAdesao" type="FLOAT" required="true"/>
+        <column name="TOTAL_PONTOS_RECOMPRA" phpName="TotalPontosRecompra" type="FLOAT" required="true"/>
+        <column name="TOTAL_PONTOS_LIDERANCA" phpName="TotalPontosLideranca" type="FLOAT" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="distribuicao" name="distribuicao_cliente_FK_1" onDelete="CASCADE">
+            <reference local="DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="distribuicao_cliente_FK_2" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <unique name="distribuicao_cliente_U_1">
+            <unique-column name="DISTRIBUICAO_ID"/>
+            <unique-column name="CLIENTE_ID"/>
+        </unique>
+        <index name="distribuicao_cliente_FI_2">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="distribuicao_cliente_unilevel" phpName="DistribuicaoClienteUnilevel" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DISTRIBUICAO_ID" phpName="DistribuicaoId" type="INTEGER" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="TOTAL_ATIVOS_REDE" phpName="TotalAtivosRede" type="INTEGER" required="true"/>
+        <column name="CLASSIFICACAO" phpName="Classificacao" type="VARCHAR" size="255" required="true"/>
+        <column name="NIVEL_CLASSIFICACAO" phpName="NivelClassificacao" type="INTEGER" required="true"/>
+        <column name="TOTAL_ATIVOS_REDE_ANTERIOR" phpName="TotalAtivosRedeAnterior" type="INTEGER" required="true"/>
+        <column name="CLASSIFICACAO_ANTERIOR" phpName="ClassificacaoAnterior" type="VARCHAR" size="255"
+                required="true"/>
+        <column name="NIVEL_CLASSIFICACAO_ANTERIOR" phpName="NivelClassificacaoAnterior" type="INTEGER"
+                required="true"/>
+        <column name="PERCENTUAL_BONUS" phpName="PercentualBonus" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="TOTAL_BONUS" phpName="TotalBonus" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="LEVEL_BONUS" phpName="LevelBonus" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <foreign-key foreignTable="distribuicao_unilevel" name="distribuicao_cliente_unilevel_FK_1" onDelete="CASCADE">
+            <reference local="DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="distribuicao_cliente_unilevel_FK_2" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <unique name="distribuicao_cliente_unilevel_U_1">
+            <unique-column name="DISTRIBUICAO_ID"/>
+            <unique-column name="CLIENTE_ID"/>
+        </unique>
+        <index name="distribuicao_cliente_unilevel_FI_2">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="distribuicao_unilevel" phpName="DistribuicaoUnilevel" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="DATA_INICIO" phpName="DataInicio" type="TIMESTAMP" required="true"/>
+        <column name="DATA_FINAL" phpName="DataFinal" type="TIMESTAMP" required="true"/>
+        <column name="TOTAL_ATIVOS" phpName="TotalAtivos" type="INTEGER" required="true"/>
+        <column name="STATUS" phpName="Status" type="CHAR"
+                sqlType="enum('AGUARDANDO_PREVIEW','PROCESSANDO_PREVIEW','PREVIEW','AGUARDANDO','PROCESSANDO','DISTRIBUIDO','CANCELADO')"
+                required="true" defaultValue="AGUARDANDO_PREVIEW"/>
+    </table>
+    <table name="distribuicao_unilevel_preview" phpName="DistribuicaoUnilevelPreview" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DISTRIBUICAO_ID" phpName="DistribuicaoId" type="INTEGER" required="true"/>
+        <column name="NIVEL" phpName="Nivel" type="INTEGER" required="false"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="false"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="false"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="150" required="false"/>
+        <column name="TELEFONE" phpName="Telefone" type="VARCHAR" size="50" required="false"/>
+        <column name="CHAVE" phpName="Chave" type="VARCHAR" size="50" required="false"/>
+        <column name="INDICADOR_ID" phpName="IndicadorId" type="INTEGER" required="false"/>
+        <column name="VIP" phpName="Vip" type="INTEGER" required="false"/>
+        <column name="TOTAL_ATIVOS_REDE" phpName="TotalAtivosRede" type="INTEGER" required="true"/>
+        <column name="CLASSIFICACAO" phpName="Classificacao" type="VARCHAR" size="255" required="true"/>
+        <column name="NIVEL_CLASSIFICACAO" phpName="NivelClassificacao" type="INTEGER" required="true"/>
+        <column name="TOTAL_ATIVOS_REDE_ANTERIOR" phpName="TotalAtivosRedeAnterior" type="INTEGER" required="true"/>
+        <column name="CLASSIFICACAO_ANTERIOR" phpName="ClassificacaoAnterior" type="VARCHAR" size="255"
+                required="true"/>
+        <column name="NIVEL_CLASSIFICACAO_ANTERIOR" phpName="NivelClassificacaoAnterior" type="INTEGER"
+                required="true"/>
+        <column name="PERCENTUAL_BONUS" phpName="PercentualBonus" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="TOTAL_BONUS" phpName="TotalBonus" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="LEVEL_BONUS" phpName="LevelBonus" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <foreign-key foreignTable="distribuicao_unilevel" name="TDIPR_DISTUNI_FK_01" onDelete="CASCADE"
+                     onUpdate="CASCADE">
+            <reference local="DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TDIPR_DISTUNI_IDX_01">
+            <index-column name="DISTRIBUICAO_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="documento_alerta" phpName="DocumentoAlerta" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="USUARIO_ID" phpName="UsuarioId" type="INTEGER" required="false"/>
+        <column name="TITULO" phpName="Titulo" type="VARCHAR" size="250" required="true"/>
+        <column name="TIPO_MENSAGEM" phpName="TipoMensagem" type="VARCHAR" size="255" required="true"
+                defaultValue="termos_uso"/>
+        <column name="TIPO_DEST" phpName="TipoDest" type="VARCHAR" size="255" required="true"/>
+        <column name="DESCRICAO_DEST" phpName="DescricaoDest" type="LONGVARCHAR" required="false"/>
+        <column name="ID_CLIENTES_STR" phpName="IdClientesStr" type="LONGVARCHAR" required="true"/>
+        <column name="CORPO" phpName="Corpo" type="LONGVARCHAR" required="true"/>
+        <column name="SOMENTE_LEITURA" phpName="SomenteLeitura" type="BOOLEAN" size="1" required="true"
+                defaultValue="true"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" required="true"/>
+        <column name="DATA_ENVIO" phpName="DataEnvio" type="TIMESTAMP" required="true"/>
+        <column name="CANCELADA" phpName="Cancelada" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+        <foreign-key foreignTable="usuario" name="FK_DOCUMENTO_ALERTA_USUARIO" onDelete="NONE" onUpdate="NONE">
+            <reference local="USUARIO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FI_DOCUMENTO_ALERTA_USUARIO">
+            <index-column name="USUARIO_ID"/>
+        </index>
+    </table>
+    <table name="documento_alerta_clientes" phpName="DocumentoAlertaClientes" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="DOCUMENTO_ALERTA_ID" phpName="DocumentoAlertaId" type="INTEGER" required="true"/>
+        <column name="DATA_LIDO" phpName="DataLido" type="TIMESTAMP" required="false"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <foreign-key foreignTable="cliente" name="FK_documento_alerta_clientes_cliente" onDelete="NONE" onUpdate="NONE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="documento_alerta" name="FK_documento_alerta_clientes_documento_alerta"
+                     onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="DOCUMENTO_ALERTA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FI_documento_alerta_clientes_cliente">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="FI_documento_alerta_clientes_documento_alerta">
+            <index-column name="DOCUMENTO_ALERTA_ID"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+        </behavior>
+    </table>
+    <table name="documento_alerta_pdf" phpName="DocumentoAlertaPdf" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DOCUMENTO_ALERTA_ID" phpName="DocumentoAlertaId" type="INTEGER" required="true"/>
+        <column name="NOME_ARQUIVO" phpName="NomeArquivo" type="VARCHAR" size="250" required="true"/>
+        <column name="NOME_ORIGINAL" phpName="NomeOriginal" type="VARCHAR" size="250" required="true"/>
+        <foreign-key foreignTable="documento_alerta" name="FK_documento_alerta_pdf" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="DOCUMENTO_ALERTA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FI_documento_alerta_pdf">
+            <index-column name="DOCUMENTO_ALERTA_ID"/>
+        </index>
+    </table>
+    <table name="email_log" phpName="EmailLog" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="VARCHAR" size="150" required="true"/>
+        <column name="REMETENTE" phpName="Remetente" type="VARCHAR" size="250" required="true"/>
+        <column name="DESTINATARIO" phpName="Destinatario" type="VARCHAR" size="250" required="true"/>
+        <column name="ASSUNTO" phpName="Assunto" type="VARCHAR" size="250" required="true"/>
+        <column name="CONTEUDO" phpName="Conteudo" type="LONGVARCHAR" required="true"/>
+        <column name="STATUS" phpName="Status" type="SMALLINT" required="true" defaultValue="1"/>
+        <column name="DATA_ENVIO" phpName="DataEnvio" type="TIMESTAMP" required="true"/>
+    </table>
+    <table name="endereco" phpName="Endereco" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="CEP" phpName="Cep" type="VARCHAR" size="10" required="true"/>
+        <column name="LOGRADOURO" phpName="Logradouro" type="VARCHAR" size="255" required="true"/>
+        <column name="NUMERO" phpName="Numero" type="VARCHAR" size="255" required="true"/>
+        <column name="BAIRRO" phpName="Bairro" type="VARCHAR" size="255" required="true"/>
+        <column name="CIDADE_ID" phpName="CidadeId" type="INTEGER" required="true"/>
+        <column name="IDENTIFICACAO" phpName="Identificacao" type="VARCHAR" size="255" required="false"/>
+        <column name="NOME_DESTINATARIO" phpName="NomeDestinatario" type="VARCHAR" size="255" required="false"/>
+        <column name="COMPLEMENTO" phpName="Complemento" type="VARCHAR" size="255" required="false"/>
+        <column name="created_at" phpName="CreatedAt" type="TIMESTAMP" required="false"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <column name="ENDERECO_PRINCIPAL" phpName="EnderecoPrincipal" type="TINYINT" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="cliente" name="endereco_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cidade" name="endereco_FK_2" onDelete="RESTRICT" onUpdate="RESTRICT">
+            <reference local="CIDADE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="endereco_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="endereco_FI_2">
+            <index-column name="CIDADE_ID"/>
+        </index>
+        <behavior name="timestampable"/>
+        <validator column="CEP">
+            <rule name="required" message="Por favor, preencha o campo CEP"/>
+            <rule name="match" value="/^\d{5}-\d{3}$/" message="O CEP digitado é inválido (Ex.: 89023-222)."/>
+        </validator>
+
+        <validator column="LOGRADOURO">
+            <rule name="required" message="Por favor, preencha o campo logradouro"/>
+        </validator>
+
+        <validator column="NUMERO">
+            <rule name="required" message="Por favor, preencha o campo número"/>
+        </validator>
+
+        <validator column="BAIRRO">
+            <rule name="required" message="Por favor, preencha o campo bairro"/>
+        </validator>
+
+        <validator column="CIDADE_ID">
+            <rule name="required" message="Por favor, preencha o campo cidade"/>
+        </validator>
+    </table>
+    <table name="estado" phpName="Estado" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="SIGLA" phpName="Sigla" type="CHAR" size="2" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="45" required="true"/>
+        <column name="CAPITAL_ID" phpName="CapitalId" type="INTEGER" required="false"/>
+    </table>
+    <table name="estado_centro_distribuicao" phpName="EstadoCentroDistribuicao" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="11" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="ESTADO_ID" phpName="EstadoId" type="INTEGER" size="11" required="true"/>
+        <column name="CENTRO_DISTRIBUICAO_ID" phpName="CentroDistribuicaoId" type="INTEGER" size="11"/>
+        <foreign-key foreignTable="estado" name="qp1_estado_centro_distribuicao_qp1_estado_ID_fk" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="ESTADO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="centro_distribuicao" name="qp1_estado_centro_distribuicao_qp1_centro_distribuicao_ID_fk" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CENTRO_DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="qp1_estado_centro_distribuicao_qp1_estado_ID_fk">
+            <index-column name="ESTADO_ID"/>
+        </index>
+        <index name="qp1_estado_centro_distribuicao_qp1_centro_distribuicao_ID_fk">
+            <index-column name="CENTRO_DISTRIBUICAO_ID"/>
+        </index>
+    </table>
+    <table name="estatistica_produto_variacao" phpName="EstatisticaProdutoVariacao" idMethod="native">
+        <column name="PRODUTO_VARIACAO_ID" phpName="ProdutoVariacaoId" type="BIGINT" sqlType="bigint(20) unsigned"
+                primaryKey="true" required="true"/>
+        <column name="QUANTIDADE_VENDIDA" phpName="QuantidadeVendida" type="BIGINT" required="false" defaultValue="0"/>
+        <foreign-key foreignTable="produto_variacao" name="estatistica_produto_variacao_FK_1" onDelete="CASCADE"
+                     onUpdate="CASCADE">
+            <reference local="PRODUTO_VARIACAO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="estoque_produto" phpName="EstoqueProduto" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="true"/>
+        <column name="PRODUTO_VARIACAO_ID" phpName="ProdutoVariacaoId" type="BIGINT" sqlType="bigint(20) unsigned"
+                required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="OPERACAO" phpName="Operacao" type="CHAR" sqlType="enum('ENTRADA','SAIDA')" required="true"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" required="false"/>
+        <column name="QUANTIDADE" phpName="Quantidade" type="INTEGER" required="true"/>
+        <column name="CONFIRMADO" phpName="Confirmado" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="VARCHAR" size="255" required="false"/>
+        <column name="CENTRO_DISTRIBUICAO_ID" phpName="CentroDistribuicaoId" type="INTEGER" size="11" required="false"/>
+        <foreign-key foreignTable="pedido" name="FK_pedido" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto" name="FK_produto" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto_variacao" name="FK_produto_variacao" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_VARIACAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="estoque_produto" name="qp1_estoque_produto_qp1_estado_centro_distribuicao_ID_fk" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CENTRO_DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FI_produto">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+        <index name="FI_pedido">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+        <index name="FI_produto_variacao">
+            <index-column name="PRODUTO_VARIACAO_ID"/>
+        </index>
+        <index name="qp1_estoque_produto_qp1_estado_centro_distribuicao_ID_fk">
+            <index-column name="CENTRO_DISTRIBUICAO_ID"/>
+        </index>
+    </table>
+    <table name="extrato" phpName="Extrato" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="VARCHAR" size="200" required="true" defaultValue="INDICACAO_DIRETA"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" required="false"/>
+        <column name="RESGATE_ID" phpName="ResgateId" type="INTEGER" required="false"/>
+        <column name="DISTRIBUICAO_ID" phpName="DistribuicaoId" type="INTEGER" required="false"/>
+        <column name="PARTICIPACAO_RESULTADO_ID" phpName="ParticipacaoResultadoId" type="INTEGER" required="false"/>
+        <column name="PLANO_CARREIRA_ID" phpName="PlanoCarreiraId" type="INTEGER" required="false"/>
+        <column name="PONTOS" phpName="Pontos" type="DOUBLE" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="DATA_EXPIRACAO" phpName="DataExpiracao" type="TIMESTAMP" required="false"/>
+        <column name="OPERACAO" phpName="Operacao" type="CHAR" sqlType="enum('+','-')" required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="true"/>
+        <column name="BLOQUEADO" phpName="Bloqueado" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="IS_DESCONTO_IR" phpName="IsDescontoIr" type="TINYINT" required="false" defaultValue="0"/>
+        <column name="TRANSFERENCIA_ID" phpName="TransferenciaId" type="INTEGER" required="false" default="NULL" description="Codigo da transferencia. Usado apenas quando o tipo for TRANSFERENCIA" />
+        <validator column="CLIENTE_ID">
+            <rule name="required" message="O cliente é obrigatório"/>
+        </validator>
+        <validator column="PONTOS">
+            <rule name="required" message="O Quantidade de Pontos é obrigatória"/>
+            <rule name="type" value="float" message="A Quantidade de Pontos deve ser um número"/>
+            <rule name="minValue" value="1" message="A Quantidade de Pontos deve ser maior que zero"/>
+        </validator>
+        <foreign-key foreignTable="cliente" name="extrato_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="pedido" name="extrato_FK_2">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="resgate" name="extrato_FK_3">
+            <reference local="RESGATE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="distribuicao" name="extrato_FK_4">
+            <reference local="DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="participacao_resultado" name="extrato_FK_5">
+            <reference local="PARTICIPACAO_RESULTADO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano_carreira" name="extrato_FK_6">
+            <reference local="PLANO_CARREIRA_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="transferencia">
+            <reference local="TRANSFERENCIA_ID" foreign="ID" />
+        </foreign-key>
+        <index name="extrato_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="extrato_FI_2">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+        <index name="extrato_FI_3">
+            <index-column name="RESGATE_ID"/>
+        </index>
+        <index name="extrato_FI_4">
+            <index-column name="DISTRIBUICAO_ID"/>
+        </index>
+        <index name="extrato_FI_5">
+            <index-column name="PARTICIPACAO_RESULTADO_ID"/>
+        </index>
+        <index name="extrato_FI_6">
+            <index-column name="PLANO_CARREIRA_ID"/>
+        </index>
+    </table>
+    <table name="extrato_cliente_preferencial" phpName="ExtratoClientePreferencial" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="OPERACAO" phpName="Operacao" type="CHAR" sqlType="enum('+','-')" required="true"/>
+        <column name="PONTOS" phpName="Pontos" type="DOUBLE" required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="true"/>
+        <foreign-key foreignTable="cliente" name="qp1_extrato_cliente_preferencial_qp1_cliente_ID_fk" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="pedido" name="qp1_extrato_cliente_preferencial_qp1_pedido_ID_fk" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="qp1_extrato_cliente_preferencial_qp1_cliente_ID_fk">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="qp1_extrato_cliente_preferencial_qp1_pedido_ID_fk">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+    </table>
+    <table name="extrato_individual" phpName="ExtratoIndividual" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="VARCHAR" size="200" required="true" defaultValue="INDICACAO_DIRETA"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" required="false"/>
+        <column name="RESGATE_ID" phpName="ResgateId" type="INTEGER" required="false"/>
+        <column name="DISTRIBUICAO_ID" phpName="DistribuicaoId" type="INTEGER" required="false"/>
+        <column name="PARTICIPACAO_RESULTADO_ID" phpName="ParticipacaoResultadoId" type="INTEGER" required="false"/>
+        <column name="PLANO_CARREIRA_ID" phpName="PlanoCarreiraId" type="INTEGER" required="false"/>
+        <column name="PONTOS" phpName="Pontos" type="DOUBLE" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="DATA_EXPIRACAO" phpName="DataExpiracao" type="TIMESTAMP" required="false"/>
+        <column name="OPERACAO" phpName="Operacao" type="CHAR" sqlType="enum('+','-')" required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="true"/>
+        <column name="BLOQUEADO" phpName="Bloqueado" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <validator column="CLIENTE_ID">
+            <rule name="required" message="O cliente é obrigatório"/>
+        </validator>
+        <validator column="PONTOS">
+            <rule name="required" message="O Quantidade de Pontos é obrigatória"/>
+            <rule name="type" value="float" message="A Quantidade de Pontos deve ser um número"/>
+            <rule name="minValue" value="1" message="A Quantidade de Pontos deve ser maior que zero"/>
+        </validator>
+        <foreign-key foreignTable="cliente" name="extrato_individual_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="pedido" name="extrato_individual_FK_2">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="resgate" name="extrato_individual_FK_3">
+            <reference local="RESGATE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="distribuicao" name="extrato_individual_FK_4">
+            <reference local="DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="participacao_resultado" name="extrato_individual_FK_5">
+            <reference local="PARTICIPACAO_RESULTADO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano_carreira" name="extrato_individual_FK_6">
+            <reference local="PLANO_CARREIRA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="extrato_individual_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="extrato_individual_FI_2">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+        <index name="extrato_individual_FI_3">
+            <index-column name="RESGATE_ID"/>
+        </index>
+        <index name="extrato_individual_FI_4">
+            <index-column name="DISTRIBUICAO_ID"/>
+        </index>
+        <index name="extrato_individual_FI_5">
+            <index-column name="PARTICIPACAO_RESULTADO_ID"/>
+        </index>
+        <index name="extrato_individual_FI_6">
+            <index-column name="PLANO_CARREIRA_ID"/>
+        </index>
+    </table>
+    <table name="extrato_bonus_produtos" phpName="ExtratoBonusProdutos" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="PRODUTOS_BONUS_ID" phpName="ProdutosBonusId" type="INTEGER"/>
+        <column name="DISTRIBUICAO_ID" phpName="DistribuicaoId" type="INTEGER" required="false"/>
+        <column name="PLANO_CARREIRA_ID" phpName="PlanoCarreiraId" type="INTEGER" required="false"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="DATA_RETIRADA" phpName="DataRetirada" type="TIMESTAMP"/>
+        <column name="DATA_EXPIRACAO" phpName="DataExpiracao" type="TIMESTAMP" required="false"/>
+        <column name="OPERACAO" phpName="Operacao" type="CHAR" sqlType="enum('+','-')" required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="true"/>
+        <column name="GRADUACAO" phpName="Graduacao" type="LONGVARCHAR" required="true"/>
+        <column name="VALOR_TOTAL_BONIFICACAO" phpName="ValorTotalBonificacao" type="DOUBLE" required="true"/>
+        <column name="BLOQUEADO" phpName="Bloqueado" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="IS_BONUS_ACUMULADOS" phpName="IsBonusAcumulados" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+        <column name="IS_DISTRIBUIDO" phpName="IsDistribuido" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+        <column name="UPDATED_AT" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <validator column="CLIENTE_ID">
+            <rule name="required" message="O cliente é obrigatório"/>
+        </validator>
+        <foreign-key foreignTable="cliente" name="extrato_bonus_produtos_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="distribuicao_bonus_produtos" name="extrato_bonus_produtos_FK_2">
+            <reference local="DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano_carreira" name="extrato_bonus_produtos_FK_3">
+            <reference local="PLANO_CARREIRA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="extrato_individual_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="extrato_individual_FI_2">
+            <index-column name="DISTRIBUICAO_ID"/>
+        </index>
+        <index name="extrato_individual_FI_3">
+            <index-column name="PLANO_CARREIRA_ID"/>
+        </index>
+    </table>
+    <table name="faixa_bonus_desempenho" phpName="FaixaBonusDesempenho" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="FAIXA_INICIAL" phpName="FaixaInicial" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="FAIXA_FINAL" phpName="FaixaFinal" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="GERA_PONTOS" phpName="GeraPontos" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="PONTOS" phpName="Pontos" type="DOUBLE" required="true" defaultValue="0"/>
+    </table>
+    <table name="faixas_distribuicao_binaria" phpName="FaixasDistribuicaoBinaria" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PLANO_ID" phpName="PlanoId" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="PONTUACAO_INICIAL" phpName="PontuacaoInicial" type="INTEGER" size="8" required="true"/>
+        <column name="PONTUACAO_FINAL" phpName="PontuacaoFinal" type="INTEGER" size="8" required="true"/>
+        <column name="PONTOS_TETO" phpName="PontosTeto" type="INTEGER" required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="false"/>
+        <foreign-key foreignTable="plano" name="FK_faixas_distribuicao_binaria_plano" onDelete="RESTRICT"
+                     onUpdate="CASCADE">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FK_faixas_distribuicao_binaria_plano">
+            <index-column name="PLANO_ID"/>
+        </index>
+    </table>
+    <table name="faq" phpName="Faq" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PERGUNTA" phpName="Pergunta" type="VARCHAR" size="255" required="true"/>
+        <column name="RESPOSTA" phpName="Resposta" type="LONGVARCHAR" required="false"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="false"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="200" required="false"/>
+        <column name="DATA_PERGUNTA" phpName="DataPergunta" type="TIMESTAMP" required="false"/>
+        <column name="DATA_RESPOSTA" phpName="DataResposta" type="TIMESTAMP" required="false"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" size="5" required="false"/>
+        <column name="MOSTRAR" phpName="Mostrar" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="ENVIADO" phpName="Enviado" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    </table>
+    <table name="faturamento_direto" phpName="FaturamentoDireto" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="NUMERO_PARCELAS" phpName="NumeroParcelas" type="SMALLINT" required="true"/>
+        <column name="OBSERVACAO_INTERNA" phpName="ObservacaoInterna" type="LONGVARCHAR" required="false"/>
+        <column name="VALOR_MINIMO_COMPRA" phpName="ValorMinimoCompra" type="FLOAT" required="true"/>
+        <column name="PADRAO" phpName="Padrao" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    </table>
+    <table name="faturamento_direto_cliente" phpName="FaturamentoDiretoCliente" idMethod="native">
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                required="true"/>
+        <column name="FATURAMENTO_DIRETO_ID" phpName="FaturamentoDiretoId" type="BIGINT" sqlType="bigint(20) unsigned"
+                primaryKey="true" required="true"/>
+        <foreign-key foreignTable="cliente" name="faturamento_direto_cliente_FK_1" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="faturamento_direto" name="faturamento_direto_cliente_FK_2" onDelete="CASCADE">
+            <reference local="FATURAMENTO_DIRETO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="faturamento_direto_cliente_FI_2">
+            <index-column name="FATURAMENTO_DIRETO_ID"/>
+        </index>
+    </table>
+    <table name="fluxo_caixa" phpName="FluxoCaixa" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="PARCELA" phpName="Parcela" type="INTEGER" required="true"/>
+        <column name="MAX_PARCELA" phpName="MaxParcela" type="INTEGER" required="true"/>
+        <column name="DIA_SEMANA" phpName="DiaSemana" type="INTEGER" required="true"/>
+        <column name="DATA_VENCIMENTO" phpName="DataVencimento" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="VALOR_PARCELA" phpName="ValorParcela" type="DOUBLE" required="true"/>
+        <column name="VALOR_CONTAS_PAGAR" phpName="ValorContasPagar" type="DOUBLE" required="true"/>
+        <column name="TAXA_CONTAS_PAGAR" phpName="TaxaContasPagar" type="DOUBLE" required="true"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <column name="FORMA_PAGAMENTO" phpName="FormaPagamento" type="VARCHAR" size="50" required="true"/>
+        <column name="CODIGO_OCORRENCIA" phpName="CodigoOcorrencia" type="VARCHAR" size="50" required="true"/>
+        <foreign-key foreignTable="pedido" name="FK_pedidoFlux" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FI_pedidoFlux">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA"/>
+        </behavior>
+    </table>
+    <table name="foto" phpName="Foto" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="LEGENDA" phpName="Legenda" type="VARCHAR" size="200" required="false"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="50" required="true"/>
+        <column name="COR" phpName="Cor" type="VARCHAR" size="100" required="true"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="produto" name="TFOTO_TPROD_FK_01">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TFOTO_TPROD_FK_IDX_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+        <validator column="IMAGEM">
+            <rule name="required" message="A imagem é obrigatória"/>
+        </validator>
+        <validator column="PRODUTO_ID">
+            <rule name="required" message="O produto é obrigatório"/>
+        </validator>
+    </table>
+    <table name="galeria" phpName="Galeria" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="false"/>
+        <validator column="NOME">
+            <rule name="required" message="O Nome é obrigatório"/>
+            <rule name="unique" message="Nome já cadastrado"/>
+        </validator>
+    </table>
+    <table name="galeria_arquivo" phpName="GaleriaArquivo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="GALERIA_ID" phpName="GaleriaId" type="INTEGER" required="false"/>
+        <column name="ARQUIVO_ID" phpName="ArquivoId" type="INTEGER" required="false"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" required="false" defaultValue="1"/>
+        <foreign-key foreignTable="arquivo" name="galeria_arquivo_FK_1" onDelete="CASCADE">
+            <reference local="ARQUIVO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="galeria" name="galeria_arquivo_FK_2" onDelete="CASCADE">
+            <reference local="GALERIA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="galeria_arquivo_FI_1">
+            <index-column name="ARQUIVO_ID"/>
+        </index>
+        <index name="galeria_arquivo_FI_2">
+            <index-column name="GALERIA_ID"/>
+        </index>
+        <behavior name="delegate">
+            <parameter name="to" value="arquivo"/>
+        </behavior>
+    </table>
+    <table name="google_shopping_categoria" phpName="GoogleShoppingCategoria" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="LONGVARCHAR" required="true"/>
+    </table>
+    <table name="google_shopping_item" phpName="GoogleShoppingItem" idMethod="native">
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" primaryKey="true" required="true"/>
+        <column name="ATIVO" phpName="Ativo" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+        <column name="ADULTO" phpName="Adulto" type="CHAR" sqlType="enum('SIM','NAO','NAOINFORMADO')" required="true"
+                defaultValue="NAO"/>
+        <column name="FAIXA_ETARIA" phpName="FaixaEtaria" type="CHAR"
+                sqlType="enum('RECEMNASCIDO','3TO12M','1TO5Y','CHILDREN','ADULT','NAOINFORMADO')" required="true"
+                defaultValue="NAOINFORMADO"/>
+        <column name="GENERO" phpName="Genero" type="CHAR"
+                sqlType="enum('MASCULINO','FEMININO','UNISEX','NAOINFORMADO')" required="true"
+                defaultValue="NAOINFORMADO"/>
+        <column name="CONDICAO" phpName="Condicao" type="CHAR" sqlType="enum('NOVO','USADO','RECONDICIONADO')"
+                required="true" defaultValue="NOVO"/>
+        <column name="GCATEGORY" phpName="Gcategory" type="INTEGER" required="true"/>
+        <column name="USAR_IMAGENS" phpName="UsarImagens" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+        <foreign-key foreignTable="produto" name="google_shopping_item_FK_1" onDelete="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="google_shopping_categoria" name="google_shopping_item_FK_2" onDelete="CASCADE">
+            <reference local="GCATEGORY" foreign="ID"/>
+        </foreign-key>
+        <index name="google_shopping_item_FI_2">
+            <index-column name="GCATEGORY"/>
+        </index>
+    </table>
+    <table name="grafico" phpName="Grafico" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="CHAR" sqlType="enum('VOLUME','VENDAS','ANALYTICS')" required="true"
+                defaultValue="ANALYTICS"/>
+        <column name="GRAFICO_STRING" phpName="GraficoString" type="LONGVARCHAR" required="false"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+        </behavior>
+    </table>
+    <table name="hotsite" phpName="Hotsite" idMethod="native">
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                required="true"/>
+        <column name="URL" phpName="Url" type="VARCHAR" size="200" required="true"/>
+        <column name="SLUG" phpName="Slug" type="VARCHAR" size="200" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="true"/>
+        <column name="FOTO" phpName="Foto" type="VARCHAR" size="50" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="200" required="true"/>
+        <foreign-key foreignTable="cliente" name="hotsite_FK1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="integracao" phpName="Integracao" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" size="10" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="CHAR" sqlType="enum('BUSCAPE')" required="true"/>
+        <validator column="PRODUTO_ID">
+            <rule name="required" message="Produto não informado"/>
+        </validator>
+        <validator column="TIPO">
+            <rule name="required" message="O Tipo é obrigatório"/>
+        </validator>
+        <foreign-key foreignTable="produto" name="TINTE_TPROD_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TINTE_TPROD_FK_IDX_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+    </table>
+    <table name="integracao_cliente" phpName="IntegracaoCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="CODIGO_INTEGRACAO" phpName="CodigoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="TIPO_INTEGRACAO" phpName="TipoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="CONCLUIDO_COM_SUCESSO" phpName="ConcluidoComSucesso" type="BOOLEAN" size="1" required="true"
+                defaultValue="false"/>
+        <column name="RESULT" phpName="Result" type="LONGVARCHAR" required="false"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" phpName="DataExclusao" type="TIMESTAMP" required="false"/>
+        <validator column="CLIENTE_ID">
+            <rule name="required" message="Cliente não informado"/>
+        </validator>
+        <foreign-key foreignTable="cliente" name="TINPRO_TCLIE_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TINPRO_TCLIE_FI_01">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+            <parameter name="delete_column" value="DATA_EXCLUSAO"/>
+        </behavior>
+    </table>
+    <table name="integracao_contas_pagar" phpName="IntegracaoContasPagar" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="FLUXO_ID" phpName="FluxoId" type="INTEGER" required="true"/>
+        <column name="CODIGO_INTEGRACAO" phpName="CodigoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="TIPO_INTEGRACAO" phpName="TipoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="CONCLUIDO_COM_SUCESSO" phpName="ConcluidoComSucesso" type="BOOLEAN" size="1" required="true"
+                defaultValue="false"/>
+        <column name="RESULT" phpName="Result" type="LONGVARCHAR" required="false"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" phpName="DataExclusao" type="TIMESTAMP" required="false"/>
+        <foreign-key foreignTable="fluxo_caixa" name="TINCONR12_TFLUX_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="FLUXO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TINCONR12_TFLUX_FI_01">
+            <index-column name="FLUXO_ID"/>
+        </index>
+    </table>
+    <table name="integracao_contas_receber" phpName="IntegracaoContasReceber" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="FLUXO_ID" phpName="FluxoId" type="INTEGER" required="true"/>
+        <column name="CODIGO_INTEGRACAO" phpName="CodigoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="TIPO_INTEGRACAO" phpName="TipoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="CONCLUIDO_COM_SUCESSO" phpName="ConcluidoComSucesso" type="BOOLEAN" size="1" required="true"
+                defaultValue="false"/>
+        <column name="RESULT" phpName="Result" type="LONGVARCHAR" required="false"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" phpName="DataExclusao" type="TIMESTAMP" required="false"/>
+        <foreign-key foreignTable="fluxo_caixa" name="TINCONR_TFLUX_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="FLUXO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TINCONR_TFLUX_FI_01">
+            <index-column name="FLUXO_ID"/>
+        </index>
+        <validator column="FLUXO_ID">
+            <rule name="required" message="Fluxo não informado"/>
+        </validator>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+            <parameter name="delete_column" value="DATA_EXCLUSAO"/>
+        </behavior>
+    </table>
+    <table name="integracao_pedido" phpName="IntegracaoPedido" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="CODIGO_INTEGRACAO" phpName="CodigoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="TIPO_INTEGRACAO" phpName="TipoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="CONCLUIDO_COM_SUCESSO" phpName="ConcluidoComSucesso" type="BOOLEAN" size="1" required="true"
+                defaultValue="false"/>
+        <column name="RESULT" phpName="Result" type="LONGVARCHAR" required="false"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" phpName="DataExclusao" type="TIMESTAMP" required="false"/>
+        <validator column="PEDIDO_ID">
+            <rule name="required" message="Pedido não informado"/>
+        </validator>
+        <foreign-key foreignTable="pedido" name="TINPRO_TPEDI_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TINPRO_TPEDI_FI_01">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+            <parameter name="delete_column" value="DATA_EXCLUSAO"/>
+        </behavior>
+    </table>
+    <table name="integracao_produto" phpName="IntegracaoProduto" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="true"/>
+        <column name="CODIGO_INTEGRACAO" phpName="CodigoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="TIPO_INTEGRACAO" phpName="TipoIntegracao" type="VARCHAR" size="50" required="false"/>
+        <column name="CONCLUIDO_COM_SUCESSO" phpName="ConcluidoComSucesso" type="BOOLEAN" size="1" required="true"
+                defaultValue="false"/>
+        <column name="RESULT" phpName="Result" type="LONGVARCHAR" required="false"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" phpName="DataExclusao" type="TIMESTAMP" required="false"/>
+        <validator column="PRODUTO_ID">
+            <rule name="required" message="Produto não informado"/>
+        </validator>
+        <foreign-key foreignTable="produto" name="TINPRO_TPROD_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TINPRO_TPROD_FI_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+    </table>
+    <table name="log_admin" phpName="LogAdmin" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="USUARIO_ID" phpName="UsuarioId" type="INTEGER" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="URL" phpName="Url" type="VARCHAR" size="250" required="true"/>
+        <column name="MODULO" phpName="Modulo" type="VARCHAR" size="250" required="true"/>
+        <column name="SQL" phpName="Sql" type="LONGVARCHAR" required="true"/>
+        <column name="updated_at" phpName="UpdatedAt" type="TIMESTAMP" required="false"/>
+        <foreign-key foreignTable="usuario" name="FK_LOG_USUARIO" onDelete="NONE" onUpdate="NONE">
+            <reference local="USUARIO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="IDX_LOG_USER">
+            <index-column name="USUARIO_ID"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA"/>
+        </behavior>
+    </table>
+     <table name="log_erros" phpName="LogErros" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="USUARIO_ID" phpName="UsuarioId" type="INTEGER" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="URL" phpName="Url" type="VARCHAR" size="250" required="true"/>
+        <column name="MODULO" phpName="Modulo" type="VARCHAR" size="250" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="true"/>
+        <column name="TARGET" phpName="Target" type="VARCHAR" size="250" required="true"/>
+        <foreign-key foreignTable="usuario" name="FK_LOG_USUARIO_ERROS" onDelete="NONE" onUpdate="NONE">
+            <reference local="USUARIO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="IDX_LOG_USER_ERRORS">
+            <index-column name="USUARIO_ID"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA"/>
+        </behavior>
+    </table>
+    <table name="marca" phpName="Marca" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="50" required="true"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="50" required="false"/>
+        <column name="MEDIDA" phpName="Medida" type="VARCHAR" size="50" required="false"/>
+        <column name="KEY" phpName="Key" type="VARCHAR" size="255" required="false"/>
+        <validator column="NOME">
+            <rule name="required" message="O Nome é obrigatório."/>
+        </validator>
+        <behavior name="sluggable">
+            <parameter name="slug_column" value="KEY"/>
+            <parameter name="slug_pattern" value="{NOME}"/>
+            <parameter name="replace_pattern" value="/[^\w]+/u"/>
+            <parameter name="replacement" value="-"/>
+            <parameter name="permanent" value="false"/>
+        </behavior>
+        <unique name="marca_slug">
+            <unique-column name="KEY"/>
+        </unique>
+    </table>
+    <table name="newsletter" phpName="Newsletter" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="200" required="true"/>
+        <column name="DATA_CADASTRO" phpName="DataCadastro" type="TIMESTAMP" required="true"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="true"/>
+        <validator column="EMAIL">
+            <rule name="required" message="O campo E-mail é obrigatório no formulário de newsletter."/>
+            <rule name="unique" message="O E-mail informado já está cadastrado."/>
+            <rule name="class" class="qpress.validator.EmailValidator" message="O E-mail informado é inválido."/>
+        </validator>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CADASTRO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+        </behavior>
+        <unique name="TNEWS_UK_01">
+            <unique-column name="EMAIL"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="noticia" phpName="Noticia" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="TITULO" phpName="Titulo" type="VARCHAR" size="100" required="true"/>
+        <column name="CONTEUDO" phpName="Conteudo" type="LONGVARCHAR" required="true"/>
+        <column name="IS_ATIVO" phpName="IsAtivo" type="TINYINT" required="true" defaultValue="1"/>
+        <column name="DATA_PUBLICACAO" phpName="DataPublicacao" type="DATE" required="true"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="100" required="true"/>
+    </table>
+    <table name="parametro" phpName="Parametro" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="NOME_AMIGAVEL" phpName="NomeAmigavel" type="VARCHAR" size="150" required="true"/>
+        <column name="ALIAS" phpName="Alias" type="VARCHAR" size="60" required="true"/>
+        <column name="VALOR" phpName="Valor" type="LONGVARCHAR" required="true"/>
+        <column name="IS_AUTOLOAD" phpName="IsAutoload" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="DICA" phpName="Dica" type="LONGVARCHAR" required="false"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" size="4" sqlType="int(4) unsigned" required="false"/>
+        <column name="PARAMETRO_GRUPO_ID" phpName="ParametroGrupoId" type="INTEGER" size="10" sqlType="int(10) unsigned"
+                required="true"/>
+        <column name="IS_CONFIGURACAO_SISTEMA" phpName="IsConfiguracaoSistema" type="SMALLINT" required="true"/>
+        <column name="TYPE" phpName="Type" type="CHAR"
+                sqlType="enum('TEXT','CHECKBOX','RADIOBOX','SELECT','TEXTAREA','EDITOR','BOOLEAN','MONEY','IMAGE')"
+                required="true"/>
+        <column name="TYPE_OPTIONS" phpName="TypeOptions" type="LONGVARCHAR" required="false"/>
+        <validator column="NOME_AMIGAVEL">
+            <rule name="required" message="O campo Nome Amigável é obrigatório."/>
+        </validator>
+        <validator column="ALIAS">
+            <rule name="required" message="O campo Alias é obrigatório"/>
+            <rule name="unique" message="Já existe um parâmetro cadastrado com esta Alias"/>
+        </validator>
+        <validator column="ORDEM">
+            <rule name="type" value="integer" message="O campo Ordem deve ser um número inteiro"/>
+        </validator>
+        <foreign-key foreignTable="parametro_grupo" name="fk_parametro_parametro_grupo1">
+            <reference local="PARAMETRO_GRUPO_ID" foreign="ID"/>
+        </foreign-key>
+        <unique name="ALIAS_UNIQUE">
+            <unique-column name="ALIAS"/>
+        </unique>
+        <index name="fk_parametro_parametro_grupo1">
+            <index-column name="PARAMETRO_GRUPO_ID"/>
+        </index>
+    </table>
+    <table name="parametro_grupo" phpName="ParametroGrupo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="150" required="true"/>
+        <column name="ALIAS" phpName="Alias" type="VARCHAR" size="60" required="true"/>
+        <column name="DICA" phpName="Dica" type="VARCHAR" size="255" required="false"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" size="4" sqlType="int(4) unsigned" required="false"/>
+        <column name="IS_MASTER" phpName="IsMaster" type="SMALLINT" required="true" defaultValue="1"/>
+        <validator column="NOME">
+            <rule name="required" message="O campo Nome é obrigatório."/>
+        </validator>
+        <validator column="ALIAS">
+            <rule name="required" message="O campo Alias é obrigatório"/>
+            <rule name="unique" message="Já existe um grupo cadastrado com esta Alias"/>
+        </validator>
+        <unique name="ALIAS_UNIQUE">
+            <unique-column name="ALIAS"/>
+        </unique>
+    </table>
+    <table name="participacao_resultado" phpName="ParticipacaoResultado" idMethod="native"
+           description="Tabela onde serão gravados as participações nos resultados">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="TIPO" sqlType="ENUM('DESTAQUE','DESEMPENHO', 'ACELERACAO')" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="TOTAL_PONTOS" phpName="TotalPontos" type="FLOAT" required="true"/>
+        <column name="TOTAL_PONTOS_PROCESSADOS" phpName="TotalPontosProcessados" type="FLOAT" required="true"/>
+        <column name="TOTAL_PONTOS_RESTANTES" phpName="TotalPontosRestantes" type="FLOAT" required="true"/>
+        <column name="STATUS" phpName="Status" type="CHAR"
+                sqlType="enum('AGUARDANDO_PREVIEW','PROCESSANDO_PREVIEW','PREVIEW','AGUARDANDO','PROCESSANDO','DISTRIBUIDO','CANCELADO')"
+                required="true" defaultValue="AGUARDANDO_PREVIEW"/>
+    </table>
+    <table name="participacao_resultado_cliente" phpName="ParticipacaoResultadoCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PARTICIPACAO_RESULTADO_ID" phpName="ParticipacaoResultadoId" type="INTEGER" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="TOTAL_PONTOS" phpName="TotalPontos" type="FLOAT" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="PERCENTUAL" phpName="Percentual" type="FLOAT" size="5" required="true"/>
+        <column name="GRADUACAO" phpName="Graduacao" type="VARCHAR" size="255" required="false"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="VARCHAR" size="255" required="false"/>
+        <foreign-key foreignTable="participacao_resultado" name="participacao_resultado_cliente_FK_1"
+                     onDelete="CASCADE">
+            <reference local="PARTICIPACAO_RESULTADO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="participacao_resultado_cliente_FK_2" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <unique name="participacao_resultado_cliente_U_1">
+            <unique-column name="PARTICIPACAO_RESULTADO_ID"/>
+            <unique-column name="CLIENTE_ID"/>
+        </unique>
+        <index name="participacao_resultado_cliente_FI_2">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="pedido" phpName="Pedido" idMethod="native">
+        <column name="ID" type="bigint" sqlType="BIGINT(20) UNSIGNED" primaryKey="true" autoIncrement="true"/>
+        <column name="CREATED_AT" type="timestamp"/>
+        <column name="UPDATED_AT" type="timestamp"/>
+        <column name="CLIENTE_ID" sqlType="BIGINT(20) UNSIGNED"/>
+        <column name="VALOR_ITENS" type="float" size="12" scale="2"/>
+        <column name="VALOR_PONTOS" type="double" />
+        <column name="VALOR_ENTREGA" type="float" size="12" scale="2"/>
+        <column name="VALOR_CUPOM_DESCONTO" type="float" size="12" scale="2" default="0" required="true"/>
+        <column name="NUMERO_NOTA_FISCAL" type="varchar" size="255"/>
+        <column name="CODIGO_RASTREIO" type="varchar" size="45"/>
+        <column name="LINK_RASTREIO" type="LONGVARCHAR"/>
+        <column name="FRETE" type="varchar" size="100"/>
+        <column name="TRANSPORTADORA_NOME" type="varchar" size="100"/>
+        <column name="FRETE_PRAZO" type="varchar" size="100"/>
+        <column name="STATUS" sqlType="ENUM('ANDAMENTO','FINALIZADO','CANCELADO')" default="ANDAMENTO" required="true"/>
+        <column name="ENDERECO" type="object" required="true"/>
+        <column name="CUPOM" type="object" required="false"/>
+        <column name="DESCONTO_PONTOS" type="object" required="false"/>
+        <column name="DATA_AVISO_ABANDONO" type="timestamp"/>
+        <column name="CIDADE_ID" type="INTEGER" required="false"/>
+        <column name="INTEGROU_CLEAR_SALE" type="BOOLEAN" default="0" required="false"
+                description="Indica se os dados do pedido ja foram enviados a Clear Sale"/>
+        <column name="SITUACAO_CLEAR_SALE" type="VARCHAR" size="20" default="NULL" required="false"
+                description="Status do pedido na Clear Sale [APROVADO, REPROVADO]"/>
+        <column name="HOTSITE_CLIENTE_ID" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+        <!-- quantidade de pontos que este pedido deve distribuir a rede binária -->
+        <column name="PONTOS_REDE_BINARIA" type="float" default="0" required="true"/>
+        <!-- Pedido vinculado a taxa de cadastro. -->
+        <column name="TAXA_CADASTRO" type="BOOLEAN" default="0" required="true"/>
+        <column name="CLASS_KEY" type="integer" inheritance="single" default="2">
+            <inheritance key="1" class="Pedido"/>
+            <inheritance key="2" class="Carrinho" extends="Pedido"/>
+        </column>
+        <column name="COMPRA_CLIENTE_PREFERENCIAL" phpName="CompraClientePreferencial" type="BOOLEAN" required="true" defaultValue="false"/>
+        <column name="CENTRO_DISTRIBUICAO_ID" phpName="CentroDistribuicaoId" type="INTEGER" size="11" required="false"/>
+        <column name="UPDATER_USER_ID" type="INTEGER" size="11" required="false"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="CREATED_AT"/>
+            <parameter name="update_column" value="UPDATED_AT"/>
+        </behavior>
+        <foreign-key foreignTable="cliente" name="pedido_FK_1" onDelete="RESTRICT">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cidade" name="pedido_FK_2" onDelete="SET NULL">
+            <reference local="CIDADE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="centro_distribuicao" name="qp1_pedido_qp1_centro_distribuicao_ID_fk" onDelete="RESTRICT">
+            <reference local="CENTRO_DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="pedido_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="pedido_FI_2">
+            <index-column name="CIDADE_ID"/>
+        </index>
+        <index name="qp1_pedido_qp1_centro_distribuicao_ID_fk">
+            <index-column name="CENTRO_DISTRIBUICAO_ID"/>
+        </index>
+    </table>
+    <table name="pedido_forma_pagamento" phpName="PedidoFormaPagamento" idMethod="native">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="PEDIDO_ID" sqlType="BIGINT(20) UNSIGNED" required="true"/>
+        <column name="FORMA_PAGAMENTO" type="VARCHAR" size="50" required="true"/>
+        <column name="BANDEIRA" type="VARCHAR" size="50" required="false"/>
+        <column name="VALOR_DESCONTO" type="FLOAT" size="10" scale="2" required="false"/>
+        <column name="STATUS" sqlType="ENUM('PENDENTE','APROVADO','NEGADO','CANCELADO')" required="true"/>
+        <column name="NUMERO_PARCELAS" type="INTEGER" required="false"/>
+        <column name="TRANSACAO_ID" type="VARCHAR" size="255" required="false"/>
+        <column name="COD_AUTORIZACAO" phpName="CodAutorizacao" type="VARCHAR" size="255" required="false"/>
+        <column name="URL_ACESSO" type="VARCHAR" size="255" required="false"/>
+        <column name="FATURAMENTO_DIRETO_OPCAO" type="VARCHAR" size="255" required="false"/>
+        <column name="DATA_VENCIMENTO" type="DATE" required="false"/>
+        <column name="CREATED_AT" type="timestamp"/>
+        <column name="UPDATED_AT" type="timestamp"/>
+        <column name="OBSERVACAO" type="LONGVARCHAR" required="false"/>
+        <column name="VALOR_PAGAMENTO" type="FLOAT" size="12" scale="2" required="false"/>
+        <column name="DATA_APROVACAO" type="timestamp"/>
+        <column name="CIELO_PAYMENT_ID" phpName="CieloPaymentId" type="VARCHAR" size="255" required="false"/>   
+        <column name="COMPROVANTE" phpName="Comprovante" type="VARCHAR" size="100" required="false"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="CREATED_AT"/>
+            <parameter name="update_column" value="UPDATED_AT"/>
+        </behavior>
+        <foreign-key foreignTable="pedido" name="pedido_forma_pagamento_FK_1" onDelete="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="pedido_forma_pagamento_FI_1">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+    </table>
+    <table name="pedido_item" phpName="PedidoItem" idMethod="native">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PEDIDO_ID" sqlType="BIGINT(20) UNSIGNED" required="true"/>
+        <column name="PRODUTO_VARIACAO_ID" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+        <column name="QUANTIDADE" type="INTEGER" required="true" defaultValue="1"/>
+        <column name="PESO" type="INTEGER" required="true"/>
+        <column name="VALOR_UNITARIO" type="FLOAT" required="true" size="10" scale="2"/>
+        <column name="VALOR_PONTOS_UNITARIO" type="double" />
+        <column name="VALOR_CUSTO" type="FLOAT" size="12" scale="2" default="0.00" required="true"/>
+        <column name="OBSERVACOES" type="LONGVARCHAR" required="false"/>
+        <column name="ESTATISTICA_PRODUTO_VARIACAO" type="TINYINT" default="0"
+                description="Marca o item se sua quantidade estiver sido somada nas estatísticas de venda do produto variação"/>
+        <!-- Quando o item for adicionado ao pedido automaticamente por ser um produto inicial de um kit de adesão, esta coluna vai conter o id do plano desse kit de adesao -->
+        <column name="PLANO_ID" type="INTEGER" required="false"/>
+        <foreign-key foreignTable="pedido" name="pedido_item_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto_variacao" name="pedido_item_FK_2" onDelete="RESTRICT" onUpdate="RESTRICT">
+            <reference local="PRODUTO_VARIACAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano" name="pedido_item_FK_3" onDelete="RESTRICT">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="pedido_item_FI_1">
+            <index-column name="PEDIDO_ID"/>
+        </index>
+        <index name="pedido_item_FI_2">
+            <index-column name="PRODUTO_VARIACAO_ID"/>
+        </index>
+        <index name="pedido_item_FI_3">
+            <index-column name="PLANO_ID"/>
+        </index>
+    </table>
+    <table name="pedido_nota_fiscal_bling" phpName="PedidoNotaFiscalBling" idMethod="native">
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                required="true"/>
+        <column name="SERIE" phpName="Serie" type="VARCHAR" size="255" required="true"/>
+        <column name="NUMERO" phpName="Numero" type="VARCHAR" size="255" required="true"/>
+        <column name="DATA_EMISSAO" phpName="DataEmissao" type="TIMESTAMP" required="true"/>
+        <column name="SITUACAO" phpName="Situacao" type="VARCHAR" size="255" required="true"/>
+        <column name="CHAVE_ACESSO" phpName="ChaveAcesso" type="VARCHAR" size="255" required="true"/>
+        <column name="SERVICO" phpName="Servico" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="VALOR_NOTA" phpName="ValorNota" type="VARCHAR" size="255" required="true"/>
+        <column name="DATA_CRIACAO" phpName="DataCriacao" type="TIMESTAMP" required="true"
+                defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" phpName="DataAtualizacao" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" phpName="DataExclusao" type="TIMESTAMP" required="false"/>
+        <column name="RESULT" phpName="Result" type="LONGVARCHAR" required="false"/>
+        <foreign-key foreignTable="pedido" name="pedido_nota_fiscal_bling_FK_1" onDelete="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="pedido_retirada_loja" phpName="PedidoRetiradaLoja" idMethod="native">
+        <column name="PEDIDO_ID" phpName="PedidoId" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                required="true"/>
+        <column name="LOJA_ID" phpName="LojaId" type="BIGINT" sqlType="bigint(20) unsigned" required="false"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="KEY" phpName="Key" type="VARCHAR" size="255" required="true"/>
+        <column name="ENDERECO" phpName="Endereco" type="VARCHAR" size="255" required="true"/>
+        <column name="TELEFONE" phpName="Telefone" type="VARCHAR" size="20" required="true"/>
+        <column name="VALOR" phpName="Valor" type="FLOAT" required="true"/>
+        <column name="PRAZO" phpName="Prazo" type="SMALLINT" required="true"/>
+        <foreign-key foreignTable="pedido" name="pedido_retirada_loja_FK_1" onDelete="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="retirada_loja" name="pedido_retirada_loja_FK_2" onDelete="SET NULL">
+            <reference local="LOJA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="pedido_retirada_loja_FI_2">
+            <index-column name="LOJA_ID"/>
+        </index>
+    </table>
+    <table name="pedido_status" phpName="PedidoStatus" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="MENSAGEM" phpName="Mensagem" type="LONGVARCHAR" required="false"/>
+        <column name="LABEL_PRE_CONFIRMACAO" phpName="LabelPreConfirmacao" type="VARCHAR" size="255" required="false"/>
+        <column name="LABEL_CONFIRMACAO" phpName="LabelConfirmacao" type="VARCHAR" size="255" required="false"/>
+        <column name="LABEL_POS_CONFIRMACAO" phpName="LabelPosConfirmacao" type="VARCHAR" size="255" required="false"/>
+        <column name="STATUS" phpName="Status" type="CHAR" sqlType="enum('ANDAMENTO','FINALIZADO','CANCELADO')"
+                required="true"/>
+        <column name="METODO" phpName="Metodo" type="CHAR" sqlType="enum('OBRIGATORIO','ENTREGA','RETIRADA')"
+                required="false"/>
+        <column name="ORDEM" phpName="Ordem" type="TINYINT" required="false"/>
+    </table>
+    <table name="pedido_status_historico" phpName="PedidoStatusHistorico">
+        <column name="PEDIDO_ID" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true"/>
+        <column name="PEDIDO_STATUS_ID" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true"/>
+        <column name="CREATED_AT" type="timestamp"/>
+        <column name="UPDATED_AT" type="timestamp"/>
+        <column name="IS_CONCLUIDO" type="TINYINT" default="0"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="CREATED_AT"/>
+            <parameter name="update_column" value="UPDATED_AT"/>
+        </behavior>
+        <foreign-key foreignTable="pedido" name="pedido_status_historico_FK_1" onDelete="CASCADE">
+            <reference local="PEDIDO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="pedido_status" name="pedido_status_historico_FK_2" onDelete="RESTRICT">
+            <reference local="PEDIDO_STATUS_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="pedido_status_historico_FI_2">
+            <index-column name="PEDIDO_STATUS_ID"/>
+        </index>
+    </table>
+    <table name="permissao_grupo" phpName="PermissaoGrupo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="50" required="true"/>
+    </table>
+    <table name="permissao_grupo_modulo" phpName="PermissaoGrupoModulo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="MODULO_ID" phpName="ModuloId" type="INTEGER" required="true"/>
+        <column name="GRUPO_ID" phpName="GrupoId" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="permissao_modulo" name="permissao_grupo_modulo_FK_1" onDelete="CASCADE">
+            <reference local="MODULO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="permissao_grupo" name="permissao_grupo_modulo_FK_2" onDelete="CASCADE">
+            <reference local="GRUPO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="permissao_grupo_modulo_FI_1">
+            <index-column name="MODULO_ID"/>
+        </index>
+        <index name="permissao_grupo_modulo_FI_2">
+            <index-column name="GRUPO_ID"/>
+        </index>
+    </table>
+    <table name="permissao_grupo_usuario" phpName="PermissaoGrupoUsuario" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="USUARIO_ID" phpName="UsuarioId" type="INTEGER" required="true"/>
+        <column name="GRUPO_ID" phpName="GrupoId" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="usuario" name="permissao_grupo_usuario_FK_1" onDelete="CASCADE">
+            <reference local="USUARIO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="permissao_grupo" name="permissao_grupo_usuario_FK_2" onDelete="CASCADE">
+            <reference local="GRUPO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="permissao_grupo_usuario_FI_1">
+            <index-column name="USUARIO_ID"/>
+        </index>
+        <index name="permissao_grupo_usuario_FI_2">
+            <index-column name="GRUPO_ID"/>
+        </index>
+    </table>
+    <table name="permissao_modulo" phpName="PermissaoModulo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="50" required="true"/>
+        <column name="URL" phpName="Url" type="VARCHAR" size="50" required="true"/>
+        <column name="ICON" phpName="Icon" type="VARCHAR" size="50" required="false"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" required="false" defaultValue="1"/>
+        <column name="MOSTRAR" phpName="Mostrar" type="BOOLEAN" size="1" required="false" defaultValue="false"/>
+        <column name="tree_left" phpName="TreeLeft" type="INTEGER" required="false"/>
+        <column name="tree_right" phpName="TreeRight" type="INTEGER" required="false"/>
+        <column name="tree_level" phpName="TreeLevel" type="INTEGER" required="false"/>
+        <column name="slug" phpName="Slug" type="VARCHAR" size="255" required="false"/>
+        <behavior name="nested_set"/>
+        <behavior name="sluggable">
+            <parameter name="slug_pattern" value="{NOME}"/>
+            <parameter name="replace_pattern" value="/[^\w]+/u"/>
+            <parameter name="replacement" value="-"/>
+            <parameter name="permanent" value="false"/>
+        </behavior>
+        <unique name="permissao_modulo_slug">
+            <unique-column name="slug"/>
+        </unique>
+    </table>
+     <table name="pontos_acumulados" phpName="PontosAcumulados" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="PONTUACAO_ACUMULADA_TOTAL" phpName="PontuacaoAcumuladaTotal" type="BIGINT" sqlType="bigint(20)" required="true"/>
+        <column name="PONTUACAO_UTILIZADA_TOTAL" phpName="PontuacaoUtilizadaTotal" type="BIGINT" sqlType="bigint(20)" required="true"/>
+        <column name="PONTUACAO_RETIRADA_ADMIN" phpName="PontuacaoRetiradaAdmin" type="BIGINT" sqlType="bigint(20)" required="true"/>
+        <column name="UPDATED_AT" phpName="UpdatedAt" type="TIMESTAMP"/>
+        <foreign-key foreignTable="cliente" name="pontos_acumulados_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="pontos_acumulados_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="plano" phpName="Plano" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="false"/>
+        <column name="PARTICIPA_EXPANSAO" phpName="ParticipaExpansao" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PARTICIPA_PRODUTIVIDADE" phpName="ParticipaProdutividade" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PARTICIPA_FIDELIDADE" phpName="ParticipaFidelidade" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PARTICIPA_PARTICIPACAO_LUCROS" phpName="ParticipaParticipacaoLucros" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PARTICIPA_PLANO_CARREIRA" phpName="ParticipaPlanoCarreira" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="GRADUACAO_MAXIMA" phpName="GraduacaoMaxima" type="INTEGER" size="10" />
+        <column name="PARTICIPA_LIDERANCA" phpName="ParticipaLideranca" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PARTICIPA_DESEMPENHO" phpName="ParticipaDesempenho" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PARTICIPA_DESTAQUE" phpName="ParticipaDestaque" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PARTICIPA_INCENTIVO" phpName="ParticipaIncentivo" type="BOOLEAN" required="true" defaultValue="true"/>
+        <column name="PLANO_CLIENTE_PREFERENCIAL" phpName="PlanoClientePreferencial" type="BOOLEAN" required="true" defaultValue="false"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="false"/>
+        <column name="PERC_DESCONTO_HOTSITE" phpName="PercDescontoHotsite" type="TINYINT" size="3" required="true" />
+        <column name="NIVEL" phpName="Nivel" type="TINYINT" size="1" required="true" defaultValue="0"/>
+        <column name="PARTICIPA_CLIENTE_PREFERENCIAL" phpName="ParticipaClientePreferencial" type="BOOLEAN" required="true" defaultValue="true"/>
+        <foreign-key foreignTable="produto" name="plano_FK_1" onDelete="RESTRICT">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano_carreira" name="plano_FK_2" onUpdate="SETNULL" onDelete="SETNULL">
+            <reference local="GRADUACAO_MAXIMA" foreign="ID"/>
+        </foreign-key>
+        <index name="plano_FI_1">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+    </table>
+
+    <table name="plano_percentual_bonus" phpName="PlanoPercentualBonus" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="11" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PLANO_ID" phpName="PlanoId" type="INTEGER" size="11" required="true"/>
+        <column name="TIPO" phpName="Tipo" sqlType="ENUM('EXPANSAO','RECOMPRA')" required="true"/>
+        <column name="GERACAO" phpName="Geracao" type="INTEGER" required="true" />
+        <column name="PERCENTUAL" phpName="Percentual" type="FLOAT" required="true"/>
+
+        <foreign-key foreignTable="plano" name="qp1_plano_percentual_bonus_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+
+    <table name="plano_desconto_fidelidade" phpName="PlanoDescontoFidelidade" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="11" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PLANO_ID" phpName="PlanoId" type="INTEGER" size="11" required="true"/>
+        <column name="MES_INICIAL" phpName="MesInicial" type="TINYINT" size="3" required="true"/>
+        <column name="MES_FINAL" phpName="MesFinal" type="TINYINT" size="3"/>
+        <column name="PERCENTUAL" phpName="Percentual" type="INTEGER" required="true"/>
+
+        <foreign-key foreignTable="plano" name="qp1_plano_desconto_fidelidade_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+
+    <table name="plano_desconto_fidelidade_graduacao" phpName="PlanoDescontoFidelidadeGraduacao" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="11" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PLANO_ID" phpName="PlanoId" type="INTEGER" size="11" required="true"/>
+        <column name="PLANO_CARREIRA_ID" phpName="PlanoCarreiraId" type="INTEGER" size="11" required="true"/>
+        <column name="PERCENTUAL" phpName="Percentual" type="INTEGER" required="true"/>
+
+        <foreign-key foreignTable="plano" name="qp1_plano_desconto_fidelidade_graduacao_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+
+        <foreign-key foreignTable="plano_carreira" name="qp1_plano_desconto_fidelidade_graduacao_FK_2" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PLANO_CARREIRA_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="plano_carreira" phpName="PlanoCarreira" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="GRADUACAO" phpName="Graduacao" type="VARCHAR" size="100" required="true"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="255" required="false"/>
+        <column name="BANNER_GRADUACAO" phpName="BannerGraduacao" type="VARCHAR" size="255" required="false"/>
+        <column name="NIVEL" phpName="Nivel" type="INTEGER" required="true"/>
+        <column name="PONTOS" phpName="Pontos" type="INTEGER" required="true"/>
+        <column name="APROVEITAMENTO_LINHA" phpName="AproveitamentoLinha" type="INTEGER" required="true"/>
+        <column name="REQU_QUANTIDADE" phpName="RequQuantidade" type="INTEGER" required="true"/>
+        <column name="REQU_GRADUACAO" phpName="RequGraduacao" type="INTEGER" required="true"/>
+        <column name="REQU_DIRETO" phpName="RequDireto" type="BOOLEAN" required="true"/>
+        <column name="PERC_BONUS_LIDERANCA" phpName="PercBonusLideranca" type="TINYINT" size="3"/>
+        <column name="PERC_BONUS_DESEMPENHO" phpName="PercBonusDesempenho" type="TINYINT" size="3"/>
+        <column name="QUANTIDADE_GEN_RECEBE_RECOMPRA" phpName="QuantidadeGenRecebeRecompra" type="INTEGER"
+                required="true" defaultValue="0"/>
+        <column name="VALOR_PREMIO" phpName="ValorPremio" type="FLOAT" required="true"/>
+        <column name="VALOR_BONUS_ACELERACAO_PRIMEIRO_PERIODO" phpName="ValorBonusAceleracaoPrimeiroPeriodo" type="FLOAT"/>
+        <column name="VALOR_BONUS_ACELERACAO_SEGUNDO_PERIODO" phpName="ValorBonusAceleracaoSegundoPeriodo" type="FLOAT"/>
+        <column name="VALOR_PREMIO_BONUS_PRODUTOS" phpName="ValorPremioBonusProdutos" type="FLOAT"/>
+    </table>
+    <table name="plano_carreira_cliente" phpName="PlanoCarreiraCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PLANO_CARREIRA_ID" phpName="PlanoCarreiraId" type="INTEGER" size="10" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="DATA_DISTRIBUICAO" phpName="DataDistribuicao" type="TIMESTAMP" required="true"/>
+        <column name="PONTOS" phpName="Pontos" type="DOUBLE" required="true"/>
+        <foreign-key foreignTable="plano_carreira" name="plano_carreira_cliente_FK_1" onDelete="RESTRICT">
+            <reference local="PLANO_CARREIRA_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" name="plano_carreira_cliente_FK_2" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <unique name="plano_carreira_cliente_U_1">
+            <unique-column name="PLANO_CARREIRA_ID"/>
+            <unique-column name="CLIENTE_ID"/>
+        </unique>
+        <index name="plano_carreira_cliente_FI_2">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="plano_carreira_historico" phpName="PlanoCarreiraHistorico" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="11" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="PLANO_CARREIRA_ID" phpName="PlanoCarreiraId" type="INTEGER" size="10" required="true"/>
+        <column name="MES" phpName="Mes" type="VARCHAR" size="2" required="true"/>
+        <column name="ANO" phpName="Ano" type="VARCHAR" size="4" required="true"/>
+        <column name="TOTAL_PONTOS_PESSOAIS" phpName="TotalPontosPessoais" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="TOTAL_PONTOS_ADESAO" phpName="TotalPontosAdesao" type="DOUBLE" required="true" defaultValue="0"/>
+        <column name="TOTAL_PONTOS_RECOMPRA" phpName="TotalPontosRecompra" type="DOUBLE" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="cliente" name="qp1_plano_carreira_historico_qp1_cliente_ID_fk" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano_carreira" name="qp1_plano_carreira_historico_qp1_plano_carreira_ID_fk" onDelete="CASCADE">
+            <reference local="PLANO_CARREIRA_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="qp1_plano_carreira_historico_qp1_cliente_ID_fk">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="qp1_plano_carreira_historico_qp1_plano_carreira_ID_fk">
+            <index-column name="PLANO_CARREIRA_ID"/>
+        </index>
+    </table>
+    <table name="pre_cadastro_cliente" phpName="PreCadastroCliente" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="VARCHAR" size="50" required="true"/>
+        <column name="LADO_INSERCAO" phpName="LadoInsercao" type="VARCHAR" size="100" required="true"/>
+        <column name="DATA_INICIO" phpName="DataInicio" type="TIMESTAMP" required="true"/>
+        <column name="DATA_FINALIZACAO" phpName="DataFinalizacao" type="TIMESTAMP" required="true"/>
+        <column name="CONCLUIDO" phpName="Concluido" type="INTEGER" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="cliente" name="pre_cadastro_cliente_FK_1" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <unique name="pre_cadastro_cliente_U_1">
+            <unique-column name="CLIENTE_ID"/>
+        </unique>
+    </table>
+     <table name="premios_acumulados" phpName="PremiosAcumulados" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PONTOS_RESGATE" phpName="PontosResgate" type="BIGINT" sqlType="bigint(20)" required="true"/>
+        <column name="PRIMEIRO_PREMIO" phpName="PrimeiroPremio" type="VARCHAR" size="255" required="true"/>
+        <column name="SEGUNDO_PREMIO" phpName="SegundoPremio" type="VARCHAR" size="255" required="true"/>
+        <column name="PERCENTUAL_VME" phpName="PercentualVme" type="FLOAT" required="true" default="0"/>
+        <column name="GRADUACAO_MINIMA_ID" phpName="GraduacaoMinimaId" type="INTEGER" size="10" required="true"/>
+        <column name="UPDATED_AT" phpName="UpdatedAt" type="TIMESTAMP" required="true"/>
+        <column name="USER_ID" phpName="UserId" type="BIGINT" sqlType="bigint(20)" required="true"/>
+    </table>
+    <table name="produto" phpName="Produto">
+
+        <column name="ID" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" type="VARCHAR" size="200" required="true" primaryString="true"/>
+        <column name="KEY" type="VARCHAR" size="255" required="true"/>
+        <column name="MARCA_ID" type="INTEGER" required="false"/>
+        <column name="DESCRICAO" type="LONGVARCHAR" required="true"/>
+        <column name="CARACTERISTICAS" type="LONGVARCHAR" required="false"/>
+        <column name="DESTAQUE" type="BOOLEAN" required="true" default="false"/>
+        <column name="PARTICIPACAO_RESULTADOS" type="BOOLEAN" required="true" default="true"/>
+
+        <column name="ALTURA" type="INTEGER" required="false"/>
+        <column name="LARGURA" type="INTEGER" required="false"/>
+        <column name="COMPRIMENTO" type="INTEGER" required="false"/>
+        <column name="PESO" type="INTEGER" required="true"/>
+
+        <column name="DATA_CRIACAO" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="DATA_ATUALIZACAO" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" type="TIMESTAMP" required="false"/>
+
+        <column name="NOTA_AVALIACAO" type="FLOAT" required="true" default="0"/>
+        <column name="QUANTIDADE_AVALIACAO" type="INTEGER" required="true" default="0"/>
+
+        <column name="TAGS" type="ARRAY" required="false"/>
+
+        <column name="VALOR_PONTOS" phpName="ValorPontos" type="INTEGER" size="11" required="false" defaultValue="0"/>
+        <column name="VALOR_SERVICO" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="VALOR_CUSTO" type="FLOAT" size="12" scale="2" default="0.00" required="true"/>
+
+        <!-- Quando o produto for um kit deve estar associado a um plano -->
+        <column name="PLANO_ID" type="INTEGER" required="false"/>
+
+        <!-- Indica que o produto é referente a cobranca de uma mensalidade -->
+        <column name="MENSALIDADE" type="BOOLEAN" default="0" required="true"/>
+
+        <column name="TAXA_CADASTRO" type="BOOLEAN" default="0" required="true"/>
+
+        <!-- Indica que o produto é referente a cobranca de uma mensalidade -->
+        <column name="TIPO_CLIENTE_VISUALIZACAO" type="VARCHAR" size="10" required="true" defaultValue="AMBOS"/>
+
+        <column name="TIPO_PRODUTO" type="VARCHAR" size="10" required="true" defaultValue="SIMPLES"/>
+
+        <column name="NOME_INTEGRACAO" type="VARCHAR" size="120" required="false"
+                description="Nome que vai na integração"/>
+
+        <column name="APLICA_DESCONTO_PLANO" type="BOOLEAN" required="true" default="true"/>
+        <column name="PARCELAMENTO_INDIVIDUAL" type="INTEGER" required="false" />
+        <column name="FRETE_GRATIS" type="BOOLEAN" required="true" default="false" />
+        <column name="ORDEM" type="INTEGER" required="false"/>
+
+        <!-- Indica que o produto é referente a um kit especial onde o cliente seleciona quis os produtos relacionados ele deseja comprar -->
+        <column name="IS_PLANO_SELECAO_ITENS_BY_CLIENTES" phpName="IsPlanoSelecaoItensByClientes" type="BOOLEAN" required="true" default="false" />
+        <validator column="NOME">
+            <rule name="required" message="O Nome é obrigatório"/>
+        </validator>
+        <validator column="DESCRICAO">
+            <rule name="required" message="A Descrição é obrigatória"/>
+        </validator>
+        <foreign-key foreignTable="marca" onDelete="SET NULL" onUpdate="SET NULL">
+            <reference local="MARCA_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="plano" onDelete="RESTRICT">
+            <reference local="PLANO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TPROD_TMARC_FK_IDX_01">
+            <index-column name="MARCA_ID"/>
+        </index>
+        <index name="TPROD_TPLAN_FK_IDX_01">
+            <index-column name="PLANO_ID"/>
+        </index>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+        </behavior>
+        <behavior name="sluggable">
+            <parameter name="slug_column" value="KEY"/>
+            <parameter name="slug_pattern" value="{NOME}"/>
+            <parameter name="replace_pattern" value="/[^\w]+/u"/>
+            <parameter name="replacement" value="-"/>
+            <parameter name="permanent" value="false"/>
+        </behavior>
+        <behavior name="soft_delete">
+            <parameter name="deleted_column" value="DATA_EXCLUSAO"/>
+        </behavior>
+    </table>
+    <table name="produto_atributo" phpName="ProdutoAtributo">
+        <column name="ID" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_ID" type="INTEGER" required="true"/>
+        <column name="ORDEM" type="INTEGER" required="true"/>
+        <column name="TYPE" type="SMALLINT" required="true" default="0"/>
+        <column name="DESCRICAO" type="VARCHAR" size="200" required="true"/>
+        <column name="DATA_EXCLUSAO" type="TIMESTAMP" required="false"/>
+        <behavior name="soft_delete">
+            <parameter name="deleted_column" value="DATA_EXCLUSAO"/>
+        </behavior>
+        <validator column="ORDEM">
+            <rule name="required" message="O campo ordem é obrigatório"/>
+            <rule name="type" value="integer" message="O campo ordem deve ser um número inteiro e positivo"/>
+            <rule name="minValue" value="0" message="O campo ordem deve ser um número maior que zero (0)"/>
+        </validator>
+        <validator column="DESCRICAO">
+            <rule name="required" message="O campo descrição é obrigatório"/>
+        </validator>
+        <foreign-key foreignTable="produto" name="TPROD_TPRAT_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TPROD_TPRAT_FI_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+    </table>
+    <table name="produto_categoria" phpName="ProdutoCategoria">
+
+        <column name="CATEGORIA_ID" type="INTEGER" primaryKey="true" required="true"/>
+        <column name="PRODUTO_ID" type="INTEGER" primaryKey="true" required="true"/>
+
+        <foreign-key foreignTable="categoria" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CATEGORIA_ID" foreign="ID"/>
+        </foreign-key>
+
+        <foreign-key foreignTable="produto" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+
+    </table>
+    <table name="produto_comentario" phpName="ProdutoComentario" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="200" required="true"/>
+        <column name="TITULO" phpName="Titulo" type="VARCHAR" size="255" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="true"/>
+        <column name="IP" phpName="Ip" type="VARCHAR" size="100" required="false"/>
+        <column name="STATUS" phpName="Status" type="CHAR" sqlType="enum('APROVADO','REPROVADO','PENDENTE')"
+                required="true" defaultValue="PENDENTE"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="false"/>
+        <column name="NOTA" phpName="Nota" type="DOUBLE" required="false"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="cliente" name="TPRCO_TCLIE_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto" name="TPRCO_TPROD_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TPRCO_TCLIE_FK_IDX_01">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="TPRCO_TPROD_FK_IDX_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+        <validator column="NOME">
+            <rule name="required" message="O campo Nome é obrigatório."/>
+        </validator>
+        <validator column="EMAIL">
+            <rule name="required" message="O campo E-mail é obrigatório."/>
+        </validator>
+        <validator column="TITULO">
+            <rule name="required" message="O campo Digite sua opinião é obrigatório."/>
+        </validator>
+        <validator column="DESCRICAO">
+            <rule name="required" message="O campo Digite sua opinião é obrigatório."/>
+        </validator>
+        <validator column="NOTA">
+            <rule name="required" message="O campo Avaliação é obrigatório."/>
+            <rule
+                    name="type"
+                    value="integer"
+                    message="O campo Avaliação deve ser um número inteiro."/>
+        </validator>
+        <validator column="STATUS">
+            <rule name="required" message="O campo Status é obrigatório."/>
+        </validator>
+        <validator column="PRODUTO_ID">
+            <rule name="required" message="Produto não informado"/>
+        </validator>
+    </table>
+    <table name="produto_composto" phpName="ProdutoComposto" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="true"/>
+        <column name="PRODUTO_COMPOSTO_ID" phpName="ProdutoCompostoId" type="INTEGER" required="true"/>
+        <column name="PRODUTO_COMPOSTO_VARIACAO_ID" phpName="ProdutoCompostoVariacaoId" type="BIGINT"
+                sqlType="bigint(20) unsigned" required="true"/>
+        <column name="ESTOQUE_QUANTIDADE" phpName="EstoqueQuantidade" type="INTEGER" required="false" defaultValue="0"/>
+        <column name="VALOR_INTEGRACAO" type="FLOAT" size="12" scale="2" required="false"/>
+        <validator column="PRODUTO_ID">
+            <rule name="required" message="Produto não informado"/>
+        </validator>
+        <validator column="PRODUTO_COMPOSTO_ID">
+            <rule name="required" message="Produto Composto não informado"/>
+        </validator>
+        <validator column="PRODUTO_COMPOSTO_VARIACAO_ID">
+            <rule name="required" message="Variação do Produto Composto não informado"/>
+        </validator>
+        <validator column="ESTOQUE_QUANTIDADE">
+            <rule name="required" message="Quantidade informada não pode ser zero ou em branco"/>
+        </validator>
+        <foreign-key foreignTable="produto_variacao" name="TPRCOMP_TPRODV_FK_03" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_COMPOSTO_VARIACAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto" name="TPRCOMP_TPROD_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto" name="TPRCOMP_TPROD_FK_02" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_COMPOSTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TPRCOMP_TPROD_FI_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+        <index name="TPRCOMP_TPROD_FI_02">
+            <index-column name="PRODUTO_COMPOSTO_ID"/>
+        </index>
+        <index name="TPRCOMP_TPRODV_FI_03">
+            <index-column name="PRODUTO_COMPOSTO_VARIACAO_ID"/>
+        </index>
+    </table>
+    <table name="produto_cor" phpName="ProdutoCor" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="100" required="true"/>
+        <column name="RGB" phpName="Rgb" type="VARCHAR" size="7" required="false"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="50" required="false"/>
+        <column name="CODIGO" phpName="Codigo" type="VARCHAR" size="32" required="false"/>
+    </table>
+    <table name="produto_interesse" phpName="ProdutoInteresse" idMethod="native">
+        <column name="ID" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_VARIACAO_ID" sqlType="BIGINT(20) UNSIGNED" required="true"/>
+        <column name="CLIENTE_NOME" type="VARCHAR" required="true"/>
+        <column name="CLIENTE_EMAIL" type="VARCHAR" required="true"/>
+        <column name="CLIENTE_TELEFONE" type="VARCHAR" required="false"/>
+        <column name="DATA_CRIACAO" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+        <column name="ENVIAR_AVISO" type="BOOLEAN" required="true" default="false"/>
+        <validator column="PRODUTO_VARIACAO_ID">
+            <rule name="required" message="O produto é obrigatório"/>
+        </validator>
+        <validator column="CLIENTE_NOME">
+            <rule name="required" message="O nome é obrigatório"/>
+        </validator>
+        <validator column="CLIENTE_EMAIL">
+            <rule name="required" message="O e-mail é obrigatório"/>
+            <rule name="class" class="qpress.validator.EmailValidator" message="Informe um e-mail válido"/>
+        </validator>
+        <foreign-key foreignTable="produto_variacao" name="produto_interesse_FK_1" onDelete="CASCADE"
+                     onUpdate="CASCADE">
+            <reference local="PRODUTO_VARIACAO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="produto_interesse_FI_1">
+            <index-column name="PRODUTO_VARIACAO_ID"/>
+        </index>
+    </table>
+    <table name="produto_variacao" phpName="ProdutoVariacao" idMethod="native">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PRODUTO_ID" type="INTEGER" required="true"/>
+        <column name="SKU" type="VARCHAR" size="50" required="false"/>
+        <column name="PESO" type="INTEGER" required="false"/>
+        <column name="VALOR_BASE" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="VALOR_INTEGRACAO_ADMIN" type="FLOAT" size="12" scale="2" required="false"/>
+        <column name="FATOR_CORRECAO_GRUPO" type="VARCHAR" size="10" required="false"/>
+        <column name="VALOR_PROMOCIONAL" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="VALOR_DISTRIBUIDOR" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="ESTOQUE_ATUAL" type="INTEGER" required="true"/>
+        <column name="ESTOQUE_MINIMO" type="INTEGER" required="true"/>
+        <column name="DISPONIVEL" type="BOOLEAN" required="true"/>
+        <column name="IS_MASTER" type="BOOLEAN" required="true"/>
+        <column name="IS_REQUIRED_PRODUCT" phpName="isRequiredProduct"  type="BOOLEAN" required="true" default="false"/>
+        <column name="DATA_CRIACAO" type="TIMESTAMP" required="false"/>
+        <column name="DATA_ATUALIZACAO" type="TIMESTAMP" required="false"/>
+        <column name="DATA_EXCLUSAO" type="TIMESTAMP" required="false"/>
+        <column name="IS_PADRAO" type="BOOLEAN" required="false"/>
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="DATA_CRIACAO"/>
+            <parameter name="update_column" value="DATA_ATUALIZACAO"/>
+        </behavior>
+        <behavior name="soft_delete">
+            <parameter name="deleted_column" value="DATA_EXCLUSAO"/>
+        </behavior>
+        <validator column="VALOR_BASE">
+            <rule name="required" message="O campo valor base é obrigatório"/>
+            <rule name="type" value="float" message="O valor base informado é inválido"/>
+        </validator>
+        <validator column="VALOR_PROMOCIONAL">
+            <rule name="type" value="float" message="O valor promocional informado é inválido"/>
+        </validator>
+        <validator column="PESO">
+            <rule name="required" message="O campo peso é obrigatório"/>
+            <rule name="type" value="integer" message="O campo peso deve ser um número inteiro"/>
+        </validator>
+        <validator column="ESTOQUE_ATUAL">
+            <rule name="required" message="O campo estoque atual é obrigatório"/>
+            <rule name="type" value="integer" message="O campo estoque atual deve ser um número inteiro"/>
+        </validator>
+        <validator column="ESTOQUE_ATUAL">
+            <rule name="required" message="O campo estoque mínimo é obrigatório"/>
+            <rule name="type" value="integer" message="O campo estoque mínimo deve ser um número inteiro"/>
+        </validator>
+        <foreign-key foreignTable="produto" name="produto_variacao_produto" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="FI_duto_variacao_produto">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+    </table>
+    <table name="produto_variacao_atributo" phpName="ProdutoVariacaoAtributo" idMethod="native">
+        <column name="PRODUTO_VARIACAO_ID" phpName="ProdutoVariacaoId" sqlType="BIGINT(20) UNSIGNED" primaryKey="true"
+                required="true"/>
+        <column name="PRODUTO_ATRIBUTO_ID" phpName="ProdutoAtributoId" type="INTEGER" primaryKey="true"
+                required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="VARCHAR" size="200" required="true"/>
+        <column name="PROPRIEDADE" phpName="Propriedade" type="OBJECT" required="false"/>
+        <column name="DATA_EXCLUSAO" type="TIMESTAMP" required="false"/>
+        <behavior name="soft_delete">
+            <parameter name="deleted_column" value="DATA_EXCLUSAO"/>
+        </behavior>
+        <foreign-key foreignTable="produto_atributo" name="TPRAT_TPRVA_FK_02" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ATRIBUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto_variacao" name="TPRVA_TPRVA_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_VARIACAO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TPRAT_TPRVA_FI_02">
+            <index-column name="PRODUTO_ATRIBUTO_ID"/>
+        </index>
+    </table>
+    <table name="produto_venda_casada" phpName="ProdutoVendaCasada" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="VENDA_CASADA_ID" phpName="VendaCasadaId" type="INTEGER" required="true"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="produto" name="TPRVC_TPROD_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="venda_casada" name="TPRVC_TVECA_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="VENDA_CASADA_ID" foreign="ID"/>
+        </foreign-key>
+        <unique name="produto_venda_casada_U_1">
+            <unique-column name="VENDA_CASADA_ID"/>
+            <unique-column name="PRODUTO_ID"/>
+        </unique>
+        <index name="TPRVC_TVECA_FK_IDX_01">
+            <index-column name="VENDA_CASADA_ID"/>
+        </index>
+        <index name="TPRVC_TPROD_FK_IDX_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+    </table>
+    <table name="produto_venda_estatistica" phpName="ProdutoVendaEstatistica" idMethod="native">
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" primaryKey="true" required="true"/>
+        <column name="QUANTIDADE_VENDIDA" phpName="QuantidadeVendida" type="BIGINT" sqlType="bigint(20) unsigned"
+                required="true" defaultValue="0"/>
+        <column name="UPDATED_AT" phpName="UpdateAt" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="produto" name="produto_venda_estatistica_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="produto_visitado" phpName="ProdutoVisitado" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="DATA_VISITADO" phpName="DataVisitado" type="TIMESTAMP" required="true"/>
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <validator column="DATA_VISITADO">
+            <rule name="required" message="A Data é obrigatória"/>
+        </validator>
+        <validator column="PRODUTO_ID">
+            <rule name="required" message="Produto não informado"/>
+        </validator>
+        <validator column="CLIENTE_ID">
+            <rule name="required" message="Cliente não informado"/>
+        </validator>
+        <foreign-key foreignTable="cliente" name="TPRVI_TCLIE_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="produto" name="TPRVI_TPROD_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="TPRVI_TCLIE_FK_IDX_01">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+        <index name="TPRVI_TPROD_FK_IDX_01">
+            <index-column name="PRODUTO_ID"/>
+        </index>
+    </table>
+    <table name="rede" phpName="Rede" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="IMAGEM" phpName="Imagem" type="VARCHAR" size="50" required="true"/>
+        <column name="ICON" phpName="Icon" type="VARCHAR" size="50" required="true"/>
+        <column name="ATIVO" phpName="Ativo" type="SMALLINT" required="true" defaultValue="0"/>
+        <column name="LINK" phpName="Link" type="VARCHAR" size="255" required="true"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" size="5" required="true" defaultValue="0"/>
+        <validator column="NOME">
+            <rule name="required" message="O nome é obrigatório."/>
+        </validator>
+        <validator column="IMAGEM">
+            <rule name="required" message="A imagem é obrigatória."/>
+        </validator>
+        <validator column="ORDEM">
+            <rule
+                    name="type"
+                    value="integer"
+                    message="A ordem deve ser um número inteiro."/>
+        </validator>
+        <validator column="LINK">
+            <rule name="match"
+                  value="/^(http[s]?):\/\/(([A-Za-z]{3,9}):\/\/)?([-;:&amp;=+$,\w]+@{1})?(([-A-Za-z0-9]+\.)+[A-Za-z]{2,6})(:\d+)?((\/[-\+~%\/\.\w]+)?\/?([&amp;?][-\+=&amp;;%!@\.\w\/]+)?(#[-\+=&amp;;%!@\.\?\w\/]+)?)?$/"
+                  message="O link informado é inválido"/>
+            <rule name="required" message="O link é obrigatório."/>
+        </validator>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="regiao_frete_gratis" phpName="RegiaoFreteGratis" idMethod="native">
+        <column name="ID" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" type="VARCHAR" size="100" required="true" primaryString="true"/>
+        <column name="OBSERVACAO" type="LONGVARCHAR" required="false"/>
+        <column name="CEP_INICIAL" type="INTEGER" size="8" required="true"/>
+        <column name="CEP_FINAL" type="INTEGER" size="8" required="true"/>
+        <column name="VALOR_MINIMO" type="FLOAT" required="true"/>
+        <column name="PRAZO_ENTREGA" type="INTEGER" required="true"/>
+        <column name="IS_ATIVO" type="TINYINT" default="1" required="true"/>
+    </table>
+    <table name="resgate" phpName="Resgate" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="VALOR" phpName="Valor" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="VALOR_TAXA" phpName="ValorTaxa" type="FLOAT" size="12" scale="2" required="true" defaultValue="0"/>
+        <column name="VALOR_DEPOSITAR" phpName="ValorDepositar" type="FLOAT" size="12" scale="2" required="true" defaultValue="0"/>
+        <column name="BANCO" phpName="Banco" type="VARCHAR" size="200" required="true"/>
+        <column name="PIS_PASEP" phpName="PisPasep" type="VARCHAR" size="200"/>
+        <column name="AGENCIA" phpName="Agencia" type="VARCHAR" size="50" required="true"/>
+        <column name="CONTA" phpName="Conta" type="VARCHAR" size="50" required="true"/>
+        <column name="TIPO_CONTA" phpName="TipoConta" type="CHAR" sqlType="enum('CORRENTE','POUPANCA')" required="false"
+                defaultValue="CORRENTE"/>
+        <column name="NOME_CORRENTISTA" phpName="NomeCorrentista" type="VARCHAR" size="200" required="true"/>
+        <column name="CPF_CORRENTISTA" phpName="CpfCorrentista" type="VARCHAR" size="20"/>
+        <column name="CNPJ_CORRENTISTA" phpName="CnpjCorrentista" type="VARCHAR" size="20"/>
+        <column name="SITUACAO" phpName="Situacao" type="CHAR" sqlType="enum('PENDENTE','EFETUADO','NAOEFETUADO')"
+                required="false" defaultValue="PENDENTE"/>
+        <validator column="VALOR">
+            <rule name="required" message="O Valor é obrigatório"/>
+            <rule name="type" value="float" message="O Valor deve ser um valor inteiro"/>
+        </validator>
+        <validator column="BANCO">
+            <rule name="required" message="O Banco é obrigatório"/>
+        </validator>
+        <validator column="AGENCIA">
+            <rule name="required" message="o número da agência é obrigatório"/>
+        </validator>
+        <validator column="NOME_CORRENTISTA">
+            <rule name="required" message="O nome do títular da conta é obrigatório"/>
+        </validator>
+        <validator column="CPF_CORRENTISTA">
+            <rule name="required" message="O CPF ou CNPJ do títular da conta é obrigatório"/>
+        </validator>
+        <foreign-key foreignTable="cliente" name="resgate_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="resgate_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="resgate_premios_acumulados" phpName="ResgatePremiosAcumulados" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="PONTOS_RESGATE" phpName="PontosResgate" type="BIGINT" sqlType="bigint(20)" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="PREMIO" phpName="Premio" type="VARCHAR" size="255" required="true"/>
+        <column name="SELECIONADO" phpName="Selecionado" type="CHAR" sqlType="enum('PREMIO','DINHEIRO')"
+                required="false" defaultValue="PREMIO"/>
+        <column name="SITUACAO" phpName="Situacao" type="CHAR" sqlType="enum('PENDENTE','EFETUADO','NAOEFETUADO', 'EXTORNADO')"
+                required="false" defaultValue="PENDENTE"/>
+        <column name="UPDATED_AT" phpName="Updated_at" type="TIMESTAMP"/>
+        <column name="USER_ID" phpName="UserId" type="BIGINT" sqlType="bigint(20)" />
+        <foreign-key foreignTable="cliente" name="resgate_premiacao_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="resgate_premiacao_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="retirada_loja" phpName="RetiradaLoja" idMethod="native">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="NOME" type="VARCHAR" required="true" primaryString="true"/>
+        <column name="KEY" type="VARCHAR" required="true"/>
+        <column name="ENDERECO" type="VARCHAR" required="true"/>
+        <column name="TELEFONE" type="VARCHAR" size="20" required="true"/>
+        <column name="VALOR" type="FLOAT" required="true"/>
+        <column name="PRAZO" type="SMALLINT" required="true"/>
+        <column name="HABILITADO" type="TINYINT" size="1" required="true" default="1"/>
+        <column name="CIDADE_ID" type="INTEGER" size="11" required="true" />
+        <column name="CENTRO_DISTRIBUICAO_ID" type="INTEGER" size="11" required="true" />
+        <behavior name="sluggable">
+            <parameter name="slug_column" value="KEY"/>
+            <parameter name="slug_pattern" value="{NOME}"/>
+            <parameter name="replace_pattern" value="/[^\w]+/u"/>
+            <parameter name="replacement" value="-"/>
+            <parameter name="permanent" value="false"/>
+        </behavior>
+        <foreign-key foreignTable="cidade" name="qp1_retirada_loja_FK1" onDelete="RESTRICT" onUpdate="RESTRICT">
+            <reference local="CIDADE_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="seo" phpName="Seo" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="PAGINA" phpName="Pagina" type="CHAR"
+                sqlType="enum('HOME','EMPRESA','CATEGORIA','PRODUTO','PROMOCAO','FAQ','CADASTRO','LOGIN','CARRINHO','CONTATO')"
+                required="true"/>
+        <column name="REGISTRO_ID" phpName="RegistroId" type="INTEGER" required="false"/>
+        <column name="META_TITLE" phpName="MetaTitle" type="VARCHAR" size="65" required="false"/>
+        <column name="META_DESCRIPTION" phpName="MetaDescription" type="VARCHAR" size="150" required="false"/>
+        <column name="META_KEYWORDS" phpName="MetaKeywords" type="VARCHAR" size="255" required="false"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="MyISAM"/>
+        </vendor>
+    </table>
+    <table name="suporte" phpName="Suporte" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="CHAR" sqlType="enum('TEXTO','VIDEO','ARQUIVO','VIDEO_AULA')"
+                required="true" defaultValue="TEXTO"/>
+        <column name="TITULO" phpName="Titulo" type="VARCHAR" size="255" required="true"/>
+        <column name="DESCRICAO_RESUMIDA" phpName="DescricaoResumida" type="VARCHAR" size="500" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="false"/>
+        <column name="VIDEO" phpName="Video" type="LONGVARCHAR" required="false"/>
+        <column name="ARQUIVO" phpName="Arquivo" type="VARCHAR" size="50" required="false"/>
+        <column name="LINK_ARQUIVO_S3" phpName="LinkArquivoS3" type="VARCHAR" size="200" required="false"/>
+        <column name="MOSTRAR" phpName="Mostrar" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="ORDEM" phpName="Ordem" type="INTEGER" required="false" defaultValue="0"/>
+    </table>
+    <table name="tabela_preco" phpName="TabelaPreco" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="250" required="true"/>
+        <column name="PORCENTAGEM" phpName="Porcentagem" type="FLOAT" required="true"/>
+        <column name="TIPO_OPERACAO" phpName="TipoOperacao" type="TINYINT" required="true"/>
+        <column name="ATUALIZAR_AUTOMATICAMENTE" phpName="AtualizarAutomaticamente" type="BOOLEAN" size="1"
+                required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="false"/>
+    </table>
+    <table name="tabela_preco_variacao" phpName="TabelaPrecoVariacao" idMethod="native">
+        <column name="ID" phpName="Id" type="BIGINT" sqlType="bigint(20) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="PRODUTO_VARIACAO_ID" phpName="ProdutoVariacaoId" type="BIGINT" sqlType="bigint(20) unsigned"
+                required="true"/>
+        <column name="TABELA_PRECO_ID" phpName="TabelaPrecoId" type="BIGINT" sqlType="bigint(20) unsigned"
+                required="true"/>
+        <column name="VALOR_BASE" phpName="ValorBase" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="VALOR_PROMOCIONAL" phpName="ValorPromocional" type="FLOAT" size="12" scale="2" required="true"/>
+        <foreign-key foreignTable="produto_variacao" name="tabela_preco_variacao_FK_1" onDelete="CASCADE">
+            <reference local="PRODUTO_VARIACAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="tabela_preco" name="tabela_preco_variacao_FK_2" onDelete="CASCADE">
+            <reference local="TABELA_PRECO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="tabela_preco_variacao_FI_1">
+            <index-column name="PRODUTO_VARIACAO_ID"/>
+        </index>
+        <index name="tabela_preco_variacao_FI_2">
+            <index-column name="TABELA_PRECO_ID"/>
+        </index>
+    </table>
+     <table name="ticket" phpName="Ticket" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" phpName="ClienteId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="CATEGORIA" phpName="Categoria" type="VARCHAR" size="50" required="true"/>
+        <column name="GRUPO_ID" phpName="GrupoId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="ASSUNTO" phpName="Assunto" type="VARCHAR" size="150" required="true"/>
+        <column name="EMAIL_DESTINO" phpName="EmailDestino" type="VARCHAR" size="150" required="true"/>
+        <column name="DESCRICAO" phpName="Descricao" type="LONGVARCHAR" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <column name="STATUS" phpName="Status" type="CHAR" sqlType="enum('PENDENTE','EMANDAMENTO','FINALIZADO')"
+                required="true"/>
+        <foreign-key foreignTable="cliente" name="ticket_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="ticket_FI_1">
+            <index-column name="CLIENTE_ID"/>
+        </index>
+    </table>
+    <table name="ticket_messages" phpName="TicketMessages" idMethod="native">
+        <column name="ID"  phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="TICKET_ID" phpName="TicketId" type="BIGINT" sqlType="bigint(20) unsigned" required="true"/>
+        <column name="REMETENTE" phpName="Remetente" type="CHAR" sqlType="enum('ADMIN','CLIENTE')" required="true"/>
+        <column name="REMETENTE_NOME" phpName="RemetenteNome" type="VARCHAR" size="150" required="true"/>
+        <column name="MENSAGEM" phpName="Mensagem" type="LONGVARCHAR" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="ticket" name="ticket_FK_1" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="TICKET_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="ticket_FI_1">
+            <index-column name="TICKET_ID"/>
+        </index>
+    </table>
+    <table name="transportadora_faixa_peso" phpName="TransportadoraFaixaPeso" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="TRANSPORTADORA_REGIAO_ID" phpName="TransportadoraRegiaoId" type="INTEGER" primaryKey="true"
+                required="true"/>
+        <column name="PESO" phpName="Peso" type="INTEGER" required="true"/>
+        <column name="TIPO" phpName="Tipo" type="CHAR" sqlType="enum('PRECO_FIXO','PRECO_KG','PORCENTAGEM')"
+                required="true"/>
+        <column name="VALOR" phpName="Valor" type="FLOAT" required="true"/>
+        <column name="PRAZO_ENTREGA" phpName="PrazoEntrega" type="INTEGER" required="true"/>
+        <foreign-key foreignTable="transportadora_regiao" name="transportadora_faixa_peso_FK_1" onDelete="CASCADE"
+                     onUpdate="CASCADE">
+            <reference local="TRANSPORTADORA_REGIAO_ID" foreign="ID"/>
+        </foreign-key>
+        <index name="transportadora_faixa_peso_FI_1">
+            <index-column name="TRANSPORTADORA_REGIAO_ID"/>
+        </index>
+    </table>
+    <table name="transportadora_regiao" phpName="TransportadoraRegiao" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="100" required="true"/>
+        <column name="OBSERVACAO" phpName="Observacao" type="LONGVARCHAR" required="false"/>
+        <column name="CEP_INICIAL" phpName="CepInicial" type="INTEGER" size="8" required="true"/>
+        <column name="CEP_FINAL" phpName="CepFinal" type="INTEGER" size="8" required="true"/>
+        <column name="IS_ATIVO" phpName="IsAtivo" type="TINYINT" required="true" defaultValue="1"/>
+    </table>
+    <table name="uol_shopping_item" phpName="UolShoppingItem" idMethod="native">
+        <column name="PRODUTO_ID" phpName="ProdutoId" type="INTEGER" primaryKey="true" required="true"/>
+        <foreign-key foreignTable="produto" name="uol_shopping_item_FK_1" onDelete="CASCADE">
+            <reference local="PRODUTO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="usuario" phpName="Usuario" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="200" required="true"/>
+        <column name="EMAIL" phpName="Email" type="VARCHAR" size="200" required="true"/>
+        <column name="LOGIN" phpName="Login" type="VARCHAR" size="50" required="true"/>
+        <column name="SENHA" phpName="Senha" type="VARCHAR" size="50" required="true"/>
+        <column name="MASTER" phpName="Master" type="SMALLINT" required="false" defaultValue="0"/>
+        <column name="ERROS_LOGIN" phpName="ErrosLogin" type="INTEGER" required="false"/>
+        <column name="TOKEN" phpName="Token" type="VARCHAR" size="128" required="false"/>
+        <validator column="NOME">
+            <rule name="required" message="O Nome é obrigatório"/>
+        </validator>
+        <validator column="SENHA">
+            <rule name="required" message="A Senha é obrigatória"/>
+        </validator>
+        <validator column="LOGIN">
+            <rule name="required" message="O Login é obrigatório"/>
+            <rule name="unique" message="Login já cadastrado"/>
+            <rule name="minLength" value="5" message="O Login deve possuir pelo menos ${value} caracteres"/>
+            <rule name="maxLength" value="50" message="O Login deve possuir no máximo ${value} caracteres"/>
+            <rule name="match" value="/^([\.a-zA-Z0-9_-]+)$/"
+                  message="O Login deve possuir somente letras, números e os simbolos(-,_,.)!"/>
+        </validator>
+        <validator column="EMAIL">
+            <rule name="required" message="O E-mail é obrigatório"/>
+            <rule name="unique" message="Email já cadastrado"/>
+            <rule name="class" class="qpress.validator.EmailValidator" message="Email inválido."/>
+        </validator>
+        <unique name="TUSUA_UK_01">
+            <unique-column name="LOGIN"/>
+        </unique>
+        <unique name="TUSUA_UK_02">
+            <unique-column name="EMAIL"/>
+        </unique>
+    </table>
+    <table name="venda_casada" phpName="VendaCasada" idMethod="native">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="NOME" phpName="Nome" type="VARCHAR" size="255" required="true"/>
+        <column name="VALOR" phpName="Valor" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="VALOR_DESCONTO" phpName="ValorDesconto" type="FLOAT" size="12" scale="2" required="true"/>
+        <column name="ATIVO" phpName="Ativo" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+        <column name="DATA_CADASTRO" phpName="DataCadastro" type="TIMESTAMP" required="false"/>
+        <validator column="NOME">
+            <rule name="required" message="O Nome é obrigatório"/>
+        </validator>
+        <validator column="VALOR">
+            <rule name="required" message="O Valor é obrigatório"/>
+            <rule
+                    name="type"
+                    value="float"
+                    message="O Valor deve ser um número decimal"/>
+            <rule name="minValue" value="0" message="O Valor deve ser maior do que R$ 0,00."/>
+        </validator>
+        <validator column="VALOR_DESCONTO">
+            <rule name="required" message="O Valor de Desconto é obrigatório"/>
+            <rule
+                    name="type"
+                    value="float"
+                    message="O Valor de Desconto deve ser um número decimal"/>
+            <rule name="minValue" value="0" message="O Valor de Desconto deve ser maior do que R$ 0,00."/>
+        </validator>
+    </table>
+    <table name="transferencia" phpName="Transferencia">
+        <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_REMETENTE_ID" phpName="ClienteRemetenteId" type="INTEGER" required="true"/>
+        <column name="CLIENTE_DESTINATARIO_ID" phpName="ClienteDestinatarioId" type="INTEGER" required="true"/>
+        <column name="QUANTIDADE_PONTOS" phpName="QuantidadePontos" type="DOUBLE" required="true"/>
+        <column name="DATA" phpName="Data" type="TIMESTAMP" required="true"/>
+
+        <foreign-key foreignTable="cliente" name="TTRAN_TCLIE_FK_01" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_REMETENTE_ID" foreign="ID"/>
+        </foreign-key>
+
+        <foreign-key foreignTable="cliente" name="TTRAN_TCLIE_FK_02" onDelete="CASCADE" onUpdate="CASCADE">
+            <reference local="CLIENTE_DESTINATARIO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="controle_pontuacao_cliente" phpName="ControlePontuacaoCliente">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="CLIENTE_ID" sqlType="BIGINT(20) UNSIGNED" required="true"/>
+        <column name="MES" type="TINYINT" size="2" required="true"/>
+        <column name="ANO" type="SMALLINT" size="4" required="true"/>
+        <column name="PONTOS_PESSOAIS" type="INTEGER" size="11" required="true"/>
+        <column name="PONTOS_ADESAO" type="INTEGER" size="11" required="true"/>
+        <column name="PONTOS_RECOMPRA" type="INTEGER" size="11" required="true"/>
+        <foreign-key foreignTable="cliente" onDelete="CASCADE">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+    <table name="bonus_lideranca" phpName="BonusLideranca">
+        <column name="ID" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="DISTRIBUICAO_ID" type="INTEGER" size="11" required="true"/>
+        <column name="CLIENTE_ID" sqlType="BIGINT(20) UNSIGNED" required="true"/>
+        <column name="FILHO_DIRETO_ID" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+        <column name="VALOR" type="FLOAT" required="true"/>
+        <foreign-key foreignTable="distribuicao" onDelete="CASCADE" name="qp1_bonus_lideranca_fk_1">
+            <reference local="DISTRIBUICAO_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" onDelete="CASCADE" name="qp1_bonus_lideranca_fk_2">
+            <reference local="CLIENTE_ID" foreign="ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="cliente" onDelete="CASCADE" name="qp1_bonus_lideranca_fk_3">
+            <reference local="FILHO_DIRETO_ID" foreign="ID"/>
+        </foreign-key>
+    </table>
+</database>

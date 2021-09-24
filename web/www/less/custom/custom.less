@@ -1,0 +1,352 @@
+/* =============== Customizar =============== */
+
+// Define o tipo do header a ser utilizado: [ 'default', 'vertical', 'center', 'horizontal' ];
+// Alterar no arquivo "general/header.php" também.
+@header-type:           'vertical';
+
+// Define o número de linhas para o nome do produto (considerar versão xs).
+@product-title-lines:   2;
+
+// Define o tema utilizado: [ 'default', 'bootstrap' ]
+@theme:                 'paper';
+
+// Define a cor principal do tema.
+@brand-theme:           #A1E63A;
+
+@border-color:          #E6E6E6;
+@striped-bg-color:      #F0F0F0;
+@transition-default:    all 0.15s linear;
+@bg-default:            #F5F5F5;
+
+// Menu de categorias
+@menu-bg:               #FFF;
+@menu-bg-hover:         @brand-theme;
+@menu-color:            #555;
+@menu-color-hover:      #fff;
+@menu-border:           1px solid #F2F2F2;
+@menu-shadow:           0 3px 3px rgba(0,0,0,0.075);
+
+// Set de icones de fonts, quando alterado deve ser mudado na função icon() do php || http://fortawesome.github.io/Font-Awesome/
+// Seletor das fontes em icones
+@icon-set:              ~'.fa';
+
+// font-family das fontes de icones
+@icon-set-font:         'FontAwesome';
+
+// Icone que aparece quando o collapse quando está fechado
+@collapse-icon-down:    ~'[class*="chevron-down"]';
+
+// Icone que aparece quando o collapse quando está aberto
+@collapse-icon-up:      ~'[class*="chevron-up"]';
+
+// Importa a fonte open-sans utilizada no projeto.
+@import './fonts/open-sans.less';
+
+// Tema (não alterar)
+@import "../themes/@{theme}/bootstrap.less";
+@import '../themes/@{theme}/icons.less';
+@import 'normalize.less';
+
+// Plugins
+@import '../plugins/owl.carousel.less';
+@import '../plugins/colorbox.less';
+@import '../plugins/jquery.bootstrap-touchspin.less';
+@import '../plugins/star-rating.less';
+@import '../plugins/animation.less';
+@import '../plugins/mosaic.less';
+@import '../plugins/font-awesome/font-awesome.less';
+@import '../plugins/idangerous.swiper.less';
+@import '../plugins/jquery.mmenu.all.less';
+@import '../plugins/magnific-popup.less';
+@import '../plugins/easyzoom.less';
+@import '../plugins/photoswipe.less';
+@import '../plugins/photoswipe-default-skin.less';
+@import '../plugins/pnotify.custom.less';
+@import '../plugins/sweet-alert.less';
+@import '../plugins/qp-sweet-alert.less'; // Alteração para as variáveis do bootstrap.
+@import '../plugins/jquery.jOrgChart.less';
+@import '../plugins/bootstrap-datepicker3.standalone.less';
+@import '../plugins/toggles.less';
+//@import '../plugins/toggles-modern.less';
+//@import '../plugins/toggles-light.less';
+@import '../plugins/toggles-dark.less';
+
+@import '../plugins/qp-magnific-popup.custom.less';
+@import '../plugins/qp-hamburguer-menu-mobile.less';
+@import '../plugins/qp-resposive-tables.less';
+@import '../plugins/qp-modal-loader.less';
+@import '../plugins/qp-busca-sugestiva.less';
+@import '../plugins/qp-commons.less';
+@import '../plugins/qp-oxi3.less';
+
+// Estilo especifico para resolucões
+
+@import "custom-xs.less";
+
+@media only screen and (min-width: @screen-sm)
+{
+    @import "custom-sm.less";
+}
+
+@media only screen and (min-width: @screen-md)
+{
+    @import "custom-md.less";
+}
+
+@media only screen and (min-width: @screen-lg)
+{
+    @import "custom-lg.less";
+}
+
+// Carrega o header configurado
+@import 'template/header-@{header-type}.less';
+
+
+#apoio-banner{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#rodape-banner{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.row{
+    .vdivide [class*='col-']:not(:last-child):after {
+        background: #e0e0e0;
+        width: 1px;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        min-height: 70px;
+        margin-top: 10px;
+    }
+}
+
+.heading h1:after,
+.heading h2:after,
+.heading h3:after,
+.heading h4:after,
+.heading h5:after,
+.heading h6:after {
+    content: " ";
+    display: block;
+    width: 100px;
+    height: 2px;
+    margin-top: .6rem;
+    background: #A1E63A;
+}
+
+
+.heading.text-center h1:after,
+.heading.text-center h2:after,
+.heading.text-center h3:after,
+.heading.text-center h4:after,
+.heading.text-center h5:after,
+.heading.text-center h6:after{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#verify-cliente{
+    .push {
+        height: 90px;
+    }
+}
+
+.col-xs-offset-right-12 {
+    margin-right: 100%;
+}
+.col-xs-offset-right-11 {
+    margin-right: 91.66666667%;
+}
+.col-xs-offset-right-10 {
+    margin-right: 83.33333333%;
+}
+.col-xs-offset-right-9 {
+    margin-right: 75%;
+}
+.col-xs-offset-right-8 {
+    margin-right: 66.66666667%;
+}
+.col-xs-offset-right-7 {
+    margin-right: 58.33333333%;
+}
+.col-xs-offset-right-6 {
+    margin-right: 50%;
+}
+.col-xs-offset-right-5 {
+    margin-right: 41.66666667%;
+}
+.col-xs-offset-right-4 {
+    margin-right: 33.33333333%;
+}
+.col-xs-offset-right-3 {
+    margin-right: 25%;
+}
+.col-xs-offset-right-2 {
+    margin-right: 16.66666667%;
+}
+.col-xs-offset-right-1 {
+    margin-right: 8.33333333%;
+}
+.col-xs-offset-right-0 {
+    margin-right: 0;
+}
+@media (min-width: 768px) {
+    .col-sm-offset-right-12 {
+        margin-right: 100%;
+    }
+    .col-sm-offset-right-11 {
+        margin-right: 91.66666667%;
+    }
+    .col-sm-offset-right-10 {
+        margin-right: 83.33333333%;
+    }
+    .col-sm-offset-right-9 {
+        margin-right: 75%;
+    }
+    .col-sm-offset-right-8 {
+        margin-right: 66.66666667%;
+    }
+    .col-sm-offset-right-7 {
+        margin-right: 58.33333333%;
+    }
+    .col-sm-offset-right-6 {
+        margin-right: 50%;
+    }
+    .col-sm-offset-right-5 {
+        margin-right: 41.66666667%;
+    }
+    .col-sm-offset-right-4 {
+        margin-right: 33.33333333%;
+    }
+    .col-sm-offset-right-3 {
+        margin-right: 25%;
+    }
+    .col-sm-offset-right-2 {
+        margin-right: 16.66666667%;
+    }
+    .col-sm-offset-right-1 {
+        margin-right: 8.33333333%;
+    }
+    .col-sm-offset-right-0 {
+        margin-right: 0;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-offset-right-12 {
+        margin-right: 100%;
+    }
+    .col-md-offset-right-11 {
+        margin-right: 91.66666667%;
+    }
+    .col-md-offset-right-10 {
+        margin-right: 83.33333333%;
+    }
+    .col-md-offset-right-9 {
+        margin-right: 75%;
+    }
+    .col-md-offset-right-8 {
+        margin-right: 66.66666667%;
+    }
+    .col-md-offset-right-7 {
+        margin-right: 58.33333333%;
+    }
+    .col-md-offset-right-6 {
+        margin-right: 50%;
+    }
+    .col-md-offset-right-5 {
+        margin-right: 41.66666667%;
+    }
+    .col-md-offset-right-4 {
+        margin-right: 33.33333333%;
+    }
+    .col-md-offset-right-3 {
+        margin-right: 25%;
+    }
+    .col-md-offset-right-2 {
+        margin-right: 16.66666667%;
+    }
+    .col-md-offset-right-1 {
+        margin-right: 8.33333333%;
+    }
+    .col-md-offset-right-0 {
+        margin-right: 0;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-offset-right-12 {
+        margin-right: 100%;
+    }
+    .col-lg-offset-right-11 {
+        margin-right: 91.66666667%;
+    }
+    .col-lg-offset-right-10 {
+        margin-right: 83.33333333%;
+    }
+    .col-lg-offset-right-9 {
+        margin-right: 75%;
+    }
+    .col-lg-offset-right-8 {
+        margin-right: 66.66666667%;
+    }
+    .col-lg-offset-right-7 {
+        margin-right: 58.33333333%;
+    }
+    .col-lg-offset-right-6 {
+        margin-right: 50%;
+    }
+    .col-lg-offset-right-5 {
+        margin-right: 41.66666667%;
+    }
+    .col-lg-offset-right-4 {
+        margin-right: 33.33333333%;
+    }
+    .col-lg-offset-right-3 {
+        margin-right: 25%;
+    }
+    .col-lg-offset-right-2 {
+        margin-right: 16.66666667%;
+    }
+    .col-lg-offset-right-1 {
+        margin-right: 8.33333333%;
+    }
+    .col-lg-offset-right-0 {
+        margin-right: 0;
+    }
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:  flex;
+}
+
+@media screen and (max-width: 767px) {
+    [id^='rev-'] {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .no-padding-reseller {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}

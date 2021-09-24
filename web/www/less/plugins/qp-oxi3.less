@@ -1,0 +1,52 @@
+.bg-banner-franqueado{
+    min-height: 350px;    
+    background-size: cover;
+     padding: 15px; 
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+}
+.franqueado{
+    background: #fff;   
+    img{
+        margin: 25px auto;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        padding: 4px;
+    }
+    .descricao{
+        text-align: justify;
+    }
+    a.btn{
+        margin: 25px auto;
+    }
+    .tit{
+        font-weight: bold;
+        margin: 15px 0;
+        small{
+            font-weight: normal;
+        }
+    }
+}
+
+@media only screen and (min-width: @screen-sm) {
+    .franqueado {
+        max-width: 770px;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        .descricao{
+            text-align: justify;
+            padding: 20px;
+        }
+    }
+}
+
+@media only screen and (min-width: @screen-md) {
+  
+}
+
+@media only screen and (min-width: @screen-lg) {
+  
+}

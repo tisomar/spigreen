@@ -1,0 +1,16 @@
+User-Agent: *
+Allow: /*
+Disallow: /ajax
+Disallow: /admin
+Disallow: /boleto
+Disallow: /bootstrap
+Disallow: /classes
+Disallow: /cron
+Disallow: /documentation
+Disallow: /pagseguro
+Disallow: /config
+Disallow: /controlador
+Disallow: /includes
+Disallow: /integracao
+Disallow: /logs
+Disallow: /propel

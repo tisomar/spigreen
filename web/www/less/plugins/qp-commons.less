@@ -1,0 +1,182 @@
+// Formul?rio de busca
+.form-search {
+    margin: 15px 0 0;
+    position: relative;
+
+    .form-control {
+        background: #eaeaea;
+        border-radius: 0;
+        border: 0;
+        height: 3.769rem;
+    }
+
+    button {
+        padding: 0;
+        position: absolute;
+        top: 9px;
+        right: 11px;
+    }
+}
+
+// Hightlight, usado para "marcar" os termos digitados na busca do faq
+.highlight {
+    font-weight: bold;
+}
+
+/* Hover dos links de carousel */
+.carousel-default a {
+    border: 3px solid transparent;
+    transition: @transition-default;
+    display: block;
+
+    &:hover {
+        border-color: @brand-theme;
+    }
+}
+
+// Tamanho do load que vai dentro dos bot?es
+.loader {
+    width: 32px;
+    height: 32px;
+    vertical-align: top;
+}
+
+.btn-xs,
+.btn-sm .loader {
+    width: 22px;
+    height: 22px;
+}
+
+.btn-lg .loader {
+    width: 34px;
+    height: 34px;
+}
+
+// Icones
+[class^="icon-"] {
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+
+// Inserir icone dentro de input
+.inner-icon {
+    position: relative;
+
+    .form-control {
+        padding-right: 50px;
+    }
+
+    [class^="icon-"] {
+        position: absolute;
+        right: @padding-base-horizontal;
+        bottom: @padding-base-vertical + 1;
+    }
+}
+
+.text-theme {
+    color: @brand-theme;
+}
+
+.bg-default {
+    background: @bg-default;
+}
+
+.box-primary {
+    border: 1px solid @border-color;
+
+    &+ .box-primary {
+        border-top-width: 0;
+    }
+}
+
+.box-secondary {
+    padding: 7px 9px;
+    border: 1px solid @border-color;
+    border-bottom-width: 2px;
+
+    &.box-secondary-first {
+        border-bottom: 0;
+    }
+}
+
+.pull-first {margin-right: 10px;}
+.pull-last  {margin-left: 10px;}
+
+[data-toggle*="collapse"] {
+
+    &.collapsed {
+        @{collapse-icon-down} {display: inline !important;}
+        @{collapse-icon-up} {display: none !important;}
+    }
+
+    &:not(.collapsed) {
+        @{collapse-icon-down} {display: none !important;}
+        @{collapse-icon-up} {display: inline !important;}
+    }
+}
+
+// Lightbox
+.lightbox {
+    padding: 0;
+
+    .cboxPhoto {
+        width: 100%;
+        height: auto;
+    }
+}
+
+// Tirando div que o addthis cria nos detalhes do produto e faz criar um scroll na pagina
+#_atssh {
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    z-index: -9999 !important;
+    position: fixed !important;
+}
+
+[data-toggle="collapse"] {
+    cursor: pointer;
+}
+
+// Retira a mensagem de plugin pago do cloudzoom
+.cloudzoom-blank .cloudzoom-lens + div {
+    display: none !important;
+}
+
+// Sobrescreve algum javascript
+body {
+    cursor: auto !important;
+}
+
+// Remove a barra do primeiro elemento li de um ul dentro de um panel.
+.panel {
+    > .list-group .list-group-item:first-child,
+    > .panel-collapse > .list-group .list-group-item:first-child {
+        border-top-width: 0;
+    }
+}
+
+.breadcrumb {
+    border-color: transparent;
+}
+
+.btn {
+    .fa {
+        margin: auto 3px;
+    }
+}
+
+.bootstrap-touchspin.input-group {
+    margin: 0;
+    .btn, input {
+        box-shadow: none;
+
+    }
+}
+
+form.form-disabled-on-load {
+    [type="submit"] {
+        transition: all 250ms ease-in;
+    }
+}
+

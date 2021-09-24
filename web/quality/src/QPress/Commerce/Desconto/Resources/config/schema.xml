@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<database name="qcommerce" defaultIdMethod="native" tablePrefix="QP1_" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://svn.propelorm.org/branches/1.6/generator/resources/xsd/database.xsd">
+
+</database>

@@ -1,0 +1,21 @@
+Instalação Projeto
+
+
+1 - Entre no projeto base disponibilizado, através do terminal
+2 - Clone o projeto do github renomeando para "web"
+3 - No diretorio web/quality copiar o arquivo compose.json.dist e criar com o nome compose.json
+4 - Instale as dependencias:
+	// $ sudo apt-get update -y
+	// $ sudo apt-get install -y php-simplexml
+	// $ sudo apt install composer
+5 - No diretorio web/quality rodar comando composer install
+6 - execute o docker-compose up no diretorio que contém o docker-compose.yml
+7 - faça um dump do banco de producao e import no banco local
+8 - Rodar o propel no diretorio web/quality/qcommerce/propel com o seguinte comando:
+	// $ ../../vendor/propel/propel1/generator/bin/propel-gen om
+9 - De permissao no diretorio web(diretorio clonado com o projeto)
+	// $chmod -R 777 web/
+10 - Crie um usuario no banco e de previlegios
+	// CREATE USER 'adminuser'@'%' IDENTIFIED BY 'password';
+	// GRANT ALL PRIVILEGES ON *.* TO 'adminuser'@'%';
+

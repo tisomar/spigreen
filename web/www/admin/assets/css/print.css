@@ -1,0 +1,60 @@
+@media screen {
+    .print {
+        display: none;
+    }
+}
+
+@media print {
+    body {
+        margin:0;
+        font-size: 10pt;
+        color: #222222;
+    }
+    @page {
+        size: landscape;
+        -webkit-transform: rotate(-90deg);
+        -moz-transform:rotate(-90deg);
+        filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        margin: 0.5cm;
+    }
+
+    #headerbar,
+    header,
+    footer,
+    #page-leftbar,
+    #page-heading,
+    .noprint
+    {
+        display: none;
+    }
+
+    .print {
+        display: block;
+    }
+
+    #page-content
+    {
+        margin: 0;
+        padding-bottom: 0;
+    }
+
+    .logo {
+        margin-right: 60px;
+    }
+
+    h3 {
+        margin-bottom: 1px;
+    }
+
+    .panel-primary,
+    [class*="panel-"].panel .panel-body {
+        border-color: #FFFFFF!important;
+        padding: 0;
+    }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+}

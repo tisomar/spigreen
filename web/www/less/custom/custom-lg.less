@@ -1,0 +1,88 @@
+.shipping-address {
+    height: 153px;
+
+    p {
+        min-height: 80px;
+    }
+}
+
+#menu-desktop {
+
+    .first-level {
+        &> li {
+            &> a {
+                font-size: 15px;
+                padding: 0 12px;
+            }
+        }
+    }
+
+    .second-level {
+
+        a {
+            font-size: @font-size-base;
+        }
+    }
+}
+
+#categories {
+    width: 1140px;
+}
+
+.product {
+
+    .tit {
+        height: 26px * (@product-title-lines);
+    }
+
+    .product-image {
+        &.aspect-ratio-3x4 {height: 334px;}
+        &.aspect-ratio-4x3 {height: 188px;}
+        &.aspect-ratio-1x1 {height: 268px;}
+    }
+}
+
+// Contato
+#google-maps {
+    height: 400px;
+}
+
+// Empresa
+[data-page="empresa"] {
+
+    .user-content {
+        text-align: left;
+    }
+}
+
+[data-page="produto-detalhes"] {
+
+    #gallery-link {
+        text-align: center;
+    }
+
+    #slider3 {
+
+        .thumbelina {
+            position: relative;
+        }
+
+        &.ratio-1x1 {
+            height: 366px;
+        }
+        &.ratio-4x3 {
+            height: 270px;
+
+            li {
+                margin-top: 10px;
+            }
+        }
+        &.ratio-3x4 {
+            height: 495px;
+
+            li {
+                margin-top: 9px;
+            }
+        }
+    }
+}

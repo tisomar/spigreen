@@ -1,0 +1,61 @@
+/* animation hamburguer */
+#hamburger
+{
+    box-sizing: border-box;
+    display: block;
+    height: 30px;
+    width: 30px;
+}
+#hamburger:before,
+#hamburger:after,
+#hamburger span
+{
+    background: @brand-theme;
+    content: '';
+    display: block;
+    width: 30px;
+    height: 5px;
+    position: absolute;
+    left: 20px;
+}
+#hamburger:before
+{
+    top: 5px;
+}
+#hamburger span
+{
+    top: 15px;
+}
+#hamburger:after
+{
+    top: 25px;
+}
+
+#hamburger:before,
+#hamburger:after,
+#hamburger span
+{
+    -webkit-transition: none 0.5s ease 0.5s;
+    transition: none 0.5s ease 0.5s;
+
+    -webkit-transition-property: transform, top, bottom, left, opacity;
+    transition-property: transform, top, bottom, left, opacity;
+}
+html.mm-opening #hamburger:before,
+html.mm-opening #hamburger:after
+{
+    top: 15px;
+}
+html.mm-opening #hamburger span
+{
+    left: -50px;
+    opacity: 0;
+}
+html.mm-opening #hamburger:before
+{
+    transform: rotate( 45deg );
+}
+html.mm-opening #hamburger:after
+{
+    transform: rotate( -45deg );
+}

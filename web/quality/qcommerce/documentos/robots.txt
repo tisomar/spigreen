@@ -1,0 +1,3 @@
+# desabilitar o diretorio
+User-agent: *
+Disallow: /documentos

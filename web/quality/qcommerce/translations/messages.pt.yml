@@ -1,0 +1,1652 @@
+breadcrumb:
+    home: 'Home'
+    depoimento: 'Depoimento'
+    produtos:   'Produtos'
+    central_cliente:    'Central do cliente'
+    dados_cadastrais:   'Dados Cadastrais'
+    alterar_senha:      'Alterar senha'
+    central_distribuidor:   'Central do Distribuidor'
+    lancamentos_transactions: 'Lançamentos Futuros'
+    produtos_visitados:     'Produtos Visitados'
+    meus_comentarios:       'Meus Comentários'
+    meus_enderecos:         'Meus Endereços'
+    alterar_endereco:       'Alterar Endereço'
+    faq_duvidas_frequentes: 'FAQ - Dúvidas Frequentes'
+    termos_uso_urf:         'Termos e Condições de Uso da URF'
+    central_pontos:         'Central de Pontos'
+    extrato:                'Extrato'
+    historico:              'Histórico'
+    convidar:               'Convidar'
+    resgatar:               'Resgatar'
+    contato:                'Contato'
+    novidades:              'Novidades'
+    login:                  'Login'
+    recuperar_senha:        'Recuperar senha'
+    informar_nova_senha:    'Informar nova senha'
+    erro_404:               'Erro 404'
+    promocoes:              'Promoções'
+    newsletter:             'Newsletter'
+    leads:                  'Leads'
+    area_download:          'Área de Download'
+
+button:
+    buscar: 'Buscar'
+    enviar: 'Enviar'
+    fechar: 'Fechar'
+    comprar:    'Comprar'
+    consultar:  'Consultar'
+    limpar:     'Limpar'
+    cadastrar:  'Cadastrar'
+    salvar:     'Salvar'
+    alterar_senha:  'Alterar senha'
+    limpar_lista:   'Limpar Lista'
+    excluir:        'Excluir'
+    salvar_informacoes:     'Salvar Informações'
+    aceito:                 'Aceito'
+    fechar:                 'Fechar'
+    gerar_extrato:          'Gerar Extrato'
+    imprimir_relatorio:     'Imprimir Relatório'
+    gerar_historico:        'Gerar Histórico'
+    cadastrar_senha:        'Cadastrar Senha'
+    acessar:                'Acessar'
+    filtrar:                'Filtrar'
+    entrar:                 'Entrar'
+    continuar:              'Continuar'
+    recuperar_senha:        'Recuperar senha'
+    cadastrar_nova_senha:   'Cadastrar nova senha'
+    continuar_comprando:    'Continuar comprando'
+    atualizar:              'Atualizar'
+    calcular_frete:         'Calcular Frete'
+    validar_cupom:          'Validar cupom'
+    finalizar_compra:       'Finalizar Compra'
+    clique_faca_pagamento:  'Clique aqui e faça o pagamento'
+    idioma_outro:           'Selecione outro idioma'
+    limite_atingido:        'Limite atingido'
+
+carrinho:
+    comprar_pda:                'Comprar de um<br/><b>Ponto de Apoio</b>'
+    comprar_rede_facil:         'Comprar da<br/><b>Spigreen</b>'
+    mensagem_vazio:             'Para inserir produtos no seu carrinho, navegue pelo shopping ou utilize a busca do site. Ao encontrar os produtos desejados, clique no botão "Comprar".'
+    nao_possui_pontos:          'Você não possui pontos para efetuar esta compra através dos pontos.'
+    possui_x_pontos:            '[-Inf,-1]Você possui <strong>%x%</strong> pontos|{0}Você não possui pontos|{1}Você possui <strong>1</strong> ponto|[2,Inf]Você possui <strong>%x%</strong> pontos'
+    pagar_com_pontos:           'Pagar com Pontos'
+    nao_pagar_com_pontos:       'Não Pagar com Pontos'
+    x_pontos:                   '%x% pontos'
+    info_desconto_progressivo:  'Adicione mais %qtd% item(ns) ao carrinho e ganhe desconto de %desconto%% neste produto'
+    usando_pontos_para_compra:  'Você está utilizando seus pontos para esta compra.'
+    x_pacotes_separados:        'Seu pedido será enviado em <u>%x% pacotes separados</u>.'
+    recebeu_x_desconto_frete:   'Você recebeu um desconto de R$ <span class="valor-faltante">%x%</span> no seu frete.'
+    adicione_x_ganhe_desconto_frete:    'Adicione mais R$ <span class="valor-faltante">%x%</span> no seu pedido e ganhe desconto no frete.'
+    desconto_produtos_unitarios: 'Você ganho um desconto pela compra acima de R$ xx.yy'
+    label:
+        imagem:             'Imagem'
+        descricao:          'Descrição'
+        excluir:            'Excluir'
+        qtde:               'Qtde.'
+        valor_uni:          'Valor Uni.'
+        valor_total:        'Valor Total'
+        ref:                'Ref.'
+        comprado_de:        'Comprando de'
+        itens_adicionais:   'Itens Adicionais'
+        papel:              'Papel'
+        acabamento:         'Acabamento'
+        remover_carrinho:   'Remover do carrinho'
+        quantidade:         'Quantidade'
+        desconto_de:        'Desconto de'
+        pontos_sua_rede:    'Pontos para sua rede'
+        pontos:             'pontos'
+        subtotal:           'Subtotal'
+        frete:              'Frete'
+        descontos:          'Descontos'
+        descontos_gerais:   'Descontos Gerais'
+        desconto_boleto:    'Desconto boleto'
+        desconto_retirada:  'Desconto retirada'
+        desconto_pontos:    'Pagamento pontos'
+        total:              'Total'
+    title:
+        remover_produto_carrinho:   'Remover produto do carrinho'
+    frete:
+        nenhuma_opcao_para_cep: 'Nenhuma opção de frete para o cep selecionado.'
+        x_dias_despacho:        '{0}0 dias úteis a partir da data de despacho.|{1}1 dia útil a partir da data de despacho.|[2,Inf]%x% dias úteis a partir da data de despacho.'
+        opcao:
+            pac:            'Correios - Pac'
+            sedex:          'Correios - Sedex'
+            esedex:         'Correios - e-Sedex'
+            transportadora: 'Transportadora'
+            transportadora_tnt: 'Transportadora Tnt'
+            internacional:  'Correios - Internacional'
+        label:
+            nacional:       'Nacional'
+            internacional:  'Internacional'
+        placeholder:
+            cep:            'Informe seu CEP'
+        title:
+            cep:            'Informe o CEP'
+    pda:
+        label:
+            estado:             'Estado'
+            cidade:             'Cidade'
+            numero:             'Nº'
+            complemento:        'Complemento'
+            telefone:           'Telefone'
+            selecione_ponto:    'Selecione o Ponto de Apoio desejado'
+        placeholder:
+            estado:     'Selecione um estado'
+        texto: >
+            <p><b>* Ponto de apoio:</b> Selecione essa opção se deseja retirar seu pedido em um Ponto de Apoio.</p><br><p><b>Atenção:</b> Nessa opção o cliente é responsável por retirar o pedido. Confira a cidade e endereço do PDA para que você possa comparecer no local escolhido.</p>
+
+            <p><br/><b>* Spigreen:</b> Selecione esta opção se deseja comprar diretamente pela Spigreen, enviaremos o pedido conforme opção de frete escolhida: Correios ou Transportadora.</p>
+    aviso_venda_sujeita_analise: >
+        <b>Importante</b><br />
+        Vendas sujeitas a análise e confirmação de dados.<br />
+        Esse procedimento costuma ocorrer em até 24 horas úteis, mas tem um prazo máximo para acontecer de até 48 horas úteis (pagamento no cartão).<br />
+        Se o pagamento foi realizado via boleto bancário, o banco tem até 2 (dois) dias úteis para nos repassar esse pagamento.<br />
+        Após a confirmação do pagamento, o pedido é despachado em até 2 (dois) dias úteis e o prazo de entrega será contabilizado após o 1º dia útil da postagem do pedido nos Correios ou Transportadora.<br />
+        <br>
+        Verificar item 7 da Política de Entrega.
+        <a href="%link%" data-rel="prettyPhoto" title="Política de Troca e Devoluções"><b>Clique Aqui</b></a>
+    finalizacao:
+        selecione_endereco:         'Selecione um endereço acima para continuar a compra.'
+        x_vezes_sem_juros:          '%x%x sem juros'
+        x_porcento_desconto_avista: '%x%% desconto a vista'
+        x_valor_desconto_avista:    'R$ %x% de desconto'
+        ate_x_vezes_sem_juros:      'Em até %x%x sem juros'
+        pagar_com_pontos:           'pagar com seus pontos'
+        passos:
+            identificacao:  'Identificação'
+            pagamento:      'Pagamento'
+            confirmacao:    'Confirmação'
+        opcao_pagamento:
+            cartao:             'Cartão de Crédito'
+            cartao_debito:      'Cartão de Débito'
+            boleto_bancario:    'Boleto Bancário'
+            boleto_itau:        'Boleto Itaú'
+            dinheiro_retirada:  'Pagamento em dinheiro na retirada'
+            pagseguro:          'Pag Seguro'
+            paypal:             'Paypal'
+            pontos:             'Pontos'
+        observacoes_pagamento:
+            boleto:             'Boleto com %x%% de desconto.<br/>A data de vencimento é de 3 dias corridos após a finalização do pedido.<br/>Após esta data de vencimento o boleto perde a sua validade.'
+            pagseguro:          'PagSeguro em %x%x sem juros.<br/>Após a confirmação do pedido você será redirecionado para o site do Pagseguro.'
+            paypal:             'Paypal em %x%x sem juros.<br/>Após a confirmação do pedido você será redirecionado para o site do Paypal. Para mais informações entrar em contato com a Paypal pelo número 0800 892 1555.'
+        pagamento:
+            texto_boleto:   'Desconto concedido apenas sobre valor dos itens, sem incluir qualquer outro desconto.'
+            label:
+                numero_cartao:          'Número do Cartão'
+                nome_titular:           'Nome do Titular'
+                cpf_titular:            'CPF do Titular'
+                mes_validade:           'Mês Validade'
+                ano_validade:           'Ano Validade'
+                codigo_seguranca:       'Código de Segurança'
+                alterar_parcelamento:   'Para alterar o parcelamento clique no campo abaixo'
+                termos:                 'Li e Concordo com os termos de uso'
+                aceite_termos:          'Você deve ler e aceitar os termos de uso'
+            placeholder:
+                selecione:          'Selecione...'
+                selecione_opcao:    'Selecione a opção desejada'
+        texto_pagamento: >
+            Confira os produtos que estão no carrinho e verifique se os dados do endereço de entrega estão corretos.<br />
+            Escolha a forma de pagamento no final desta página.
+        texto_sucesso: >
+            <p>Prezado(a) %cliente%</p>
+            <br />
+            <p>Seu pedido N&ordm; <b>%pedido%</b> foi efetuado com sucesso.</p>
+            <br/>
+            <p>
+                %observacao_pda%
+                Se você tiver alguma dúvida entre em contato com nossa central de relacionamento.
+                <br />
+                <br />
+                Obrigado por comprar na <strong>Spigreen.</strong>
+            </p>
+        texto_sucesso_observacao_pda:   'O pedido será encaminhado para entrega assim que confirmarmos o seu pagamento.<br /><br />'    
+        observacao_sucesso: >
+            <p>Os itens escolhidos no pedido <b>%pedido%</b> feito no dia %data% estão dispon&iacute;veis no link abaixo:</p>
+            <br />
+            <p><a href="%link%" class="clique">Clique para acessar o pedido na integra em sua central do cliente</a></p>
+        confirmacao_pagamento:
+            boleto_bancario:
+                sucesso:        '<p><strong>Clique sobre o botão abaixo para efetuar seu pagamento.</strong><br/>A identificação do pagamento do boleto é de até 48hrs.</p>'
+                link_imprimir:  'Visualizar Boleto Bancário e Imprimir'
+            retirada:
+                sucesso:        '<p><strong>O pagamento deverá ser efetuado diretamento ao PDA.</strong>'
+                link_imprimir:  'Imprimir guia de pagamento'
+            boleto_itau:
+                sucesso:        '<p><strong>Clique sobre o botão abaixo para efetuar seu pagamento.</strong><br/>A identificação do pagamento do boleto é de até 48hrs.</p>'
+                link_imprimir:  'Visualizar Boleto Bancário e Imprimir'
+                erro:           'Ocorreu um erro ao gerar o boleto!<br /><br />Erro: %codigo% - %mensagem%'
+            cartao:
+                sucesso:        '<p><strong>Pagamento realizado com sucesso</strong></p><br/><br/>Seu pagamento foi realizado com sucesso.<br/>Em breve enviaremos seu pedido.'
+                negado:         '<p style="color:#FF0000;">Operação negada pela operadora.</p><br/><br>Sua solicitação de pagamento foi negada pela operadora de cartão.<br/>Entre em contato com a operadora para maiores detalhes.'
+                erro:           'Ocorreu um erro ao criar a transação junto a operadora de cartão de crédito!<br /><br />Erro: %codigo% - %mensagem%'
+            pagseguro:
+                sucesso:        '<p><strong>Clique sobre o botão abaixo para efetuar o pagamento.</strong></p>'
+                link_pagamento: 'Faça o pagamento'
+                erro:           'Ocorreu um erro ao criar a transação junto ao PagSeguro!<br /><br />Erro: %mensagem%'
+            paypal:
+                sucesso:        '<p><strong>Clique sobre o botão abaixo para efetuar o pagamento.</strong></p>'
+                link_pagamento: 'Faça o pagamento'
+                erro:           'Ocorreu um erro ao criar a transação junto ao Paypal!<br /><br />Erro: %mensagem%'
+            pontos:
+                sucesso:        'Seu pedido foi registrado em nossa loja com sucesso!'
+        erro:
+            prezado_cliente:    'Prezado(a) %cliente%.'
+            mensagem: >
+                Infelizmente não conseguimos gerar o seu pedido, algo de errado 
+                aconteceu e pedimos desculpas pelo inconveniente, por favor, 
+                volte ao carrinho e tente fazer a sua compra novamente.
+            tentar_novamente: '<p>Caso queira tentar novamente, volte à <a href="%link%" class="clique"><b>etapa 2</b></a>.</p>'    
+                
+central_pontos:
+    pa:     'PA'
+    pv:     'PV'
+    atualizado_em:                      'Atualizado em %data%'
+    clique_nome_navegar_rede:           'Clique sobre o nome do cliente para navegar na rede de indicações.'
+    nenhuma_indicacao_enviada:          'Nenhuma indicação enviada'
+    clique_mes_visualizar_distribuicao: 'Clique sobre o mês abaixo para visualizar a distribuição de pontos.'
+    pagamento_em_analise:               'Pagamento em Análise'
+    detalhes_pedido:                    'Detalhes do Pedido'
+    confirmar_pagamento:                'Confirmar Pagamento'
+    pontos_liberados:                   'Pontos Liberados'
+    aguardando_confirmacao_cartao:      'Aguardando confirmação de cartão'
+    confirmar_entrega:                  'Confirmar Entrega'
+    finalizado:                         'Finalizado'
+    cancelado:                          'Cancelado'
+    cancelar_pedido:                    'Cancelar Pedido'
+    nenhum_pedido_realizado:            'Nenhum pedido realizado.'
+    breadcrumb:
+        sua_rede:                       'Sua Rede'
+        geracao_x:                      'Geração %x%'
+    choices:
+            nao:                'Não'
+            sim:                'Sim'    
+            todos:              'Todos'
+            todas:              'Todas'
+            indiferente:        'Indiferente'
+            qualquer_produto:   'Qualquer produto'
+    label:
+        total_pontos_mes:               'Total de pontos de sua compra mensal'
+        pontos_rede_calculo_mensal:     'Total de pontos de sua rede para cálculo mensal'
+        saldo_pontos:                   'Saldo de pontos liberados para resgate'
+        saldo_pontos_bloqueados:        'Saldo de pontos bloqueados'
+        total_participantes_rede:       'Total de participantes da sua rede'
+        total_convites_enviados:        'Total de convites enviados'
+        total_convites_pendentes:       'Total de convites com cadastro pendente'
+        ultima_distribuicao_feita_em:   'Última distribuição de pontos feita em'
+        pontos_sua_rede:                'Total de pontos em sua rede'
+        nro_patrocinador:               'Nro. Patrocinador'
+        nome:                           'Nome'
+        email:                          'E-mail'
+        geracao:                        'Geração'
+        pa_mes:                         'P.A Mês'
+        vip:                            'Vip'
+        pedidos:                        'Pedidos'
+        data:                           'Data'
+        tipo_extrato:                   'Tipo de Extrato'
+        data_inicial:                   'Data inicial'
+        data_final:                     'Data final'
+        valor_pa:                       'Valor (P.A.)'
+        saldo_pa:                       'Saldo (P.A.)'
+        lancamento:                     'Lançamento'
+        data_limite_resgate:            'Data Limite<br />p/ Resgate'
+        entradas_pa:                    'Entradas (P.A.)'
+        saidas_pa:                      'Saidas (P.A.)'
+        total_pontos:                   'Total de Pontos'
+        valor_pv:                       'Valor (PV)'
+        saldo_pv:                       'Saldo (PV)'
+        data_expiracao:                 'Data Expiração'
+        seu_numero_patrocinador:        'Seu número de patrocinador é'
+        seu_email_patrocinador:         'Seu e-mail de patrocinador é'
+        mensagem_max_caracteres:        'Mensagem (Max. %x% caracteres)'
+        situacao:                       'Situação'
+        senha:                          'Senha'
+        confirmar_senha:                'Confirmar Senha'
+        data_inicial_cadastro:          'Data Inicial Cadastro'
+        data_final_cadastro:            'Data Final Cadastro'
+        apenas_vips:                    'Apenas Vips'
+        estado:                         'Estado'
+        cidade:                         'Cidade'
+        nao_cadastrado:                 'Não Cadastrado'
+        cadastrado:                     'Cadastrado'
+        comprou:                        'Comprou'
+        apenas_quem_comprou:            'Apenas quem comprou'
+        data_cadastro:                  'Data Cadastro'
+        cliente:                        'Cliente'
+        total_compras:                  'Total Compras'
+        periodo:                        'Período'
+        pa_pontos_acumulados:           'PA Pontos Acumulados'
+        pv_pontos_valor:                'PV Pontos Valor'
+        diplomata_ouro:                 'Diplomata a Ouro'
+        desconto_diplomata_ouro:        'Desconto Diplomata a Ouro'
+        diplomata_safira:               'Diplomata a Safira'
+        desconto_diplomata_safira:      'Desconto Diplomata a Safira'
+        desconto_direitos:              'Desconto dos Diretos'
+        total_ganhos:                   'Total dos Ganhos'
+        pontos_rede:                    'Pontos Rede'
+        nivel:                          'Nível'
+        subtotal_pontos:                'Sub-total Pontos'
+        pontos_extras:                  'Pontos Extras'
+        pontos_descontados:             'Pontos Descontados'
+        pontos_ganhos:                  'Pontos Ganhos'
+        total_pontos_ganhos:            'Total Pontos Ganhos'
+        pedido:                         'Pedido'
+        cliente_nome:                   'Cliente Nome'
+        codigo:                         'Código'
+        informacao:                     'Informação'
+        pagamento:                      'Pagamento'
+        produto:                        'Produto'
+        estoque:                        'Estoque'
+        parcela_total_parcelas:         'Parcela/T. de Parcelas'
+        valor:                          'Valor'
+        operacao:                       'Operação'
+        descricao:                      'Descrição'
+        data_vip:                       'Data Ativação VIP'
+        total_clientes:                 'Total Clientes'
+        total_vip:                      'Totais VIP'
+        total_geral_venda:              'Total Geral Vendas'
+        total_venda_clientes:           'Total Venda Clientes'
+        total_venda_vip:                'Total Venda VIP'
+        calculando:                     'Calculando...'
+    texto:
+        para_liberar_pontos:        'Para liberar seus pontos bloqueados torne-se um cliente VIP'
+        veja_pontos_acumulados:     'Veja os pontos acumulados em sua rede desde a última distribuição de pontos.'
+        indique_site_amigos:        'Indique o site para seus amigos, aumente sua rede e ganhe muito mais créditos!'
+        digite_senha_resgate: >
+            <h3>Digite sua senha de acesso ao sistema de resgate.</h3><br/>
+            <p>Esta senha é diferente da senha de acesso a central do cliente.<br/>Caso não lembre sua senha, solicite uma nova pelo link abaixo.</p>
+        senha_avancada: >
+            <h3>Antes de efetuar sua solicitação de resgate você deve criar uma senha avançada.</h3><br/>
+            <p>Esta senha será usada apenas para solicitações de resgate ou transferência, sua senha de acesso a central do cliente permanecerá a mesma.</p>
+            <br/>
+            <p>Preenche sua senha nos campos abaixo.<br/>A senha deve ter no mínimo 8 caracteres alfanuméricos.</p>
+    leads_central: '<b>Atenção!!!</b> Você tem novos leads na Agenda do distribuidor. Para accesar clique no seguinte <b><a href="%link1%">link</a></b>.'
+
+emails:
+    cabecalho:
+        data:   'Data'
+    
+    rodape:
+        nr:     'n&deg;'
+        cep:    'CEP'
+        
+    pedido_cliente:
+        assunto:    'Compra :: %empresa%'
+        saudacao:   'Olá'
+        confirmacao: >
+            <p>Confirmamos o cadastro do seu pedido em nosso sistema e pedimos que aguarde a confirmação de pagamento do mesmo pela Spigreen.</p>
+            <p>Vendas sujeitas a análise e confirmação de dados.</p>
+            <p>Esse procedimento costuma ocorrer em até 24 horas úteis, mas tem um prazo máximo para acontecer de até 48 horas úteis (pagamento no cartão).</p>
+            <p>Se o pagamento foi realizado via boleto bancário, o banco tem até 2 (dois) dias úteis para nos repassar esse pagamento.</p>
+            <p>Após a confirmação do pagamento, o pedido é despachado em até 2 (dois) dias úteis e o prazo de entrega será contabilizado após o 1º dia útil da postagem do pedido nos Correios ou Transportadora.</p>
+            <p><span class='vermelho'>Muito obrigado por ser nosso Distribuidor.</span></p>
+            <p><span class='vermelho'>Gostaríamos de informar que o preço de revenda mínimos de nossos produtos são:<br>
+            <br>- Café Marita 3.0 R$ <b>60,00</b>
+            <br>- Café Marita 6.0 R$ <b>60,00</b>
+            <br>- Café Marita Verde R$ <b>60,00</b>
+            <br>- Balas Marita Life R$ <b>70,00</b>
+            <br>- Adoçante Marita Stévia R$ <b>14,90</b>
+            <br>- Liofilizados Marita Happy R$ <b>9,90</b> (exceto beterraba R$ <b>6,60</b>)
+            <br>- Marita Cookies Premium <b>R$ 3,90</b>
+            <br>- Marita Fit Protein <b>R$ 9,90</b>
+            <p><span class='vermelho'>Contamos com sua colaboração e desejamos ótimas vendas.</span></p>
+            <p>Obrigado por comprar em nossa loja.</p>
+        header:
+            detalhes:           'Detalhes do Pedido'
+            dados_cliente:      'Dados do Cliente'
+            endereco_entrega:   'Endereço de Entrega'
+            itens:              'Itens do Pedido'
+            pontos:             'Pontos'
+            outras_informacoes: 'Outras Informações'
+        nr_pedido:          'No. Pedido'
+        data:               'Data'
+        valor:              'Valor'
+        pagamento:          'Pagamento'
+        frete:              'Frete'
+        nome_razao_social:  'Nome | Razão Social'
+        cpf_rg:             'CPF | RG'
+        email:              'E-mail'
+        data_nascimento:    'Data Nascimento'
+        endereco:           'Endereço'
+        codigo:             'Código'
+        produto:            'Produto'
+        qtd:                'Qtd'
+        total:              'Total'
+        comprado_de:        'Comprado de %nome%'
+        observacoes:        'Observações'
+        itens_adicionais:   'Itens Adicionais'
+        papel:              'Papel'
+        acabamento:         'Acabamento'
+        artes:              'Artes'
+        visualizar:         'Visualizar'
+        subtotal:           'Sub-total'
+        freta:              'Frete'
+        desconto:           'Desconto'
+        desconto_geral:     'Desconto geral'
+        desconto_boleto:    'Desconto boleto'
+        desconto_retirada:  'Desconto retirada'
+        desconto_pontos:    'Pagamento pontos'
+        recebera_x_pontos:  "Após a confirmação de seu pagamento, você receberá <span style='color: blue; font-weight: bold'>%x%</span> pontos pela compra."
+        em_caso_duvidas:    'Em caso de dúvidas, entre em contato conosco através de nosso <a href="%link%">formulário de contato</a>.'
+        
+    faq_cliente:
+        assunto:        'Pergunta FAQ :: %empresa%'
+        titulo:         'Pergunta FAQ'
+        saudacao:       'Olá'
+        confirmacao: >
+            <p><b>A %empresa% recebeu o registro de sua dúvida.</b></p>
+            <p>Obrigado pelo contato, em breve sua dúvida será respondida.</p>
+            <p>Você receberá a resposta em seu e-mail e também poderá visualizá-la na seção de FAQ do nosso site.</p>
+            
+    aviso_vip:
+        assunto:    'Parabéns, Cliente VIP :: %nome%'
+        titulo:     'Parabéns, você se tornou um cliente VIP.'
+        confirmacao: >
+            <p><b>Olá, <span class='rosa'>%nome%</span>,</b></p>
+            <p>Parabéns você acabou de se tornar um cliente VIP. Aproveite as vantagens, convide seus amigos a comprarem um dos nossos kits e ganhe comissão pela indicação das vendas. 
+            Saiba mais: <a href='%link%'>%link%</a></p>
+            
+    solicitacao_resgate:
+        assunto:    'Solicitação de Resgate :: %empresa%'
+        titulo:     'Solicitação de Resgate de Pontos'
+        saudacao:   'Olá'
+        confirmacao: >
+            <p><b>Recebemos sua solicitação de resgate.</b></p>
+            <p>Estamos processando sua solicitação.</p>
+            <p>Você receberá a resposta em seu e-mail assim que o depósito for efetuado.</p>
+            
+    alteracao_solicitacao_resgate:
+        assunto:    'Solicitação de Resgate :: %empresa%'
+        titulo:     'Solicitação de Resgate de Pontos'
+        saudacao:   'Olá'
+        efetuado: >
+            <p><b>Sua solicitação de resgate foi efetuada e o valor estará em sua conta em um prazo de 24 horas.</b></p>
+            <p>Qualquer problema ou dúvida entre em contato conosco.</p>
+            <br>
+        cancelado: >
+            <p><b>Sua solicitação de resgate foi <u>cancelada</u>, veja o motivo abaixo.</b></p>
+            <hr>
+            <p>%observacao%</p>
+            <hr>
+            <p>Para efetuar o resgate faça uma nova solicitação levando em consideração a observacão acima.</p>
+            <p>Em caso de dúvidas estre em contato com nossa equipe.</p>
+            <br>
+            
+    resposta_faq:
+        assunto:            'Resposta FAQ :: %empresa%'
+        titulo:             'Resposta FAQ'
+        saudacao:           'Olá'
+        ja_temos_resposta:  'Já temos a resposta da dúvida que você nos enviou.'
+        esperamos_tenha_sido_esclarecida: >
+            <p><b>Esperamos que a sua dúvida tenha sido esclarecida.</b></p>
+            <p>Caso necessite, informamos que estamos a sua disposição para o complemento de mais informações. Pode contar conosco!
+            A resposta de sua dúvida também poderá ser visualizada na seção de FAQ do nosso site.</p>
+            <br>
+            
+    recebimento_contato:
+        assunto:    'Fale com a Gente :: %empresa%'
+        titulo:     '<b>Fale com a Gente</b> - Reposta ao formulário recebido'
+        saudacao:   'Olá'
+        confirmacao: >
+            <p>Recebemos sua mensagem enviada através do nosso site. Estamos verificando as informações e em breve lhe daremos o retorno.</p>
+            <p><b>Obrigado por nos contatar.</b></p>
+            <br>
+            
+    agradecimento_avaliacao:
+        assunto:    'Avaliação de Produto :: %empresa%'
+        titulo:     'Avalie Também / Comentários'
+        agradecimento: >
+            <br>
+            <p><b>Olá, <span class='rosa'>%nome%</span>,</b></p>
+            <p>A %empresa% agradece a avaliação que você fez do produto: <a href='%link%'>%produto%</a>.
+                Sua opnião é muito importante para que possamos levar até você produtos de qualidade e de sua confiança.</p>
+            <p><b>Obrigado por contribuir com a gente, sua opnião faz toda a diferença.</b></p>
+            <br>
+            
+    numero_colaborador:
+        assunto:    'Cadastro Site :: %empresa%'
+        titulo:     'Código de Patrocinador:'
+        conteudo: >
+            <br>
+            <p><b>Olá, <span class='rosa'>%nome%</span>!</b></p>
+            <p>A %empresa% agradece pelo cadastro no nosso site.</p>
+            <p>Seu número de Colaborador é:<b> %numero%.</b></p>
+            <p><b>Muito obrigado por fazer parte da nossa Rede!</b></p>
+            <br>
+            
+    indicacao_produto:
+        assunto:    'Indicação de Produto :: %empresa%'
+        titulo:     'Indicação de Produto'
+        clique_aqui:  "<a href='%link%'>Clique Aqui</a>"
+        indicacao: >
+            <br>
+            <p><b>Olá <span class='rosa'>%nome_amigo%</span></b><br /></p>
+            <p>Você conhece a %empresa%?<br>
+            Seu amigo(a) <span class='azul'>%seu_nome%</span>, visitou nossa loja virtual e está lhe indicando um produto da %empresa%.</p>
+            <p><b>Veja abaixo a mensagem que ele(a) escreveu:</b></p>
+        acesse_produto: "Para conhecer o produto acesse o link, aproveite e conheça nossa loja virtual: <a href='%link%'>Clique Aqui</a>"
+        
+    indicacao_site:
+        assunto:    'Indicação de Site :: %empresa%'
+        titulo:     'Indicação do site Spigreen'
+        indicacao: >
+            <br>
+            <p><b>Olá <span class='rosa'>%nome%</span></b><br /></p>
+            Seu amigo(a) <span class='azul'>%nome_cliente%</span>, está convidando você para fazer parte de nossa rede de afiliados.</p>
+            <p><b>Você ainda não conhece a Spigreen ?</b></p>
+            <p>A Spigreen é um site de venda pela internet que está focado na realização pessoal de seus clientes! Onde comprar também é um bom negócio! Quando o consumidor efetua uma compra, geram-se créditos que podem ser utilizados nas próximas aquisições. Para aumentar sua bonificação é só convidar seus amigos e uma parcela dos créditos gerados por eles serão creditados na sua conta.</p>
+            <p>Veja abaixo a mensagem do(a) %nome_cliente% para você.</p>
+        para_fazer_parte: >
+            <p>Para fazer parte de nossa rede acesse o site através do link abaixo e efetue seu cadastro.</p>
+            <p>Acesse:<br/><a href='%link%'>%link%</a></p>
+            <p>No momento de seu cadastro não esqueça de informar o código ou o e-mail de afiliação de seu amigo para entrar em sua rede de parceiros.<br>Digite o código: <span class='azul'>%codigo%</span> ou o e-mail: <span class='azul'>%email%</span></p>
+            <br>
+            
+    indicacao_vip:
+        assunto:    'Torne-se um Cliente Vip :: %empresa%'
+        titulo:     'Torne-se um Cliente Vip agora mesmo!'
+        indicacao: >
+            <p>Seu amigo(a) <span class='azul'>%nome_cliente%</span>, está convidando você para se tornar um cliente vip da Rede Fácil Brasil.</p>
+            <p><b>Você ainda não sabe o que é o cliente vip ?</b></p>
+            <p>%vip_descricao%</p>
+            <p>Veja abaixo a mensagem do(a) %nome_cliente% para você.</p>
+        para_saber_mais: >
+            <p>Para saber mais sobre a nossa rede vip, leia a matéria que preparamos para você.</p>
+            <p>Acesse:<br/><a href='%vip_link%'>%vip_link%</a></p>
+            <br>
+            
+    cupom_desconto:
+        assunto:    'Cupom de Desconto :: %empresa%'
+        titulo:     'Cupom de Desconto'
+        introducao: >
+            <p><b>Olá <span class='rosa'>%cliente%</span>,</b></p>
+            <p>Você acaba de receber um cupom de desconto para ser utilizado em compras em nosso site, confira abaixo:</p>
+        login:          'Login'    
+        tipo_cupom:     'Tipo de cupom'
+        numero_cupom:   'Número do cupom'
+        valor_desconto: 'Valor do desconto'
+        data_validade:  'Data de validade'
+        periodo:        '%inicio% até %fim%'
+        nao_expira:     'Não expira'
+        
+    nova_situacao_pedido:
+        assunto:    'Status do Pedido No. %pedido% :: %empresa%'
+        titulo:     'Status do Pedido: %pedido%'
+        saudacao:   'Olá'
+        nova_situacao: >
+            <p>Seu pedido No. %pedido% mudou de situação
+            e está agora como <b>%situacao%</b></p>
+            <p>%mensagem%</p>
+        rastreie_encomendas:    'Rastreie suas encomendas'    
+        para_saber_mais:        "<p>Para saber mais detalhes, acesse a <a href='%link%'>Central do Cliente</a>."
+        central_cliente:        "Central do Cliente"
+        
+    pedido_representante:
+        assunto:                'Compra Hotsite :: %nome%'
+        saudacao:               'Olá'
+        novo_pedido_gerado:     'Um novo pedido foi realizado em seu Hotsite.'
+        detalhes_pedido:        'Detalhes do Pedido'
+        nome_cliente:           'Nome Cliente'
+        telefone:               'Telefone'
+        email:                  'E-mail'
+        cep:                    'Cep'
+        endereco:               'Endereço'
+        numero:                 'Número'
+        complemento:            'Complemento'
+        bairro:                 'Bairro'
+        cidade:                 'Cidade'
+        estado:                 'Estado'
+        produto:                'Produto'
+        quantidade:             'Quantidade'
+        
+    solicitacao_visita:
+        assunto:                'Solicitação de Visita Hotsite :: %nome%'
+        saudacao:               'Olá'
+        nova_solicitacao:       'Uma nova solicitação de visita foi cadastrada em seu Hotsite.'
+        detalhes_solicitacao:   'Detalhes da Solicitação'
+        nome_cliente:           'Nome Cliente'
+        telefone:               'Telefone'
+        email:                  'E-mail'
+        endereco:               'Endereço'
+        
+    contato_representante:
+        assunto:                'Novo Contato Hotsite :: %nome%'
+        saudacao:               'Olá'
+        nova_mensagem_enviada:  'Uma nova mensagem foi enviada para você através de seu Hotsite.'
+        detalhes_mensagem:      'Detalhes da Mensagem'
+        nome:                   'Nome'
+        email:                  'E-mail'
+        mensagem:               'Mensagem'
+        
+    recuperar_senha_resgate:
+        assunto:                'Recuperação de Senha Resgate :: %empresa%'
+        titulo:                 'Recuperação de senha do resgate'
+        saudacao:               'Olá'
+        mensagem_recuperacao: >
+            <p>Você solicitou a alteração de sua senha do resgate e transferência de pontos.</p><br />
+            <p>Para validar sua alteração, clique no link abaixo.</p><br /><br />
+            <a href='%link%'>%link%</a> <br /><br />
+            <p> Se ao clicar no link acima não funcionar, copie e cole o URL em uma nova janela do navegador. <br /><br />
+                Se você não iniciou a solicitação, você não precisa tomar nenhuma providência e <br />
+                pode seguramente desconsiderar este e-mail. <br />
+                <br />
+                Atenciosamente,<br />
+                A equipe %empresa%
+            </p>
+                
+detalhes:
+    produtos:
+        ref:                    'Ref.'
+        seja_primeiro_avaliar:  'Seja o primeiro a avaliar!'
+        mais_detalhes:          'Mais detalhes'
+        acompanhamento_pedido:  'Acompanhamento de Pedido'
+        exclusivo_vip:          'Produto exclusivo para clientes VIP'
+        compre_torne_se_vip:    'Compre e torne-se um <u>Cliente VIP</u>.'
+        avista:                 'à vista'
+        no_cartao:              'no cartão'
+        compre_ganhe:           'Compre e ganhe'
+        x_pontos:               '%x% pontos'
+        indisponivel:           'Produto Indisponível.'
+        nao_encontrado:         'O produto que você está tentando acessar não foi encontrado.'
+        informacoes:            'Informações'
+        bonificacao:            'Bonificação'
+        comentarios:            'Comentários'
+        indique:                'Indique este Produto'
+        modo_de_consumo:        'Modo de consumo'
+        valor:
+            de:     'de'
+            por:    'por'
+        venda_casada:
+            compre_dois_por_apenas:    'Compre os<br/> <span>2</span> itens'
+            por_apenas:                'Por apenas:'
+        listagem_comentarios:
+            por:                        'Por:' 
+            data:                       'Data:'
+            sua_avaliacao:              'Sua avaliação do produto:'
+            nenhum_comentario:          'Ainda não existem avaliações para este produto, seja o primeiro a avaliar!'
+    pedidos:
+        numero:                     'Pedido No.'
+        forma_entrega:              'Forma Entrega'
+        onde_esta:                  'Onde está o meu pedido?'
+        endereco_entrega:           'Endereço de Entrega'
+        endereco_entrega_pda:       'Endereço do PDA'
+        produto:                    'Produto'
+        valor_total:                'Valor Total'
+        quantidade:                 'Quantidade:'
+        valor_unitario:             'Valor Unitário:'
+        comprado_de:                'Comprando de %nome%'
+        desconto:                   'Desconto'
+        desconto_geral:             'Desconto geral'
+        desconto_boleto:            'Desconto boleto'
+        desconto_retirada:          'Desconto retirada'
+        desconto_pontos:            'Pagamento pontos'
+        subtotal:                   'Sub-total'
+        frete:                      'Frete'
+        total:                      'Total'
+        forma_pagamento:            'Forma Pagamento'
+        imprimir_segunda_via:       'Imprimir segunda via'
+        seus_pontos:                'Seus Pontos'
+        pontos_para_voce:           'Pontos para rede:'
+        alterar_forma_pagamento:    'Alterar forma de pagamento'
+        status:
+            cancelado:      'Pedido cancelado'
+            andamento:      'Pedido em andamento'
+            finalizado:     'Pedido finalizado'
+            
+    novidades:
+        publicado_em:       'Publicado em %data%'
+    
+forms:
+    busca:
+        placeholder: 'Digite aqui o que você procura...'
+        
+    cadastro:
+        choices:
+            sexo:
+                masculino:  'Masculino'
+                feminino:   'Feminino'
+        label:
+            pais:       'País:'
+            nome:       'Nome:'
+            sobrenome:  'Sobrenome:'
+            sexo:       'Sexo:'
+            cpf:        'CPF:'
+            rg:         'RG'
+            cnpj:       'CNPJ:'
+            ie_im:      'IE / IM'
+            data_nascimento:    'Data de Nascimento:'
+            data_nasc:          'Data de Nasc:'
+            documento_cadastro: 'Documento Cadastro'
+            documento_registro: 'Documento Registro'
+            razao_social:       'Razão Social:'
+            nome_fantasia:      'Nome Fantasia:'
+            patrocinador:       'Número ou E-mail do patrocinador:'
+            email:              'E-mail:'
+            senha:              'Senha:'
+            confirmar_senha:    'Confirmar Senha:'
+        erro:
+            patrocinador_nao_preenchido:    'Você deixou o campo "Número de Patrocinador" em branco.'
+        link:
+            alterar_senha:      'Alterar senha - <a class="alterar-senha" href="%link%">Clique aqui para alterar a sua senha</a>'
+        title:
+            pais:       'País'
+            dados_cadastrais:   'Dados Cadastrais'
+            dados_responsavel:  'Dados do Responsável'
+            endereco:           'Endereço'
+            patrocinador:       'Patrocinador'
+            criando_login:      'Criando seu login'
+            patrocinador_nao_preenchido:    'Número de Patrocinador não preenchido'
+        tooltip:
+            senha:              'Digite uma senha com pelo menos 6 caracteres.'
+        texto:
+            check_termos: >
+                Li e concordo com os <a href="%link%" target="_blank">Termos e Condições de Uso, Contrato, Código de ética e Sistema de Bonificação.
+            patrocinador: >
+                <p>O número de patrocinador é o número do seu amigo que lhe convidou para fazer parte da sua rede.<br/>Você também pode utilizar o e-mail de quem lhe convidou para a Rede Fácil Brasil.</p><br/>
+                <p><span class="text-danger">* Atenção! Após a conclusão do cadastro você não poderá alterar mais o seu patrocinador.</span></p>
+                
+    alterar_senha:
+        label:
+            senha_atual:        'Senha atual:'
+            nova_senha:         'Nova senha:'
+            confirmar_senha:    'Confirmar nova senha:'
+    
+    depoimento:
+        label:
+            produto:    'Produto:'
+            avaliacao:  'Avaliação:'
+            depoimento: 'Depoimento:'
+        placeholder:
+            produto: 'Nome do produto'
+            
+    endereco:
+        label:
+            identificacao:  'Identificação do endereço:'
+            cep:            'CEP:'
+            zip_code:       'Zipcode:'
+            endereco:       'Endereço:'
+            numero:         'Nº:'
+            bairro:         'Bairro:'
+            complemento:    'Complemento:'
+            estado:         'Estado (UF):'
+            cidade:         'Cidade:'
+            provincia:      'Estado/Província:'
+            telefone_x:     'Telefone %x%:'
+        placeholder:
+            identificacao:  'Ex.: Casa, Trabalho, Casa da praia, etc.'
+            
+    filtro_produtos:
+        ordenacao:
+            label:          "Ordenar"
+            maior_preco:    "Maior preço"
+            menor_preco:    "Menor preço"
+            
+    frete:
+        nao_sabe_cep:       'Não sabe seu cep? Clique aqui'
+        tipos:
+            nacional:       'Brasil'
+            internacional:  'Internacional'
+            
+    indicacao_produto:
+        placeholder:
+            nome:           'Nome:'
+            nome_amigo:     'Nome do seu amigo:'
+            mensagem:       'Ex.: Olá, gostaria de indicar a você este produto...'
+            email_amigo:    'E-mail do seu amigo'
+        title:
+            nome:           'Seu nome'
+            nome_amigo:     'Nome do seu amigo'
+            email_amigo:    'E-mail do seu amigo'
+            
+    alterar_endereco:
+        label:
+            nome:   'Nome:'
+            email:  'E-mail:'
+            telefone:       'Telefone:'
+            novo_endereco:  'Novo Endereço:'
+        title:
+            nome:   'Nome'
+            email:  'E-mail'
+            novo_endereco:  'Seu novo endereço'
+        texto: >
+            <p>Por ser um Ponto De Apoio, você não pode alterar seu endereço diretamente pelo site.</p>
+            <p>Preencha o formulário abaixo para efetuarmos a alteração de endereço.</p>
+            
+    faq:
+        label:
+            nome:   'Nome:'
+            email:  'E-mail:'
+            pergunta:   'Descreva sua Dúvida:'
+        title:
+            nome:   'Nome'
+            email:  'E-mail'
+            
+    hotsite:
+        choices:
+            nao:    'Não'
+            sim:    'Sim'
+        label:
+            liberado:   'Habilitar Hotsite:'
+            endereco:   'Endereço:'
+            nome:       'Nome:'
+            email:      'E-mail:'
+            texto_inicial:          'Texto Inicial:'
+            telefone:               'Telefone:'
+            login_pagseguro:        'Login Pagseguro:'
+            token_pagseguro:        'Token Pagseguro:'
+            imagem:                 'Imagem:'
+            produtos_publicados:    'Produtos publicados no hotsite:'
+        tooltip:
+            imagem:             'Tamanho sugerido: 360px x 360px (.gif, .png ou .jpg)'
+        texto:
+            configurar_pagseguro: >
+                <b>Como configurar o Pagseguro.</b><br/><br/>
+                Você pode informar seu login no pagseguro para receber o pagamento das compras realizadas.<br/>
+                O login é o e-mail utilizado em seu cadastro no pagseguro.<br/>
+                Sua conta no pagseguro deve ser do tipo <b>Vendedor</b> ou <b>Empresarial</b>, caso contrário não será possível realizar cobranças.<br/><br/>
+                Para mais informações acesse <a style="text-decoration: underline;" href="https://pagseguro.uol.com.br/v2/guia-de-integracao/como-comecar.html#!configure-sua-conta" target="_blank">o site do pagseguro</a>.
+                
+    contato:
+        label:
+            nome:       'Nome'
+            email:      'E-mail'
+            telefone:   'Telefone'
+            mensagem:   'Mensagem'
+            receber_newsletter: 'Desejo receber novidades da %empresa% em meu e-mail'
+        placeholder:
+            mensagem:   'Escreva aqui sua mensagem'
+        title:
+            nome:       'Seu nome'
+            email:      'Seu email'
+            telefone:   'Seu Telefone'
+            mensagem:   'Sua mensagem'
+            
+    login:
+        label:
+            esqueceu_senha: 'Esqueceu sua senha?'
+        links:
+            recuperar_senha:    'Para recuperar sua senha <b>clique aqui</b>'
+        placeholder:
+            email:  'Seu E-mail: *'
+            senha:  'Sua Senha: *'
+        title:
+            email:  'Seu Email'
+            senha:  'Sua Senha'
+            recuperar_senha:    'Utilize seu e-mail para recuperar sua senha'
+            
+    pre_cadastro:
+        label:
+            nao_sabe_cep:   'Não sabe o seu CEP?'
+        links:
+            consulte_cep:   'Consulte seu endereço e CEP'
+        placeholder:
+            email:  'Seu E-mail: *'
+            cep:    'Seu CEP: *'
+        title:
+            email:          'Seu Email'
+            cep:            'CEP'
+            nao_sabe_cep:   'Não sabe seu CEP?'
+            
+    recuperacao_senha:
+        info:       'Esqueceu sua senha? Nós o ajudaremos a recuperá-la! <br><br>Por favor, digite o seu e-mail no campo abaixo para enviarmos as instruções para você.'
+        placeholder:
+            email:  'Seu E-mail: *'
+        title:
+            email:  'Seu Email'
+            
+    nova_senha:
+        info:                   'Utilize o formulário abaixo para informar a sua nova senha e poder acessar o sistema.'
+        placeholder:
+            nova_senha:         'Nova senha: *'
+            repetir_nova_senha: 'Repita a nova senha: *'
+        title:
+            nova_senha:         'Nova Senha'
+            repetir_nova_senha: 'Repita a Nova Senha'
+            
+    newsletter:
+        preencha_campos:    'Preencha os campos abaixo e comece a receber nossa newsletter.'
+        label:
+            nome:           'Seu Nome'
+            email:          'Seu E-mail'
+            
+erro_404:
+    title:                  'Erro 404'
+    pagina_nao_encontrada:  'Página não encontrada'
+    texto:                  'Pedimos desculpas, mas a página que você está tentando acessar não existe ou não está mais disponível.'
+    voltar_pagina_inicial:  'Clique aqui para voltar à página inicial.'
+            
+label:
+    selecione:              '-- Selecione --'
+    numero_patrocinador:    'Número de Patrocinador:'
+    patrocinador:           'Patrocinador:'
+    telefone:               'Telefone:'
+
+listagem:
+    depoimentos:
+        title: 'Depoimentos'
+        title_detalhes: 'Depoimento Detalhes'
+    produtos:
+        quantidade:                 '{0}Nenhum produto|{1}1 Produto|[2,Inf]%qtd% Produtos'
+        pagamento_boleto_cartao:    'Pagamento com boleto bancário ou cartão ou cartão em até %parcelas%x s/ juros.'
+        x_pontos_rede:              '%x% P.A. para sua rede.'
+        promocao:                   'Promoção'
+        valor:
+            de:  'De'   
+            por: 'por'
+    pedidos:
+        numero:         'No. Pedido:'
+        data:           'Data:'
+        valor:          'Valor:'
+        data_pedido:    'Data Pedido'
+        data_pagamento: 'Data Pagamento'
+        pontos:         'Pontos'
+        pontos_rede:    'Pontos Rede'
+        mais_detalhes:      'Mais detalhes'
+        acompanhamento_pedido:  'Acompanhamento de Pedido'
+        nenhum_pedido:      'Nenhum pedido encontrado'
+        nenhum_pedido_mes:  'Nenhum pedido encontrado no mês atual.'
+    produtos_visitados:
+        referencia:     'Referência:'
+        valor:          'Valor:'
+        nenhum_produto: 'Nenhum produto visitado recentemente.'
+    comentarios:
+        data:       'Data:'
+        avaliacao:  'Avaliação:'
+        x_estrelas: '{0}Nenhuma estrela|{1}1 Estrela|[2,Inf]%qtd% estrelas'
+        status:     'Status:'
+        comentario: 'Comentário:'
+        nenhum_comentario:  'Nenhum comentário realizado.'
+    enderecos:
+        sem_identificacao:  'Sem Identificação'
+        pda_identificacao:  'Endereço Ponto de Apoio'
+
+links:
+    home:           'Página Inicial'
+    veja_video:     'Veja o vídeo!'
+    ver_mais:       'Ver mais...'
+    veja_detalhes:  'Veja Detalhes'
+    minha_conta:    'Minha conta'
+    entrar:         'Entrar'
+    sair:           'Sair'
+    atendimento:    'Atendimento'
+    subir_topo:     'Subir página para o topo'
+    empresa:        'Empresa'
+    noticias:       'Notícias'
+    depoimentos:    'Depoimentos'
+    telefones:      'Telefones'
+    organize_seus_pedidos:  'Organize seus pedidos'
+    central_distribuidor:   'Central do Distribuidor'
+    usar_nova_central:      'Você quer usar a nova Central do Distribuidor ?'
+    usar_nova_central_click_aqui:      'Clique aqui para usar a nova Central do Distribuidor.'
+    entrar_ou_cadastrar:    'Entrar ou Cadastrar'
+    clique_para_sair:       'Clique aqui para sair'
+    visualize_carrinho:     'Visualize seu carrinho!'
+    sistema_pontuacao:      'Sistema de Pontuação'
+    videoconferencia:       'Videoconferência'
+    contrato_codigo_etica:  'Contrato e Código de Ética'
+    termos_condicoes_uso:   'Termos e Condições de Uso'
+    politica_pagamento:     'Política de Pagamentos'
+    politica_entrega:       'Política de Entrega'
+    dados_cadastrais:       'Dados Cadastrais'
+    meus_pedidos:           'Meus Pedidos'
+    meus_enderecos_entrega: 'Meus Endereços de Entrega'
+    meus_enderecos:         'Meus Endereços'
+    produtos_visitados:     'Produtos Visitados'
+    carrinho_compras:       'Carrinho de compras'
+    formulario_contato:     'Formulário de Contato'
+    fale_conosco:           'Fale Conosco'
+    atendimento_online:     'Atendimento Online'
+    perguntas_frequentes:   'Perguntas Frequentes'
+    politica_privacidade_seguranca:     'Política de Privacidade e Segurança'
+    politica_trocas_devolucoes:         'Política de Trocas e Devoluções'
+    perguntas_mais_frequentes:          'Perguntas Mais Frequentes'
+    sair_central:                       'Sair da Central'
+    ver_pedidos_finalizados:            'Ver Pedidos Finalizados'
+    ver_pedidos_andamento:              'Ver Pedidos em Andamento'
+    meus_comentarios:                   'Meus Comentários'
+    faq_duvidas_frequentes:             'FAQ - Dúvidas Frequentes'
+    faq_duvidas:                        'FAQ Dúvidas'
+    configurar_site:                    'Site do distribuidor'
+    agenda_distribuidor:                'Agenda do Distribuidor'
+    universidade:                       'Universidade'
+    metodologia12mais:                  'Metodologia 12+mais'
+    central_pontos:                     'Central de Pontos'
+    consultar_pontos:                   'Consultar Pontos'
+    adicionar_endereco_entrega:         'Adicionar um novo endereço de entrega'
+    novo_endereco:                      'Novo Endereço'
+    alterar_endereco:                   'Alterar endereço'
+    escolher_este_endereco_entrega:     'Escolher este endereço para entrega'
+    escolher_este_endereco:             'Escolher este endereco'
+    visualizar_redes:                   'Visualizar redes'
+    visualizar_extratos:                'Visualizar extrato'
+    historico_conta:                    'Histórico da conta'
+    convidar_amigos:                    'Convidar amigos'
+    solicitar_resgate:                  'Resgate ou Transferência'
+    relatorio_clientes:                 'Relatório de clientes'
+    pontos_distribuicoes:               'Distribuição mensal PA Global'
+    central_pda:                        'Central do PDA'
+    saiba_mais_cliente_vip:             'Saiba mais sobre ser um cliente VIP'
+    esqueci_minha_senha:                'Esqueci minha senha'
+    previa:                             'Prévia'
+    clique_aqui_acessar:                'clique aqui para acessar'
+    clique_acesse_faq:                  'Clique e acesse nosso FAQ'
+    continuar_lendo:                    'Continuar lendo'
+    acesse_blog:                        'Acesse o <br/> Blog'
+    visualizar_lancamentos_futuros:     'Veja lançamentos futuros'
+    area_download:                      'Área de Download'
+    mensagens:                          'Mensagens'
+    ativar_vip:                         'Ativar VIP'
+    recados_oficiais:                   'Recados Oficiais'
+    abrir:                              'Abrir'
+    treinamento_online:                 'Treinamento Online'
+    videoconferencias:                  'Videoconferências'
+    promocoes_e_lancamentos:            'Promoções e Lançamentos'
+    imprimir:                           'Imprimir'
+    conta_maritawallet:                 'Marita Cash Bank'
+    sistema_bonificacao:                'Sistema de Bonificação'
+
+meses:
+    janeiro:    'Janeiro'
+    fevereiro:  'Fevereiro'
+    março:      'Março'
+    abril:      'Abril'
+    maio:       'Maio'
+    junho:      'Junho'
+    julho:      'Julho'
+    agosto:     'Agosto'
+    setembro:   'Setembro'
+    outubro:    'Outubro'
+    novembro:   'Novembro'
+    dezembro:   'Dezembro'
+    
+paginacao:
+    pagina_anterior:    "Página anterior"
+    proxima_pagina:     "Próxima página"
+    pagina_x:           "Página %x%"    
+    
+pedidos:
+    situacoes:
+        andamento:  'Em Andamento'
+        finalizados: 'Finalizados'
+        
+comentarios:
+    notas:
+        5: 'Excelente'
+        4: 'Ótimo'
+        3: 'Bom'
+        2: 'Regular'
+        1: 'Ruim'
+    status:
+        aprovado:   'Aprovado'
+        pendente:   'Pendente'
+        reprovado:  'Reprovado'
+        
+cupom_desconto:
+    tipos:
+        cupom_de_desconto:          'Cupom de Desconto'
+        bônus_de_aniversariante:    'Bônus de aniversariante'
+        bônus_de_segunda_compra:    'Bônus de segunda compra'
+    
+rodape:
+    direitos_reservados:    '%ano% Spigreen ® todos os direitos reservados.'
+    
+leads:
+    nome_distribuidor:  'Nome'
+    rs_distribuidor:    'Razão Social'
+    sobrenome_distribuidor:  'Sobrenome'
+    fantasia_distribuidor:  'Nome Fantasia'
+    cep_distribuidor:  'CEP'
+    celular_distribuidor:  'Telefone Celular'
+    whatsapp_distribuidor:  'WhatsApp'
+    btn_salvar_distribuidor:  'Enviar Formulário'
+    email_distribuidor:  'E-mail'
+    opcional:             'Opcional'
+    cidade_distribuidor:  'Cidade'
+    estado_distribuidor:  'Estado'
+    texto_pre_formulario: 'Preencha o formulário abaixo e aguarde, pois um Distribuidor da Spigreen fará contato com você!'
+    texto_pos_formulario: 'Prometemos manter sigilo dos seus dados e não enviar spam sem sua autorização.'
+    lead_ja_cadastrado: 'E-mail já cadastrado como Lead, aguarde o seu distribuidor entrar em contato'
+    cep_obrigatorio: 'O campo CEP e obrigatorio'
+    telefone_obrigatorio: 'O campo telefone e obrigatorio'
+
+title:
+    leads:              'Quer Participar do nosso Negócio'
+    leads_subtitle:     'Seja um parcero da Spigreen'
+    leads_form:         'Cadastre seus dados'
+    deixe_depoimento:   'Deixe seu depoimento'
+    categorias:         'Categorias'
+    videoconferencia:   'Vídeoconferência'
+    online:             'Online'
+    contato:            'Contato'
+    perguntas_frequentes:   'Perguntas Frequentes'
+    tire_duvidas_aqui:      'Tire suas dúvidas aqui'
+    ate_x_vezes:            'Em até %x%x'
+    sem_juros:              'Sem juros'
+    desconto_boleto:        'Desconto no boleto'
+    ate_x_avista:           'Até %x%% à vista'
+    institucional:          'Institucional'
+    produtos:               'Produtos'
+    politicas:              'Políticas'
+    central_cliente:        'Central do cliente'
+    calcular_frete:         'Calcular Frete'
+    produtos_relacionados:  'Produtos que você possa gostar'
+    venda_casada:           'Aproveite e compre junto'
+    alterar_senha:          'Alterar Senha'
+    central_distribuidor:   'Central do Distribuidor'
+    meus_pedidos_situacao:  'Meus Pedidos (%situacao%)'
+    produtos_visitados:     'Produtos Visitados'
+    meus_comentarios:       'Meus Comentários'
+    meus_enderecos:         'Meus Endereços'
+    selecione_endereco_entrega: 'Selecione o endereço de entrega'
+    endereco_selecionado:       'Endereço selecionado'
+    alterar_endereco:           'Alterar Endereço'
+    meu_cadastro:               'Meu Cadastro'
+    faq_duvidas:                'FAQ - Dúvidas'
+    cadastre_sua_duvida:        'Cadastre sua Dúvida'
+    configurar_site:            'Configurar Site'
+    urf:                        'URF - Universidade Spigreen'
+    seja_cliente_vip:           'Seja um cliente VIP'
+    central_pontos:             'Central de Pontos'
+    central_pontos_redes:       'Central de Pontos - Redes'
+    central_pontos_extrato:     'Central de Pontos - Extrato'
+    central_pontos_lancamentos: 'Central de Pontos - Lançamentos Futuros'
+    central_pontos_area_download: 'Central de Pontos - Área de Download '
+    central_pontos_historico:   'Central de Pontos - Histórico'
+    central_pontos_convidar_amigos:     'Central de Pontos - Convidar Amigos'
+    solicitar_resgate_transferencia:    'Solicitar Resgate ou Transferência'
+    relatorio_clientes:                 'Relatório de Clientes'
+    consultar_distribuicoes:            'Consultar Distribuições'
+    central_pda:                        'Central do PDA'
+    pedidos:                            'Pedidos'
+    atendimento_online:                 'Atendimento Online'
+    acesse_atendimento_online:          'Acesse nosso Atendimento Online!'
+    central_atendimento:                'Central de Atendimento'
+    tire_duvidas_faq:                   'Tire suas dúvidas no FAQ'
+    endereco:                           'Endereço'
+    fale_conosco:                       'Fale conosco'
+    novidades:                          'Novidades'
+    login:                              'Login'
+    identificacao:                      'Identificação'
+    faca_seu_cadastro:                  'Faça seu cadastro'
+    recuperacao_senha:                  'Recuperação de senha'
+    informe_nova_senha:                 'Informe a nova senha'
+    recuperar_senha:                    'Recuperar senha'
+    informar_nova_senha:                'Informar nova senha'
+    promocoes:                          'Promoções'
+    newsletter:                         'Newsletter'
+    meu_carrinho_compras:               'Meu Carrinho de Compras'
+    carrinho_vazio:                     'Ops! Seu carrinho está vazio.'
+    calculo_frete:                      'Cálculo de Frete'
+    pague_com_pontos:                   'Pague com seus pontos'
+    cupom_desconto:                     'Cupom de desconto'
+    pagamento:                          'Pagamento'
+    finalize_seu_pedido:                'Finalize seu pedido'
+    leads_produto:
+        title_page:                     'Quero comprar produtos'
+        title_form:                     'Cadastre seus dados'
+        title_desc:                     'Adquira já seus produtos'
+    central_mensagens:                  'Mensagens'
+
+topo:
+    saudacao:           'Olá %cliente%!'
+    saudacao_visitante: 'Olá Visitante!'
+    selecione_idioma: "Selecione o idioma"
+    
+universidade:
+    termos_uso: 'Li e concordo com os <u><a href="%link%" target="_blank">Termos e Condições de Uso - URF - <b>Clique aqui para ler</b></a></u>'
+
+agenda:
+    menu: 'Menu'
+    inicio: 'Início'
+    cliente: 'Cliente'
+    clientes: 'Clientes'
+    listas: 'Listas'
+    novo_cliente: 'Novo Cliente'
+    novo_agendamento: 'Novo Agendamento'
+    distribuidores: 'Distribuidores'
+    agendamentos: 'Agendamentos'
+    graficos: 'Gráficos'
+    suporteVIP: 'Suporte VIP'
+    agendamentos_dia: 'Agendamentos do dia' 
+    agendamentos_periodo: 'Agendamentos do periodo de %dataIni% até %dataFin%'
+    negociacoes_abertas: 'negociações abertas.'
+    negociacoes_fechadas: 'negociações fechadas.'
+    valor_jogo: 'Valor em jogo'
+    valor_fechado: 'Valor fechado'
+    agendamentos_aberto: 'Agendamentos em aberto'
+    enviar_SMS: 'Enviar SMS'
+    total_geral: 'Total Geral'
+    enviar_email: 'Enviar e-mail'
+    resumo_mensal: 'Resumo Mensal'
+    pa_mensal: 'PA Mensal'
+    pa_rede_mensal: 'PA Rede Mensal'
+    pv_liberados: 'PV Liberados'
+    pv_bloqueados: 'PV Bloqueados'
+    participantes: 'Participantes da sua Rede'
+    evolucao_vendas: 'Evolução de vendas'
+    meta: 'Meta'
+    venda: 'Venda'
+    tipo: 'Tipo'
+    tipos_disponiveis: 'Tipos disponíveis'
+    agendamentos_abertos: 'Agendamentos em aberto'
+    agendamentos_concluidos: 'Agendamentos concluídos'
+    criar_agendamento: 'Agendamento'
+    cadastro_cliente: 'Cadastrar novo cliente'
+    criar_novo_agendamento: 'Cadastrar novo agendamento'
+    sem_agendamentos: 'Nenhum agendamento encontrado.'
+    valor_aberto: 'Valor aberto'
+    valores_perdidos: 'Valores perdidos'
+    valores_ganhos: 'Valores ganhos'
+    grafico: 'Valor Ganho x Valor Perdido'
+    clientes_sem_agendamentos: 'Clientes sem agendamentos'
+    configuracoes: 'Configurações'
+    informacoes: 'Informações sobre o nível'
+    nenhuma_meta: 'Nenhuma meta de venda encontrada.'
+    cadastro_meta: 'Cadastro de metas mensais'
+    cadastro_meta_anual: 'Cadastro de meta anual'
+    salvar: 'Salvar'
+    padrao: 'Padrão'
+    cancelar: 'Cancelar'
+    filtrar: 'Filtrar'
+    periodo: 'Período'
+    periodo_exibicao: 'Período de exibição'
+    de: 'De'
+    ate: 'Até'
+    data: 'Data'
+    interesse: 'Interesse'
+    telefone: 'Telefone'
+    meu_plano: 'Meu Plano'
+    contatos: 'Contatos'
+    contrate_SMS: 'Contrate mais SMS'
+    contrate_contato: 'Contrate mais CONTATOS'
+    copyright: 'todos os direitos reservados.'
+    todas: 'Todas'
+    status: 'Status'
+    finalizadas: 'Finalizadas'
+    atrasadas: 'Atrasadas'
+    hoje: 'Hoje'
+    esta_semana: 'Esta Semana'
+    proxima_semana: 'Próxima Semana'
+    idioma: 'Idioma'
+    idiomas: 'Idiomas'
+    parabens_certificado: 'PARABÉNS!!!<BR>Você está certificado e está apto a receber Clientes / Leads'
+    faca_certificacao: 'Faça sua certificação e receba clientes! Clique e saiba como'
+    acompanhe_nivel: 'Acompanhe seu nível'
+    seu_perfil: 'Seu perfil'
+    cadastros: 'Cadastros'
+    motivos_perdas: 'Motivos de Perdas'
+    modelo_sms: 'Modelo de SMS'
+    modelo_agendamento: 'Modelo de Agendamento'
+    modelo_email: 'Modelo de E-mail'
+    atualize_plano: 'Atualize seu plano'
+    creditos_sms: 'Créditos SMS'
+    creditos_contatos: 'Créditos de Contatos'
+    sair: 'Sair'
+    modelo: 'Modelo'
+    escolha_modelo_mensagem: 'Escolha um modelo de mensagem'
+    mes: 'Mês'
+    descricao: 'Descrição'
+    descricao_nao_encontrada: 'Descrição não encontrada.'
+    escolha_filtro: 'Escolha o filtro'
+    selecione_tipo_agendamento: 'Selecione o tipo de atividade'
+    com_venda: 'Com venda'
+    nenhum_agendamento: 'Nenhum agendamento encontrado.'
+    nenhum_cliente: 'Nenhum cliente encontrado.'
+    informe_filtrar_clientes: 'Informe abaixo os dados para filtrar os clientes.'
+    exportar_m4w: 'Exportar Mail for Web'
+    email: 'E-mail'
+    nome: 'Nome'
+    ultima_compra: 'Última Compra'
+    data_cadastro: 'Cadastro'
+    data_inicial_cadastro: 'Data Inicial Cadastro'
+    data_final_cadastro: 'Data Final Cadastro'
+    excluir: 'Excluir'
+    visualizar_cliente: 'Visualizar Cliente'
+    editar_cliente: 'Editar Cliente'
+    pesquisar: 'Pesquisar'
+    cadastro_cliente: 'Cadastro de Cliente'
+    seja_vip: 'Limite de clientes gratiutos alcançado'
+    agenda_bloqueada: 'Agenda bloqueada'
+    informe_cliente: 'Informe o cliente'
+    concluido: 'Concluído'
+    escolha_tipo: 'Escolha um tipo'
+    informe_nova_data: 'Informe a nova data'
+    limite_caracteres: 'Limite de caracteres'
+    mensagens_automaticas: 'Mensagens automáticas (SMS e/ou E-mail)'
+    mensagens_automaticas_descricao: 'As mensagens abaixo serão enviadas automaticamente NO DIA do evento para o cliente'
+    agendamento_concluido: 'Agendamento concluído'
+    agendamento_concluido_descricao: 'Esse agendamento será concluído, favor informar se houve ganho ou perda.'
+    agendamento_ganho: 'Agendamento ganho'
+    qual_valor_fechado: 'Qual valor fechado?'
+    quais_produtos: 'Qual(ais) produto(s)?'
+    abrir_agendamento_acompanhamento: 'Abrir Agendamento de Acompanhamento?'
+    agendamento_perdido: 'Agendamento Perdido'
+    prorrogar_agendamento: 'Prorrogar o Agendamento'
+    ligar: 'Ligar'
+    reuniao: 'Reunião'
+    sms: 'SMS'
+    entrega: 'Entrega'
+    periodo_inicial_compra: 'Período inicial compra'
+    periodo_final_compra: 'Período final compra'
+    confirmacao_envio_email: 'Enviar e-mail'
+    confirmacao_envio_sms: 'Enviar SMS'
+    nome: 'Nome'
+    indiferente: 'Indiferente'
+    compras: 'Compras'
+    sim_comprou: 'Sim comprou'
+    nao_comprou: 'Não comprou'
+    com_agendamento: 'Com agendamento'
+    sem_agendamento: 'Sem agendamento'
+    sem_agendamentos: 'Sem agendamentos'
+    confirmacao_exclusao: 'Confirmação de exclusão'
+    confirmacao_exclusao_item: 'Deseja mesmo excluir este item?'
+    confirmacao_exclusao_cliente: 'Deseja mesmo excluir este cliente?'
+    confirmacao_exclusao_cliente_atencao: '<strong style="color: #cc2424;">ATENÇÃO:</strong> Todos os agendamentos e histórico de vendas também serão excluídos e não terá mais como recuperar!'
+    tipo_pessoa: 'Tipo Pessoa'
+    celular: 'Celular'
+    whatsapp: 'WhatsApp'
+    cep: 'CEP'
+    endereco: 'Endereço'
+    numero: 'Nº'
+    bairro: 'Bairro'
+    complemento: 'Complemento'
+    estado: 'Estado'
+    cidade: 'Cidade'
+    dados_complementares: 'Dados complementares'
+    telefone_fixo: 'Telefone Fixo'
+    cpf: 'CPF'
+    cnpj: 'CNPJ'
+    rg: 'RG'
+    ie: 'IE'
+    fisica: 'Física'
+    juridica: 'Jurídica'
+    nome_completo: 'Nome Completo'
+    data_nascimento: 'Data Nascimento'
+    sexo: 'Sexo'
+    masculino: 'Masculino'
+    feminino: 'Feminino'
+    total_venda: 'Total de venda'
+    data_ultima_compra: 'Data da última compra'
+    tomar_nota: 'Tomar Nota'
+    enviar: 'Enviar'
+    historico_observacoes: 'Histórico de observações'
+    historico_agendamentos: 'Histórico de agendamentos'
+    observacao: 'Observação'
+    produtos: 'Produtos'
+    valor_ganho: 'Valor ganho'
+    valor_perdido: 'Valor perdido'
+    editar: 'Editar'
+    detalhes: 'Detalhes'
+    assunto: 'Assunto'
+    sem_assunto: 'Sem assunto'
+    em_andamento: 'Em andamento'
+    andamento: 'Andamento'
+    informe_filtros_distribuidor: 'Informe abaixo os dados para filtrar os seus distribuidores.'
+    geracao: 'Geração'
+    nivel: 'Nível'
+    total_compra: 'Total Compra'
+    vip: 'Vip'
+    sim: 'Sim'
+    nao: 'Não'
+    nenhum_distribuidor: 'Nenhum distribuidor encontrado.'
+    indiferente_vips: 'Indiferente de Vips'
+    nao_vips: 'Não vips'
+    somente_vips: 'Somente vips'
+    apenas_vips: 'Apenas vips'
+    indiferente_compras: 'Indiferente de Compras'
+    sem_compras: 'Sem compras'
+    com_compras: 'Com compras'
+    comprou: 'Comprou'
+    indiferente_geracao: 'Indiferente de Geração'
+    indiferente_nivel: 'Indiferente do Nível'
+    qualquer_produto: 'Qualquer Produto'
+    apenas_quem_comprou: 'Apenas quem comprou'
+    ganho: 'Ganho'
+    perdido: 'Perdido'
+    perda: 'Perda'
+    prorrogar: 'Prorrogar'
+    meu_email: 'Meu E-mail'
+    meu_nivel: 'Meu Nível'
+    certificacao: 'Certificação'
+    dt_fundacao: 'Dt. Fund.'
+    dt_nascimento: 'Dt. Nasc.'
+    quantidade_dias_alerta: 'Quantidade dias alerta de acompanhamentos atrasados'
+    telefone_notificacao: 'Telefone para notificações via SMS'
+    chave_m4w: 'Chave de API do Mailforweb'
+    meta_vendas: 'Meta vendas'
+    definir_metas: 'Definir Metas'
+    sem_nivel: 'Sem Nível'
+    nome_agendamento: 'Nome Agendamento'
+    categoria: 'Categoria'
+    ativo: 'Ativo'
+    motivo: 'Motivo'
+    nenhum_motivo_perda: 'Nenhum motivo de perda encontrado.'
+    nenhum_modelo_email: 'Nenhum modelo de e-mail encontrado.'
+    nenhum_modelo_sms: 'Nenhum modelo de sms encontrado.'
+    nenhum_modelo_agendamento: 'Nenhum modelo de agendamento encontrado.'
+    descricao_mensagem: 'Descrição Mensagem'
+    abertura: 'Abertura'
+    fechamento: 'Fechamento'
+    cadastro_modelo_sms: 'Cadastro de modelo de SMS'
+    cadastro_modelo_email: 'Cadastro de modelo de E-mail'
+    cadastro_modelo_agendamento: 'Cadastro de modelo de Agendamento'
+    cadastro_motivo_perda: 'Cadastro de motivo de Perda'
+    motivo_perda: 'Motivo da Perda'
+    prazo_contato: 'Prazo Contato'
+    nome_cliente: 'Nome do Cliente'
+    contatos_indicados: 'Contatos indicados pela rede'
+    contatos_indicados_info: '<strong>Você acaba de receber um contato diretamente da Spigreen!</strong> <br><br> Na listagem abaixo constam os dados de pessoas que preencheram o formulário diretamente no site e que possuem interesse em ser distribuidor ou em comprar produtos.<strong>Você deve ligar e criar um agendamento antes que o prazo informado em vermelho se esgote</strong>. Nosso sistema verifica se o cliente indicado possui um agendamento criado e se o prazo em vermelho expirar o contato será encaminhado para outro distribuidor para que a pessoa interessada receba um rápido atendimento. <br><br>Qualquer dúvida, você pode contar com nosso  suporte pelo telefone 47 3042-1009 ou chat disponível abaixo.'
+    definir_meta_mensal: 'Definir Meta Mensal'
+    definir_meta_anual: 'Definir Meta Anual'
+    produtos_vendidos: 'Produtos Mais Vendidos'
+    tipo_lead: 'Interesse'
+    tipo_distribuidor: 'Ser um Distribuidor'
+    tipo_produto: 'Comprar Produtos'
+    ver_dados: 'Ver dados'
+    ver_contatos: 'Ver contatos'
+    fechar: 'Fechar'
+    listas_de_envio: 'Listas de envio'
+    nome_remitente: 'Nome remetente'
+    email_do_remitente: 'E-mail remetente'
+    email_de_resposta: 'E-mail resposta'
+    segmentos: 'Segmentos'
+    agendar_envio: 'Agendar envio'
+    salvar_como_rasgunho: 'Salvar como rascunho'
+    hora: 'Hora'
+    recorrencia: 'Recorrência'
+    enviar_sms: 'Enviar sms'
+    caracteres_restantes: 'Caracteres restantes'
+    textarea_placeholder: 'Um link para visualizar o e-mail será inserido no final do SMS, você só terá 110 caracteres para escrever.'
+    selecionar_lista: 'Você deve selecionar pelo menos uma lista de contatos'
+    email_remetente: 'Email do remetente'
+    nome_remetente: 'Nome do remetente'
+    ver_contatos: 'Ver contatos'
+    contatos: 'Contatos'
+    criar_lista: 'Criar lista'
+    ajuda: 'Central de ajuda'
+    tipo_cadastro: 'Novo cadastro'
+
+
+
+flashmsg:
+    adicionar_pda_categoria_diferente:        'Você só pode adicionar produtos de uma mesma categoria no carrinho.'
+    adicionar_pda_cliente_nao_pda:            'Somente pontos de apoio podem comprar esse item.'
+    resumo_pda_retirar_carrinho:              'Itens Excluídos do carrinho por serem de categorias diferentes ou exclusivos PDA.'
+    pontos_forma_nao_pontos:                  'Erro ao finalizar o pagamento, pagar com pontos selecionado e forma de pagamento diferente de pontos.'
+    forma_pontos_nao_opcao:                   'Erro ao pagar com pontos, opção não selecionada.'
+    adicionar_pda_carrinho_outros_itens:      'Você não pode adicionar produtos exclusivos PDA com outros produtos no carrinho.'
+    adicionar_produto_cartao:                 'Você já adquiriu o Cartão.'
+    add_only_produto_cartao:                  'Você só pode adicionar produto do tipo cartão no carrinho.'
+    add_only_not_produto_cartao:              'Você não pode adicionar produto do tipo cartão no carrinho com outros produtos.'
+    add_restrict_produto_cartao:              'Você não pode adquirir o produto cartão.'
+    limite_de_compras_atintigo:               'Você já atingiu o limite de compras do produto <b>%produto%</b>, ele foi tirado do seu carrinho.'
+    limite_de_compras_quantidade:             'Você não pode comprar a quantidade requisitada do produto <b>%produto%</b>, seu carrinho foi ajustado com a quantidade que pode comprar deste produto.'
+    pais_nao_liberado_venda:                  'Endereços fora de países autorizados não podem fazer compras, entre em contato conosco pelo chat/e-mail.'
+
+video_vip:
+    hora:               'hora'
+    horas:              'horas'
+    minuto:             'minuto'
+    minutos:            'minutos'
+    video:              'vídeo'
+    videos:             'vídeos'
+    tela_completa:      'Tela completa'
+    ver_logo:           'Veja logo'
+    tempo_restante:     'Tempo'
+    reproduzir:         'Reproduzir'
+
+lancamentos_promocao:
+    credito:          'Crédito'
+    debit:            'Débito'
+    total_credito:    'Crédito Tolal: '
+    total_debito:     'Débito Tolal: '
+    nao_lancamentos:  'Não tem lançamentos para este período'
+
+rescate:
+    btn_imposto_ir:   'Dedução do IR'
+    btn_nota_fiscal:  'Incluir Nota Fiscal'
+    erro_xml:         'XML inválido adicionado.'
+
+metodologia_12_mais:
+    titulo:   'Metodologia 12+mais'
+    apn_plano_de_negocios: 'apn - plano de negócios'
+    fundamentação_da_metodologia_12_mais: 'fundamentação da metodologia 12+mais'
+    a_metodologia_12_mais: 'a metodologia 12+mais'
+    e_book_manual_do_distribuidor_12_mais: 'e-book manual do distribuidor 12+mais'
+    arquivo_de_plano_de_acao: 'arquivo de plano de ação'
+    planilha_de_controle_do_plano_de_acao: 'planilha de controle do plano de ação'
+    baixar_ppsx: 'Baixar em PPSX'
+    baixar_pps: 'Baixar em PPS'
+    baixar_pdf: 'Baixar em PDF'
+    baixar_doc: 'Baixar em DOC'
+    baixar_docx: 'Baixar em DOCX'
+    baixar_xls: 'Baixar em XLS'
+    baixar_xlsx: 'Baixar em XLSX'
+
+download:
+    titulo:           'Área de Download'
+    categoria:
+        tipo_produto: 'Produto'
+        tipo_negocio: 'Negócio'
+        tipo_treinamento: 'Sistema de treinamento'
+    label:
+        nome:         'Nome'
+        categoria:    'Categoria'
+        data:         'Data'
+        descricao:    'Descriçao'
+        arquivo:      'Arquivo'
+        nao_arquivos: 'Não há arquivos na área de download'
+        sem_resultados: 'Nenhum resultado para a sua pesquisa'
+        procurar_por: 'Procurar por...'
+        nao_tem_nada:  'A pasta esta vazia'
+        voltar:             'Voltar'
+
+
+niveis:
+    atual:            'Atual'
+    maior:            'Maior'
+    nivel_atual:      'Nivel atual'
+    maior_nivel:      'Maior nível alcançado'
+    proximos_niveis:  'Próximos níveis'
+
+alertas:
+    termos_uso:               'Termos e Condições de Uso'
+    politica_privacidade:     'Política de Privacidade e Segurança'
+    politica_pagamentos:      'Política de Pagamentos'
+    politica_entrega:         'Política de Entrega'
+    politica_troca:           'Política de Trocas e Devoluções'
+    comunicados_oficiais:     'Mensagem ou comunicados oficiais'
+    aniversariantes:          'Aniversário'
+    aceitar:                  'Lí e concordo com as condições acima'
+    naotem:                   'Não tem mensagens'
+    visualizar:               'Visualizar'
+    label:
+          titulo:             'Título'
+          tipo_mensagem:      'Tipo'
+          data_lido:          'Data de Leitura'
+          data_aceptado:      'Data de Aceitação'
+
+maritaapp:
+    flashmsg:
+        dados_salvos:               'Dados Salvos com sucesso.'
+        dados_nao_preenchidos:      'Alguns dados não foram preenchidos ou as senhas estão diferentes, verifique o cadastro e tente novamente.'
+        cliente_ja_cadastrado:      'Cliente já cadastrado, aguarde a ativação da conta.'
+    title:
+        page:                       'Marita Cash'
+        dados_conta:                'Dados do usuário'
+        dados_empresa:              'Dados da empresa'
+        error:                      'Erros de cadastro'
+    form:
+        tipo_cadastro:              'Tipo do Cadastro'
+        nome_responsavel:           'Nome'
+        email_responsavel:          'E-mail'
+        cpf_responsavel:            'CPF'
+        rg_responsavel:             'RG'
+        telefone_responsavel:       'Telefone'
+        sexo_responsavel:           'Gênero'
+        nascimento_responsavel:     'Data Nascimento'
+        estado_civil_responsavel:   'Estado Civíl'
+        escolaridade_responsavel:   'Escolaridade'
+        naturalidade_responsavel:   'Naturalidade'
+        cep_responsavel:            'CEP'
+        logradouro_responsavel:     'Endereço'
+        bairro_responsavel:         'Bairro'
+        complemento_responsavel:    'Complemento'
+        numero_responsavel:         'Número'
+        cidade_responsavel:         'Cidade'
+        estado_responsavel:         'Estado'
+        mae_responsavel:            'Nome da Mãe'
+
+        razao_social:               'Razão Social'
+        nome_fantasia:              'Nome Fantasia'
+        cnpj:                       'CNPJ'
+        email_empresa:              'Email'
+        telefone_empresa:           'Telefone'
+        logradouro_empresa:         'Endereço'
+        cep_empresa:                'CEP'
+        bairro_empresa:             'Bairro'
+        complemento_empresa:        'Complemento'
+        numero_empresa:             'Número'
+        cidade_empresa:             'Cidade'
+        estado_empresa:             'Estado'
+        enviar:                     'Confirmar'
+        senha:                      'Senha'
+        confirmacao_senha:          'Confirmação da Senha'
+        pf:                         'Pessoa Física'
+        pj:                         'Pessoa Jurídica'
+        message_senha:              'A senha poderá ser alterada após a confirmação do cadastro diretamente no Aplicativo.'
+        message_senha_minimum:      'A senha tem que ter no mínimo 6 dígitos.'
+        nome_mae_msg:               'Nome da mãe inválido, digite pelo menos um sobrenome.'
+        senha_msg:                  'Senha inválida, o mínimo é de 6 dígitos.'
+        senha_confirm_msg:          'Senhas diferentes, verifique e corrija.'
+        email_msg:                  'E-mail inválido, digite um e-mail válido.'
+
+        select:
+            solteiro:               'Solteiro(a)'
+            casado:                 'Casado(a)'
+            viuvo:                  'Viúvo(a)'
+            divorciado:             'Divorciado(a)'
+            separado:               'Separado(a)'
+            ensino_fundamental:     'Ensino Fundamental'
+            ensino_medio:           'Ensino Médio'
+            ensino_superior_comp:   'Ensino Superior Completo'
+            ensino_superior_inco:   'Ensino Superior Incompleto'
+            ensino_outro:           'Outro'
+            masculino:              'Masculino'
+            feminino:               'Feminino'
+
+    dados:
+        nome:                       'Nome da conta'
+        cnpj_ccpf:                  'CPF/CNPJ da conta'
+        email:                      'E-mail da conta'
+        senha_inicial:              'Senha inicial do cadastro'
+        status_conta:               'Status da conta'
+        status_cartao:              'Status do cartão'
+        saldo_conta:                'Saldo atual da conta'
+        saldo_cartao:               'Saldo atual do cartão'
+
+    resgate:
+        texto_explicativo:          'Selecione para onde você deseja resgatar o dinheiro, se é para o Marita Cash Bank ou sua Conta Bancária.'
+        select:
+            marita_cash:            'Marita Cash Bank'
+            outros:                 'Conta Bancária'
+        label:                      'Tipo do Resgate'

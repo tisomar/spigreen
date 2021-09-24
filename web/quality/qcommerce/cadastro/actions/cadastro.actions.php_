@@ -1,0 +1,244 @@
+<?php
+# Carrega o objeto atual do cliente quando estiver autenticado. Do contrário, inicia um novo cadastro
+if (ClientePeer::isAuthenticad()) {
+    $objCliente = ClienteQuery::create()->findOneById(ClientePeer::getClienteLogado()->getId());
+} else {
+    $objCliente = new Cliente();
+    $objEndereco = new Endereco();
+}
+
+
+$produtoTaxa = ProdutoPeer::retrieveByPK(ProdutoPeer::PRODUTO_TAXA_ID); /** @var Produto $produtoTaxa */
+$taxaCadastro = (bool)Config::get('cadastro.taxa_ativo') && ($produtoTaxa && $produtoTaxa->getTaxaCadastro());
+
+$ativacaoPatrocinador = Config::get('clientes.ativacao_patrocinador');
+
+$franqueadoCliente = ClientePeer::getFranqueadoSelecionado($container);
+
+
+# Quando a requisição for POST, valida as informações obtidas do formulário.
+# Caso veio da página de pré-cadastro, então não entra na condição
+if ($container->getRequest()->getMethod() == 'POST' && !$container->getRequest()->request->has('precadastro')) {
+
+    try
+    {
+        $erros = array();
+
+        $post = filter_var_array($container->getRequest()->request->all(), FILTER_SANITIZE_STRING);
+
+        if ($post['id-cliente-logado'] > 0) {
+            $objCliente = ClienteQuery::create()->findOneById($post['id-cliente-logado']);
+        } else {
+            $objCliente = new Cliente();
+            if($taxaCadastro) {
+                $objEndereco = new Endereco();
+            }
+        }
+
+
+        if(!$objCliente instanceof Cliente){
+            exit_403();
+        }
+
+        $objCliente->setByArray($post['c']);
+        $objCliente->setStatus(ClientePeer::STATUS_PENDENTE);
+
+        if($taxaCadastro) {
+            $objEndereco->setByArray($post['e']);
+        }
+
+        /**
+         * Regras de aprovação de clientes:
+         *     Para PJ: Aprova direto se a configuração de aprovação direta estiver configurada para Ambos ou Somente PJ
+         *     Para PF: Aprova direto se a configuração de aprovação direta estiver configurada para Ambos ou Somente PF
+         */
+
+        if(!$taxaCadastro) {
+            if (Config::get('cliente_aprovacao_direta') == 1) {
+                $objCliente->setStatus(ClientePeer::STATUS_APROVADO);
+            } else {
+                if ($objCliente->isPessoaJuridica() && Config::get('cliente_aprovacao_direta') == 3) {
+                    $objCliente->setStatus(ClientePeer::STATUS_APROVADO);
+                } elseif ($objCliente->isPessoaFisica() && Config::get('cliente_aprovacao_direta') == 2) {
+                    $objCliente->setStatus(ClientePeer::STATUS_APROVADO);
+                }
+            }
+        }
+
+        $objCliente->myValidate($erros);
+        if($taxaCadastro) {
+            $objEndereco->myValidate($erros);
+        }
+
+        
+        //Verifica se o cliente concordou com os termos de uso (apenas na criação do cadastro)
+        if (($post['id-cliente-logado'] <= 0 || !ClientePeer::isAuthenticad()) &&
+            !$container->getRequest()->request->get('aceito-termos-uso')) {
+            $erros[] = 'Você deve concordar com os termos de uso.';
+        }
+
+        foreach ($erros AS $erro)
+        {
+            FlashMsg::danger($erro);
+        }
+        
+        /**
+         * Se o cliente não estiver autenticado:
+         * 
+         * Valida a senha e a confirmação de senha.
+         * - A senha e a confirmação são atributos obrigatórios e devem ser iguais.
+         * 
+         * Valida se o cliente marcou o campo de leitura e aceite dos termos de uso.
+         * - Deve estar marcado para concluir o cadastro.
+         * 
+         * Seta propriedades padrões para um cliente novo
+         */
+        if ($post['id-cliente-logado'] <= 0 || ClientePeer::isAuthenticad() == false)
+        {
+            // Como a função setSenha() gera o Hash, é necessário verificar manualmente
+            // a quantidade mínima de caracteres do campo senha
+            if (strlen($post['c']['SENHA']) < ClientePeer::SENHA_TAMANHO_MINIMO) {
+                FlashMsg::danger('Por favor, o campo senha deve conter pelo menos ' . ClientePeer::SENHA_TAMANHO_MINIMO . ' caracteres.');
+            }
+
+            if ($post['c']['SENHA_CONFIRMACAO'] == '') {
+                FlashMsg::danger('Por favor, preencha o campo de confirmação de senha');
+            } else {
+                if ($post['c']['SENHA'] != $post['c']['SENHA_CONFIRMACAO']) {
+                    FlashMsg::danger('Por favor, o campo confirmação de senha está diferente do campo senha');
+                }
+            }
+        }
+
+        if (count($erros) == 0) {
+
+            if (!$objCliente->getChaveIndicacao()) {
+                //Gera uma nova chave para o cliente que está se cadastrando
+                $objCliente->gerarChaveIndicacao();
+            }
+
+            if($taxaCadastro) {
+                $objCliente->setTaxaCadastro(1);
+            }
+
+            $gerenciador = new GerenciadorRede(Propel::getConnection());
+
+            $objCliente->save();
+
+            if($taxaCadastro) {
+                $objEndereco->setClienteId($objCliente->getId());
+                $objEndereco->save();
+            }
+
+
+            // Se for um cliente novo, envia um e-mail ao mesmo informando suas credenciais de acesso e o redireciona
+            // para a tela de resumo do pedido (quando houver um) ou para a tela de sucesso (pós-cadastro)
+            if ($post['id-cliente-logado'] <= 0 || !ClientePeer::isAuthenticad()) {
+
+                if($ativacaoPatrocinador && !$franqueadoCliente){
+
+                    $gerenciador = new GerenciadorRede(Propel::getConnection());
+                    $query = ClienteQuery::create()->find();
+
+                    $count = count($query);
+                    if ($count == 1) {
+                        //O primeiro cliente cadastrado no site será o root da rede.
+
+                        $gerenciador->insereRoot($objCliente);
+                    } else {
+
+                        $objPatrocinadorCliente = null;
+
+                        if ($post['patrocinador-id']) {
+                            $clientePatrocinador = ClientePeer::retrieveByPK($post['patrocinador-id']);
+                            if ($clientePatrocinador instanceof Cliente) {
+                                $objPatrocinadorCliente = $clientePatrocinador;
+                                $objCliente->setClienteIndicadorId($patrocinador->getId());
+                                $objCliente->setClienteIndicadorDiretoId($patrocinador->getId());
+                            }
+
+                        }
+
+                        $gerenciador->insereRede($objCliente, $objPatrocinadorCliente);
+
+                    }
+
+                    $objCliente->setTipoConsumidor(1);
+                    $objCliente->save();
+                }
+
+                // Se foi setado para receber newsletter
+                if ($container->getRequest()->request->get('receber-newsletter')) {
+                    NewsletterPeer::save($objCliente->getEmail(), $objCliente->getNome());
+                }
+                
+                \QPress\Mailing\Mailing::clienteCadastroNovo($objCliente);
+
+                if($taxaCadastro && $objCliente->getTaxaCadastro()) {
+
+                    $franqueado = ClientePeer::getFranqueadoSelecionado($container);
+
+                    $objCliente->efetuaLogin();
+                    $container->getCarrinhoProvider()->save();
+                    $carrinho = $container->getCarrinhoProvider()->getCarrinho();
+                    ProdutoVariacaoPeer::addProdutoTaxaCadastroToCart($container, $produtoTaxa);
+                    if(!$franqueado) {
+                        $carrinho->setEndereco($objEndereco);
+                        $carrinho->save();
+                    }
+
+                    if(!$franqueado) {
+                        redirect('/checkout/pagamento');
+                    } else {
+                        redirect('/checkout/endereco');
+                    }
+                }
+
+                if ($objCliente->getStatus() == ClientePeer::STATUS_APROVADO) {
+                    $objCliente->efetuaLogin();
+                    FlashMsg::success(nl2br(Config::get('cliente.email_aprovado')));
+                    if ($container->getCarrinhoProvider()->getCarrinho()->countItems()) {
+                        redirect('/checkout/endereco');
+                    }
+                } else {
+                    \QPress\Mailing\Mailing::clienteNovoCadastroPendenteAdmin($objCliente);
+                    FlashMsg::success(nl2br(Config::get('cliente.email_pendente')));
+                    redirect('/login');
+                }
+
+                redirect('/');
+
+            } else {
+
+                // atualizando objeto do cliente que está na sessão 
+                // (do contrário os dados cadastrais não irão ser atualizados)
+                $objCliente->efetuaLogin();
+
+                FlashMsg::success('Seu cadastro foi alterado com sucesso.');
+
+                if ($container->getRequest()->request->has('redirecionar')) {
+                    redirect(get_url_caminho($container->getRquest()->request->get('redirecionar')));
+                } else {
+                    redirect('/minha-conta/dados/sucesso-alteracao');
+                }
+
+            }
+        }
+    }
+    catch (Exception $e)
+    {
+
+        FlashMsg::danger('Não foi possível enviar as informações. Por favor, tente novamente!'. $e->getMessage());
+    }
+}
+
+/**
+ * Definições para exibição do formulário de cadastro de cliente
+ */
+// Veio da página de pré-cadastro
+if (isset($_POST['c']['EMAIL']))
+{
+    $objCliente->setEmail($_POST['c']['EMAIL']);
+}
+
+

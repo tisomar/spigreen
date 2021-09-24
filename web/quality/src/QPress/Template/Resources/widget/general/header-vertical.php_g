@@ -1,0 +1,177 @@
+<?php use QPress\Template\Widget; ?>
+<?php Widget::render('nav/menu-mobile'); ?>
+<?php $totalItensCarrinho = $container->getCarrinhoProvider()->getCarrinho()->countItems(); ?>
+<div id="page">
+    <header>
+        <section class="top hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="info-nav pull-left">
+                            <?php if (!ClientePeer::isAuthenticad()): ?>
+                                <li>
+                                    <a href="<?php echo get_url_site() ?>/cadastro">
+                                        <span class="<?php icon('user') ?>"></span> Olá, faça seu cadastro aqui!
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li>
+                                    <a href="<?php echo get_url_site() ?>/minha-conta/pedidos">
+                                        <?php if (ClientePeer::getClienteLogado(true)->getPlanoId()):  ?>
+                                            <span class="<?php icon('user') ?>"></span> Olá <?php echo ClientePeer::getClienteLogado()->getPrimeiroNome() ?>, seja bem vindo.
+                                        <?php else: ?>
+                                            <span class="<?php icon('user') ?>"></span> Olá <?php echo ClientePeer::getClienteLogado()->getPrimeiroNome() ?>, acompanhe seus pedidos!
+                                        <?php endif ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                        <ul class="info-nav pull-right">
+                            <?php if (trim(Config::get('contato.whatsapp')) != ''): ?>
+                                <li>
+                                    <span class="<?php icon('whatsapp') ?>"></span> <?php echo Config::get('contato.whatsapp') ?>
+                                </li>
+                            <?php endif; ?>
+                            <li><a href="<?php echo get_url_site() . '/contato/' ?>">
+                                    <span class="<?php icon('phone') ?>"></span> Fale conosco
+                                </a>
+                            </li>
+                            <li><a href="<?php echo get_url_site() . '/perguntas-frequentes/' ?>">
+                                    <span class="<?php icon('question-circle') ?>"></span> Ajuda
+                                </a>
+                            </li>
+                            <?php if (ClientePeer::isAuthenticad()): ?>
+                                <li><a href="<?php echo get_url_site(); ?>/login/logout">
+                                        <span class="<?php icon('sign-out') ?>"></span> Sair
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li>
+                                    <a href="<?php echo get_url_site(); ?>/minha-conta/pedidos">
+                                        <span class="<?php icon('user') ?>"></span> Meus pedidos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo get_url_site() ?>/login">
+                                        <span class="<?php icon('sign-in') ?>"></span> Entrar
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="middle">
+            <div class="container">
+
+                <?php /* show in [ xs | sm ] */ ?>
+                <div class="row hidden-md hidden-lg">
+                    <div class="col-xs-2 col-sm-1 link">
+                        <a id="hamburger" href="#menu">
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 logo">
+                        <a href="<?php echo get_url_site(); ?>/home">
+                            <picture>
+                                <img class="img-responsive" src="<?php echo Config::getLogoMobile()->forceUrlImageResize('width=200&height=32') ?>" alt="">
+                            </picture>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-5 link text-right">
+                        <a href="#" class="collapsed link-icon" data-toggle="collapse" data-target=".search-mobile">
+                            <span class="<?php icon('search 2x') ?>"></span>
+                        </a>
+                        <a href="<?php echo get_url_site(); ?>/carrinho" class="link-icon">
+                            <span class="quantity-item"><?php echo (int) $totalItensCarrinho ?></span>
+                            <span class="<?php icon('shopping-cart 2x') ?>"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <?php /* show in [ md | lg ] */ ?>
+                <div class="row hidden-xs hidden-sm">
+                    <div class="col-md-3 col-lg-2">
+                        <div class="logo">
+                            <a href="<?php echo get_url_site(); ?>/home">
+                                <picture>
+                                    <img src="<?php echo Config::getLogo()->forceUrlImageResize('width=300&height=120') ?>" title="Catarina Nautica" alt="logotipo" class="img-responsive">
+                                </picture>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-lg-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="search">
+                                    <?php Widget::render('forms/search', array('container' => $container)); ?>
+                                </div>
+                            </div>
+
+                            <?php
+                            $md = 6;
+                            if (ClientePeer::isAuthenticad() && ClientePeer::getClienteLogado(true)->isConsumidorFinal()):
+                                $md = 3;
+                                ?>
+
+                                <div class="col-md-<?php echo $md; ?> no-padding-reseller">
+                                    <div class="box-service pull-right">
+                                        <a href="<?php echo get_url_site() ?>/login/actions/reseller.actions">
+                                            <span class="service-icon">
+                                                <span class="<?php icon('money') ?>"></span>
+                                            </span>
+                                            <div class="service-body">
+                                                <h3>Revender <br>Produtos <?php
+                                                    $nomeFantasia = trim(Config::get('empresa_nome_fantasia'));
+                                                    echo !empty($nomeFantasia) ? $nomeFantasia : 'Spigreen' ?></h3>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <div class="col-md-<?php echo $md; ?>">
+                                <div class="pull-right box-service">
+                                        <span class="service-icon">
+                                            <span class="<?php icon('shopping-cart') ?>"></span>
+                                        </span>
+                                    <div class="service-body">
+                                        <a href="<?php echo get_url_site() ?>/carrinho/">
+                                            <h3>Carrinho</h3>
+                                            <small>
+                                                <?php echo (int) $totalItensCarrinho ?> item(s)</a>
+                                        </small>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <?php Widget::render('general/menu-desktop'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <form role="form" class="search-mobile collapse" action="<?php echo get_url_site(); ?>/busca">
+                        <div class="container-fluid">
+                            <div class="input-group">
+                                <input class="form-control input-sm" type="text" name="buscar-por" required>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-sm btn-primary">Buscar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </header>

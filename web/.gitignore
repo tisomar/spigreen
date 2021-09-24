@@ -1,0 +1,13 @@
+Jenkinsfile
+
+.idea
+
+vendor/
+composer.lock
+
+quality/qcommerce/config/cache/
+www/resize/imagecache
+www/arquivos
+www/admin/arquivos
+
+.vscode/
